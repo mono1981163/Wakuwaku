@@ -1,0 +1,229 @@
+/* ======================     Tab Style      ==================== */
+.tab_content {
+    border-top: #DCEBE8 1px solid;
+    border-bottom: #DCEBE8 1px solid;
+}
+.left_tab {
+    width: 20%;
+}
+.right_content {
+    width: 75%;
+}
+.right_content h1 {
+    text-align: left;
+}
+.tab_part {
+    padding: 0.5em 1em;
+}
+.tab_part:nth-child(2) {
+    border-top: #DCEBE8 1px solid;
+    border-bottom: #DCEBE8 1px solid;
+}
+.tab_part h4 {
+    margin: 1em 0;
+    position: relative;
+    cursor: pointer;
+}
+.tab_part h4::before {
+    content: "";
+    width: 3px;
+    height: 0%;
+    background: #03C9B0;
+    position: absolute;
+    left: -15px;
+}
+.tab_part.active h4::before {
+    height: 100%;
+    transition: 1s 0.5s ease all;
+}
+.tab_part h6 {
+    padding: 0.5em 0;
+}
+.flex_parent {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2em;
+    padding-bottom: 2em;
+    border-bottom: 1px solid #DCEBE8;
+}
+.flex_parent > div {
+    width: 45%;
+}
+.gacha_img {
+    border-radius: 8px;
+    overflow: hidden;
+}
+.detail h3 {
+    margin: 0.5em 0;
+}
+.detail h5 {
+    margin: 0.5em 0;
+}
+.detail .button {
+    margin: 0.5em 0;
+}
+span.font--green {
+    font-size: 12px;
+    cursor: pointer;
+}
+.prize_detail {
+    width: 40%;
+    margin: 15px;
+    text-align: center;
+}
+.prize_detail h4 {
+    padding: 0.5em 0;
+}
+.purchase-detail {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.check_icon {
+    width: 30px;
+}
+.info_change {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin: unset!important;
+}
+@media (max-width: 1367px) {
+    .right_content {
+        width: 70%;
+    }
+}
+@media (max-width: 993px) {
+    .order .button {
+        height: 30px;
+    }
+}
+@media (max-width: 769px) 
+{
+    .left_tab {
+        display: none;
+    }
+    .right_content {
+        width: 100%;
+        padding: 20px;
+    }
+    .right_content h1 {
+        text-align: center;
+    }
+    .info-container {
+        width: 95%;
+        margin: auto;
+        margin-top: 20px;
+    }
+    .right_content.order h3 {
+        font-size: 2.5vw!important;
+    }
+    .account_info h3 {
+        font-size: 14px!important;
+    }
+    .right_content h4 {
+        font-size: 2.3vw!important;
+    }
+    .right_content h5 {
+        font-size: 2.2vw!important;
+    }
+    .right_content h6 {
+        font-size: 2vw!important;
+    }
+    .flex_parent > div:nth-child(1) {
+        width: 50%;
+    }
+    .flex_parent > div:nth-child(2) {
+        width: 45%;
+    }
+    .gacha_img {
+        border-radius: 5px;
+    }
+    .zip-code .button h5 {
+        font-size: 10px!important;
+    }
+    .button-group {
+        flex-direction: column;
+    }
+    .data-input .info-box {
+        border: unset;
+    }
+    .data-input .item-input {
+        border-bottom: unset;
+    }
+    .data-input .item-title {
+        display: none;
+    }
+    .box h3 {
+        font-size: 14px!important;
+    }
+    .data-input .box h4 {
+        font-size: 14px!important;
+    }
+    .data-input .step_part {
+        border-bottom: unset;
+    }
+    .data-input {
+        width: 80%;
+        background-color: white;
+        border: 1px solid #DCEBE8;
+        border-radius: 5px;
+        padding: 40px;
+    }
+    .info-container > h3 {
+        font-size: 14px!important;
+        margin-bottom: 10px;
+    }
+    .data-input .info-container > h3 {
+        display: none;
+    }
+    .name_box .item-box input {
+        width: 90%;
+    }
+    .purchase-detail {
+        flex-direction: column;
+    }
+    .prize_detail {
+        width: 80%;
+        margin: auto;
+    }
+    .order .button {
+        height: 25px;
+        width: 200px;
+    }
+}
+@media (max-width: 500px) {
+    .detail .button {
+        padding: 0px 10px;
+    }
+    .flex_parent > div:nth-child(2) {
+        width: 40%;
+    }
+    .item-title {
+        width: 28%;
+    }
+    .data-input {
+        width: 90%;
+        padding: 25px 10px;
+    }
+    .order .button {
+        height: 20px;
+        width: 150px;
+        font-size: 10px;
+    }
+    .right_content {
+        padding: 15px;
+    }
+    .right_content h4 {
+        font-size: 16px!important;
+    }
+}
+@media (max-width: 350px) {
+    .order .button {
+        height: 15px;
+        width: 120px;
+        font-size: 8px;
+    }
+}

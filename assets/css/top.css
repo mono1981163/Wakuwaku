@@ -1,0 +1,182 @@
+
+/*=================      Slide Show       ==================*/
+
+.swiper-container .swiper-wrapper .swiper-slide .card-image {
+  background: #E4E4E4;
+  opacity: 0.3;
+  border: none;
+  outline: none;
+  border-radius: 2px;  
+}
+.swiper-container .swiper-wrapper .swiper-slide.swiper-slide-active .card-image {
+  background: white;
+  opacity: 1;
+}
+.swiper-container .swiper-wrapper .swiper-slide .card-image img {
+  display: block;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.swiper-container .swiper-pagination .swiper-pagination-bullet {
+  opacity: 0.8;
+  background: black;
+}
+.swiper-container .swiper-pagination .swiper-pagination-bullet .swiper-pagination-bullet-active {
+  background: white;
+}
+.swiper-container .swiper-button-next, .swiper-container .swiper-button-prev {
+  background-image: none;
+  background-size: 0;
+  background-repeat: no-repeat;
+  background-position: 0;
+  margin-top: -1rem;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+  display: none;
+}
+.swiper-button-next img, .swiper-button-prev img {
+  width: 50px;
+}
+.swiper-button-prev img {
+  margin-left: 30px;
+}
+.swiper-button-next img {
+  margin-right: 30px;
+}
+.swiper1 {
+  display: block;
+}
+.swiper_sp {
+  display: none;
+}
+.intro {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+.intro p {
+  margin-bottom: 0;
+}
+.intro img {
+  width: 30%;
+  margin: 20px 0 10px 0;
+}
+section {
+  position: relative;
+  margin: 3rem 0 3rem 0;
+}
+.maxwide {
+  max-width: 1200px;
+  margin: auto;
+}
+.sale_price {
+  font-size: 24px;
+}
+.menu > p {
+  color: white;
+  font-size: 18px;
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+.button {
+  margin-top: 0;
+}
+
+.flow_contents {
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.flow_contents > div {
+  width: 25%;
+}
+.flow_contents img {
+  width: 120px;
+  height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.flow_contents h5, .flow_contents h6 {
+  margin: 5px 15px;
+}
+.flow_circle_container {
+  position: relative;
+}
+.flow_circle {
+  width: 10px;
+  height: 10px;
+  background-color: #BDD0CC;
+  border-radius: 50%;
+  margin: auto;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.flow_circle_container::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #BDD0CC;
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+} 
+.first_step::after {
+  left: 50%;
+}
+.last_step::after {
+  right: 50%;
+}
+
+@media (max-width: 993px) {
+
+}
+@media (max-width: 769px) {
+  .swiper-button-prev img {
+    margin-left: 20px;
+  }
+  .swiper-button-next img {
+    margin-right: 20px;
+  }
+  .flow_contents div {
+    width: 50%;
+  }
+  .flow_contents h5 {
+    font-size: 11px;
+    margin: 5px;
+  }
+  .intro h2 {
+    font-size: 4vw!important;
+  }
+  .intro h4 {
+    font-size: 3vw!important;
+  }
+  .sp_change_addr {
+    margin: 20px 0;
+    text-align: center;
+  }
+  .flow_contents h5, .flow_contents h6 {
+    text-align: center;
+  }
+  .flow_circle_container {
+    display: none;
+  }
+  .intro img {
+    width: 70%;
+  }
+  .swiper1 {
+    display: none;
+  }
+  .swiper_sp {
+    display: block;
+  }
+}

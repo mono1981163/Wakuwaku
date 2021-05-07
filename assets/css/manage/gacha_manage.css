@@ -1,0 +1,38 @@
+.row {
+    margin-top: 5px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+.current-gacha-list {
+    margin-top: 50px;
+}
+.add {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    margin-top: 100px;
+}
+.btn {
+    margin-right: 15px;
+}
+.gacha-image {
+    width: 45%;
+}
+.gacha-image p {
+    text-align: center;
+}
+td {
+    vertical-align: middle!important;
+}
+td > img {
+    width: 100px;
+}
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+.btn-container .editbtn {
+    margin: auto;
+    display: block;
+}

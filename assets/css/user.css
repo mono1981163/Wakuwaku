@@ -1,0 +1,82 @@
+
+/* ================     Login    ================ */
+
+.form-group label {
+    width: 45%;
+}
+.box a {
+    text-decoration: none;
+}
+.box h4 {
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+.member_regist {
+    text-align: center;
+    margin: 10px;
+}
+
+/* ================     Registration    ================ */
+
+
+/* ==========================        Forget Password       ========================= */
+
+@media (max-width: 769px) {
+    .block-span {
+        width: 100%;
+    }
+    .zip-code .button h5 {
+        font-size: 10px!important;
+    }
+    .button-group {
+        flex-direction: column;
+    }
+    .data-input .info-box {
+        border: unset;
+    }
+    .data-input .item-input {
+        border-bottom: unset;
+    }
+    .data-input .item-title {
+        display: none;
+    }
+    .button {
+        width: 180px;
+        height: 30px;
+    }
+    .box h3 {
+        font-size: 14px!important;
+    }
+    .data-input .box h4 {
+        font-size: 14px!important;
+    }
+    .data-input .step_part {
+        border-bottom: unset;
+    }
+    .main-content {
+        background: #F8FFFE;
+    }
+    .data-input {
+        width: 80%;
+        background-color: white;
+        border: 1px solid #DCEBE8;
+        border-radius: 5px;
+        padding: 40px;
+    }
+    .info-container > h3 {
+        font-size: 14px!important;
+        margin-bottom: 10px;
+    }
+    .data-input .info-container > h3 {
+        display: none;
+    }
+    .name_box .item-box input {
+        width: 90%;
+    }
+}
+@media (max-width:500px) {
+    .data-input {
+        width: 90%;
+        padding: 25px 10px;
+    }
+}

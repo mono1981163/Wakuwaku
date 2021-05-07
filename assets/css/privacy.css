@@ -1,0 +1,11 @@
+.terms h3, .privacy h3 {
+    margin: 30px 0 10px;
+}
+.terms h4, .privacy h4 {
+    margin: 30px 0 10px;
+    font-size: 18px;
+    font-size: 1.125rem;
+}
+hr.gray {
+    border: 1px solid #d5d5d5;
+}

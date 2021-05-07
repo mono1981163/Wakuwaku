@@ -1,0 +1,349 @@
+/* =======================      Gacha Details        ======================== */
+
+#payForm .item-input p {
+    padding: 15px;
+    display: inline;
+}
+#payForm .item-input {
+    height: 50px;
+    vertical-align: middle;
+}
+.set-purchase {
+    width: 100%;
+}
+.set-group {
+    display: flex;
+    padding: 10px;
+    justify-content: flex-end;
+}
+.amount {
+    padding-top: 10px;
+    text-align: right;
+}
+select {
+    margin-bottom: 0px;
+}
+/* ====================================    Gacha List     ======================================= */
+.info-container > h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.form-box div.item-input {
+    padding: 8px 0;
+}
+.ticket_banner {
+    background-color: #FFEC4D;
+    text-align: center;
+}
+.ticket_banner div {
+    padding: 1.5em 0;
+}
+.period_banner {
+    background-color: #03C9B0;
+    text-align: center;
+}
+.period_banner h4 {
+    padding: 15px;
+}
+.prize {
+    width: 31%;
+    margin: 1%;
+    text-align: center;
+}
+
+.pay_info {
+    width: 60%;
+}
+.pay_info .part {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+.part .payment {
+    width: 25%;
+}
+.part .payment img {
+    width: 80px;
+}
+.part .address {
+    width: 70%;
+}
+.img_contain {
+    width: 55%;
+}
+.product_amount {
+    width: 40%;
+    text-align: left;
+}
+.part h3 {
+    margin: 10px 0;
+}
+.part h4 {
+    margin: 5px 0;
+}
+.radio_contain {
+    background-color: #F8FFFE;
+    border-bottom: 1px #DCEBE8 solid;
+    padding: 15px;
+    padding-left: 30px;
+}
+.pay_contain {
+    width: 80%;
+    margin: 30px;
+}
+.purchase_box {
+    width: 35%;
+}
+.purchase_info {
+    margin: 5rem;
+    background-color: #F8FFFE;
+    text-align: right;
+}
+.purchase_info > div {
+    margin: 8px 0;
+}
+.inner-box {
+    margin-top: 30px;
+}
+.card_type {
+    display: flex;
+}
+.card_type > div {
+    width: 100%;
+}
+.card_type > div > img {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.inner-box input {
+    width: 100%;
+}
+.inner-box .small-input {
+    width: 25%;
+}
+.slash {
+    width: 5%;
+    display: inline-block;
+    text-align: center;
+}
+/* ===================================         Purchase         ==================================== */
+.data-input, .data-ensure {
+    max-width: 1200px;
+    margin: auto;
+}
+.main-title {
+    text-align: left;
+    margin-left: 30px;
+}
+/* ============================      Gacha Play       ============================= */
+video {
+    width: 600px;
+    margin: auto;
+    display: block;
+}
+.win_item {
+    text-align: center;
+}
+.win_item span{
+    font-size: 12px;
+    margin: 15px;
+    cursor: pointer;
+}
+.item_image {
+    width: 80%;
+}
+.ticket_addition {
+    text-align: center;
+    background-color: #FFEC4D;
+    border-radius: 8px;
+    width: 80%;
+    margin: auto;
+    padding: 15px;
+    margin-top: 20px;
+}
+.ticket_addition span {
+    margin: 0;
+}
+/* ===================================       Prize List       ====================================== */
+.prize-item {
+    margin: 30px 10px;
+}
+
+@media (max-width: 1367px) {
+    .basic-content {
+        display: flex;
+        justify-content: space-around;
+        width: 95%;
+        margin: auto;
+    }
+    .purchase_box .purchase_info {
+        margin: 4rem 2rem;
+    }
+    .purchase_info .button--second, .purchase_info .button {
+        width: 200px;
+    }
+    .inner-box {
+        margin-top: 25px;
+    }
+}
+@media (max-width: 1200px) {
+    .part .payment {
+        width: 40%;
+    }
+    .part .address {
+        width: 60%;
+    }
+}
+@media (max-width: 993px) {
+    .product_amount {
+        width: 35%;
+    }
+    .img_contain {
+        width: 60%;
+    }
+    .part .payment {
+        width: 50%;
+    }
+    .part .address {
+        width: 50%;
+    }
+    
+}
+@media (max-width: 768px) {
+    .regul_times {
+        display: none;
+    }
+    .period_banner h4 {
+        font-size: 16px!important;
+    }
+    .info-container {
+        width: 90%;
+        margin: auto;
+    }
+    .info-container > h3 {
+        text-align: center;
+    }
+    .prize {
+        width: 90%;
+        margin: auto;
+    }
+    .item-input h4 {
+        font-size: 14px!important;
+    }
+    .basic-content {
+        flex-direction: column;
+    }
+    .pay_info, .purchase_box {
+        width: 60%;
+        margin: auto;
+    }
+    .main-title {
+        text-align: center;
+        margin: auto;
+    }
+    .pay_contain h4 {
+        font-size: 12px!important;
+    }
+    .pay_contain {
+        width: 90%;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .purchase_info {
+        text-align: center;
+    }
+    input {
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+    .inner-box {
+        margin-top: 15px;
+    }
+    .purchase_box .purchase_info {
+        margin: 30px 38px;
+    }
+    .button-group {
+        flex-direction: column;
+    }
+    .button, .button--second {
+        width: 200px;
+    }
+    .part h3 {
+        margin: 5px 0;
+        font-size: 16px!important;
+    }
+    .part h4 {
+        margin: 0px;
+        font-size: 14px!important;
+    }
+    .payconfirm .pay_info, .payconfirm .purchase_box  {
+        width: 70%;
+    }
+    .win_item .button-group {
+        margin-bottom: 20px;
+    }
+    .ticket_addition {
+        margin-bottom: 20px;
+    }
+    video {
+        width: 80%;
+    }
+    
+}
+@media (max-width: 650px) {
+    .payconfirm .pay_info, .payconfirm .purchase_box {
+        width: 75%;
+    }
+}
+@media (max-width: 600px) {
+    .pay_info, .purchase_box {
+        width: 75%;
+    }
+    .payconfirm .pay_info, .payconfirm .purchase_box {
+        width: 85%;
+    }
+}
+@media (max-width:500px) {
+    .inner label, .inner input, .inner span {
+        font-size: 16px;
+    }
+    .btn-custom {
+        font-size: 14px;
+        width: auto;
+    }
+    .period_banner h4 {
+        font-size: 12px!important;
+    }
+    .item-input h4 {
+        font-size: 10px!important;
+    }
+    .pay_info, .purchase_box {
+        width: 90%;
+    }   
+    .img_contain {
+        width: 55%;
+    }
+    .product_amount {
+        width: 40%;
+    }
+    .step-under .box h3 {
+        font-size: 12px!important;
+    }
+}
+@media (max-width:400px) {
+    .payconfirm .pay_info, .payconfirm .purchase_box {
+        width: 90%;
+    }
+    .part h3 {
+        margin: 5px 0;
+        font-size: 14px!important;
+    }
+    .part h4 {
+        margin: 0px;
+        font-size: 12px!important;
+    }
+}

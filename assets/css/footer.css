@@ -1,0 +1,128 @@
+footer {
+    background: white;
+    padding: 40px 0 0; 
+    position: relative;
+}
+footer ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    padding: 30px 0;
+}
+footer ul li {
+    -ms-flex-preferred-size: 40%;
+    flex-basis: 33%;
+    margin: 5px 0;
+    text-align: center;
+}
+footer ul li a {
+    color: white!important;
+}
+.footer__bottom {
+    background-color: #03C9B0;
+}
+.footer__content {
+    max-width: 1000px;
+    margin: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+.copyright img {
+    width: 200px;
+}
+ol, ul {
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.maxwide {
+    max-width: 1200px;
+    margin: auto;
+}
+.sale-list img {
+    width: 100%;
+}
+.sale_price {
+    font-size: 24px;
+}
+section {
+    position: relative;
+    margin: 50px 0 50px 0;
+}
+footer .small-text {
+    font-size: 10px;
+    margin: 0 15px;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    font-family: Mplus_R;
+}
+.totop {
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+    cursor: pointer;
+}
+@media (max-width: 1050px) {
+    .totop {
+        display: none;
+    }
+}
+@media (max-width: 769px) {
+    section {
+        margin: 25px 0 25px 0;
+    }
+    footer {
+        padding: unset;
+    }
+    footer h6 
+    {
+        font-size: 10px;
+    }
+    footer ul {
+        width: 100%;
+    }
+    footer ul li {
+        flex-basis: 21%;
+        margin: auto;
+    }
+    .copyright.sp {
+        display: flex;
+        justify-content: space-around;
+        margin: 0 10px;
+    }
+    .copyright.sp .small-text {
+        text-align: right;
+        padding: 0;
+    }
+    .swiper-button-next img, .swiper-button-prev img {
+        width: 40px;
+    }
+}
+@media (max-width: 500px) {
+    .copyright img {
+        width: 50%;
+        height: fit-content;
+        margin-right: 15px;
+        padding-bottom: 15px;
+    }
+    footer .small-text {
+        font-size: 9px;
+        margin: 0px;
+    }
+    footer ul {
+        padding: 10px 0;
+    }
+}
+@media (max-width: 400px) {
+    .sale-list {
+        flex-direction: column;
+    }
+}

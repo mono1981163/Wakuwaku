@@ -1,0 +1,146 @@
+/* =============================    Top Image    ============================== */
+.slide-setting {
+    padding-top: 10%;
+    margin: auto;
+}
+.slide_show {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.preview-image {
+    width: 60%;
+}
+.preview-image-region {
+    width: 100%;
+    height: max-content;
+    min-height: 300px;
+    margin: auto;
+    margin-top: 10px;
+    border: black 3px solid;
+}
+.sp_region {
+    min-height: 400px;
+    width: 400px;
+}
+.preview-image-region img {
+    width: 100%;
+}
+.image-number {
+    margin: auto;
+    width: 80%;
+    margin-top: 30px;
+}
+.slide-image {
+    width: 30%;
+    display: flex;
+}
+.img-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+} 
+.topimage {
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.topimage img {
+    display: block;
+    width: 100%;
+}
+.button-group {
+    display: flex;
+    justify-content: space-evenly;
+}
+.slide-setting .button {
+    width: 30%;
+    height: 40px;
+    margin: auto;
+    background-color: #1a202e;
+    border: transparent 2px solid;
+    border-radius: 30px;
+    margin-top: 50px;
+    text-align: center;
+    color: white;
+    display: block;
+    cursor: pointer;
+    outline: none!important;
+}
+.slide-setting .button:hover {
+    background-color: white;
+    border: #1a202e 2px solid;
+    color: #1a202e;
+}
+.slide-setting .button:active {
+    background-color: white;
+    border: #1a202e 2px solid;
+    color: #1a202e;
+    border-radius: 30px;
+}
+.image-number input[type=file] {
+    display: none;
+}
+.modal-header {
+    border-bottom: none;
+}
+.modal-footer {
+    border-top: none;
+}
+.image-region {
+    border: 2px #1a202e solid;
+    width: 100%;
+    height: max-content;
+    min-height: 100px;
+}
+.btn-custom {
+    margin: auto;
+    width: 120px;
+    background-color: #03c9b0;
+    border-color: white;
+    color: #EFFEFF;
+}
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: inherit;
+    margin: auto;
+}
+.button-group .btn-custom {
+    margin-top: 20px;
+}
+ul.latestgacha {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+}
+li.gacha-item {
+    flex-basis: 32%;
+    width: 32%;
+    -ms-flex-preferred-size: 32%;
+    box-shadow: black 2px 2px 5px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.gacha-item img {
+    width: 100%;
+}
+.content-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.gachalist {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}

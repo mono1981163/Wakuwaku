@@ -1,0 +1,43 @@
+
+.record {
+    width: 33%;
+    text-align: center;
+    display: inline-block;
+}
+.record > p {
+    margin: 5px 30px;
+    background-color: #1a202e;
+    color: white;
+}
+.record > div {
+    width: 80%;
+    margin: auto;
+    text-align: left;
+}
+ul.gacha-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    list-style: none;
+}
+ul.gacha-container li {
+    flex-basis: 32%;
+    -ms-flex-preferred-size: 32%;
+    /* margin: auto; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+li img {
+    width: 100%;
+}
+p {
+    margin-bottom: 0;
+}
+.display-content > div {
+    margin-top: 50px;
+}
