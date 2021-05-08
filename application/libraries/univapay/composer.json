@@ -1,0 +1,5 @@
+{
+    "require": {
+        "univapay/php-sdk": "^5.0"
+    }
+}

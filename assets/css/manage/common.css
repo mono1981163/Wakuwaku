@@ -1,0 +1,161 @@
+.main-content {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 100px;
+}
+.form-box {
+    border-top: 1px solid #d5d5d5;
+    display: table;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing:border-box;
+}
+.item-title {
+    display: table-cell;
+    position: relative;
+    width: 40%;
+    background-color: #f1f1f1;
+    border-right: 1px solid #d5d5d5;
+    border-left: 1px solid #d5d5d5;
+    word-break: break-all;
+    vertical-align: middle;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing:border-box;
+}
+.item-title div {
+    font-weight: bold;
+    margin-left: 15px;
+}
+.item-input {
+    width: 55%;
+    display: table-cell;
+    border-right: 1px solid #d5d5d5;
+}
+.item-input p {
+    margin: 15px;
+}
+.item-input input {
+    margin: 15px;
+}
+.error-txt {
+    margin: 15px;
+    color: red;
+    font-size: 12px;
+}
+.error {
+    border: 1px solid #ff4d0f;
+    background: rgba(255,77,15,.3);
+}
+
+input {
+    outline: none;
+}
+ul {
+    padding: 0 20px;
+    list-style: none;
+}
+a > img {
+    cursor: pointer;
+} 
+.list-contain {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.list-contain li {
+    border: 1px solid #d5d5d5;
+    -ms-flex-preferred-size: 48%;
+    flex-basis: 48%;
+    box-shadow: black 2px 2px 5px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.list-contain img {
+    width: 100%;
+}
+.list-contain p {
+    margin-bottom: 0;
+}
+.list-contain li .d-flex {
+    justify-content: space-between;
+    padding: 15px;
+}
+.list-contain li .d-flex > div {
+    width: 48%;
+} 
+
+.btn_menu {
+    margin: auto;
+    width: 100px;
+    height: 35px;
+    background-color: #03C9B0;
+    border-radius: 5px;
+    border: #ffffff 1px solid;
+    color: white;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.btn-green {
+    margin: auto;
+    width: auto;
+    height: 35px;
+    background-color: #03C9B0;
+    border-radius: 5px;
+    border: #ffffff 1px solid;
+    color: white;
+    cursor: pointer;
+}
+.btn-green:active {
+    outline: none!important;
+}
+button:focus {
+    outline: none;
+}
+select:active, select:focus {
+    outline: none;
+}
+.need::after {
+    content: "必 須";
+    margin-left: 15px;
+    background-color: #FF6F6F;
+    border-radius: 4px;
+    padding: 4px 8px;
+    line-height: 1;
+    font-size: 12px;
+    color: #fff;
+    box-sizing: border-box;
+}
+.save_btn {
+    margin: auto;
+    display: block;
+    margin-top: 30px;
+}
+.gacha-info {
+    display: flex;
+    justify-content: space-between;
+}
+.gacha_info_lang {
+    width: 48%;
+}
+.button-group {
+    display: flex;
+}
+.image_limit {
+    text-align: center;
+}
+td {
+    text-align: center;
+}

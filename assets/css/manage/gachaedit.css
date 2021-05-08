@@ -1,0 +1,105 @@
+img {
+    width: 100%;
+}
+#prize-output {
+    cursor: pointer;
+}
+.image-region {
+    border: 3px #1a202e solid;
+    width: 100%;
+    height: max-content;
+    min-height: 300px;
+}
+.image-region_sp {
+    border: 3px #1a202e solid;
+    width: 300px;
+    height: max-content;
+    min-height: 300px;
+    margin: auto;
+}
+#output {
+    width: 100%;
+    cursor: pointer;
+}
+.gacha-image input[type=file], .prize_image_file {
+    display: none;
+}
+.btn-custom {
+    margin: auto;
+    width: auto;
+    background-color: #03c9b0;
+    border-color: white;
+    color: #EFFEFF;
+}
+.list-contain .btn-custom {
+    height: 35px;
+}
+/* .d-flex .btn-custom {
+    margin-top: 20px;
+} */
+.gacha-info {
+    margin: 25px 0;
+}
+.error-txt {
+    color: red;
+    text-align: left;
+}
+.title {
+    margin-top: 30px;
+    text-align: center;
+}
+.form-group {
+    margin: auto;
+}
+#prizeForm {
+    margin:  auto;
+}
+label {
+    width: 20%;
+    text-align: left;
+}
+#prizeForm > div {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.form-group input {
+    width: 80%;
+}
+.width100 {
+    width: 100%!important;
+}
+.prize-photo {
+    width: 80%;
+    min-height: 200px;
+    height: max-content;
+    margin: auto;
+    overflow: hidden;
+    border: 3px #1a202e solid;
+}
+.prize-photo img {
+    width: 100%;
+    cursor: pointer;
+}
+.item-photo {
+    width: 100%;
+    min-height: 200px;
+    height: max-content;
+    margin: auto;
+    overflow: hidden;
+    border: 3px #1a202e solid;
+}
+.item-photo img {
+    width: 100%;
+    cursor: pointer;
+}
+.gacha-image {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pc_image {
+    width: 45%;
+}
+.sp_image {
+    width: 45%;
+}

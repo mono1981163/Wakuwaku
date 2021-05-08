@@ -1,0 +1,30 @@
+.login-wrapper {
+    width: 500px;
+    margin: auto;
+    height: 350px;
+    box-shadow: 2px 2px 6px #1a202e;
+    margin-top: 200px;
+}
+.login-logo img {
+    width: 50%;
+    display: block;
+    margin: auto;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+.form-label {
+    margin-left: 35px;
+    width: 25%;
+    text-align: left;
+}
+.form-group input {
+    width: 60%;
+}
+.button {
+    height: 40px;
+}
+.error-txt {
+    color: red;
+    font-size: 12px;
+    margin-left: 33%;
+}

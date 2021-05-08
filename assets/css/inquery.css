@@ -1,0 +1,18 @@
+.item-title > div {
+    padding: 15px;
+}
+.item-input > div {
+    padding: 15px;
+}
+.item-input select {
+    padding: 3px;
+}
+.inline-span {
+    padding: 10px;
+}
+input[type=email] {
+    width: 60%;
+}
+textarea {
+    width: 100%;
+}
