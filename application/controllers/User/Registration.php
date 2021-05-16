@@ -108,12 +108,14 @@ class Registration extends MY_Controller {
                     $res = $this->email->send();
                     if (!$res){
                         $this->User_model->user_delete($this->input->post('email'));
+                        echo "error";
+                    } else {
+                        echo "success";
                     }
 
                 } else {
                     $this->index();
                 }
-                echo "success";
             }
     }
 

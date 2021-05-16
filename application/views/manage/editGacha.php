@@ -155,7 +155,9 @@
         </div>
         <div class="d-flex">
             <input type="button" style="margin-top: unset" onclick="gachaSetting();" class="btn btn-custom save_btn" value="臨時保管">
-            <input type="button" style="margin-top: unset" onclick="gachaSetting();" class="btn btn-custom save_btn" value="公開">
+            <?php if($gacha_ja['open_state'] == 0) {?>
+                <input type="button" style="margin-top: unset" onclick="allowGacha();" class="btn btn-custom save_btn" value="公開">
+            <?php }?>
             <input type="button" style="margin-top: unset" onclick="deleteGacha()" class="btn btn-danger save_btn" value="ガチャ削除">
         </div>
         <div class="prize-infor">
@@ -392,6 +394,7 @@
                 return false;       
            }  
     }
+<<<<<<< HEAD
 
     $( function() {
     $( "#sortable" ).sortable(
@@ -419,4 +422,17 @@
     //         }
     //     })
     // });
+=======
+    function allowGacha() {
+        var url='<?php echo base_url()?>Gacha/Gacha_manage/allowGacha';
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {gacha_id: gacha_id},
+            success: function(response) {
+                window.location.reload();
+            }
+        })
+    }
+>>>>>>> 889bd3ade2e2d01c0e7172213fbcf5d1df337ab7
 </script>
