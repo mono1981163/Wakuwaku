@@ -176,6 +176,19 @@ class Prize extends MY_Controller {
         }
         echo "success";
     }
+    public function change_order() {
+        $gacha_id  = $_POST['gacha_id'];
+        $before = $_POST['before'];
+        $after = $_POST['after'];
+        $result = $this->Prize_model->change_order($gacha_id,$before, $after);
+        if($result){
+            echo "success";
+        }
+        else{
+            echo "false";
+        }
+       
+    }
     public function update_single_item() {
         $prize_id = $this->input->post('prize_id');
         $item_index = $this->input->post('item_index');

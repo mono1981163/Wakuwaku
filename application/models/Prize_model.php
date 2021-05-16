@@ -46,6 +46,50 @@ class Prize_model extends CI_Model {
         $query = $this->db->query($sql);
         return $query;
     }
+
+    public function change_order($gacha_id=0, $befor=0, $after=0)
+    {
+        if($befor<$after)
+        {
+            $sql="SELECT id FROM prize WHERE gacha_id=".$gacha_id." AND sort_level=".$befor;
+            $query = $this->db->query($sql);
+            $result = $query->result_array();
+            $beforeindex = $result[0]['id'];
+            $sql = "UPDATE prize SET sort_level = sort_level - 1 WHERE gacha_id=".$gacha_id." AND sort_level>".$befor." AND sort_level<=".$after;
+            $query = $this->db->query($sql);
+            $sql = "UPDATE prize SET sort_level = ".$after." WHERE gacha_id=".$gacha_id." AND id=".$beforeindex;
+            $sql="SELECT id FROM prize_cn WHERE gacha_id=".$gacha_id." AND sort_level=".$befor;
+            $query = $this->db->query($sql);
+            $result = $query->result_array();
+            $beforeindex = $result[0]['id'];
+            $sql = "UPDATE prize_cn SET sort_level = sort_level - 1 WHERE gacha_id=".$gacha_id." AND sort_level>".$befor." AND sort_level<=".$after;
+            $query = $this->db->query($sql);
+            $sql = "UPDATE prize_cn SET sort_level = ".$after." WHERE gacha_id=".$gacha_id." AND id=".$beforeindex;
+            $query = $this->db->query($sql);
+            return true;
+        }
+        else{
+            $sql="SELECT id FROM prize WHERE gacha_id=".$gacha_id." AND sort_level=".$befor;
+            $query = $this->db->query($sql);
+            $result = $query->result_array();
+            $beforeindex = $result[0]['id'];
+            $sql = "UPDATE prize SET sort_level = sort_level + 1 WHERE gacha_id=".$gacha_id." AND sort_level>".$after." AND sort_level<=".$befor ;
+            $query = $this->db->query($sql);
+            $sql = "UPDATE prize SET sort_level = ".$after." WHERE gacha_id=".$gacha_id." AND id=".$beforeindex;
+            $query = $this->db->query($sql);
+            return true;
+
+            $sql="SELECT id FROM prize_cn WHERE gacha_id=".$gacha_id." AND sort_level=".$befor;
+            $query = $this->db->query($sql);
+            $result = $query->result_array();
+            $beforeindex = $result[0]['id'];
+            $sql = "UPDATE prize_cn SET sort_level = sort_level + 1 WHERE gacha_id=".$gacha_id." AND sort_level>".$after." AND sort_level<=".$befor ;
+            $query = $this->db->query($sql);
+            $sql = "UPDATE prize_cn SET sort_level = ".$after." WHERE gacha_id=".$gacha_id." AND id=".$beforeindex;
+        }
+        
+    }
+
     public function get_all_item($prize_id) {
         $sql = "SELECT * FROM prize WHERE id='".$prize_id."'";
         $query = $this->db->query($sql);
