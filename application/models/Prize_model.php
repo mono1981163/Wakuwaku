@@ -3,21 +3,20 @@
 class Prize_model extends CI_Model {
 
 
-    public function insert_single_prize($prizeData) {
-        
-        $sql="SELECT COUNT(id) AS Index FROM prize WHERE gacha_id=" . $prizeData_cn['prize_name'];
+    public function insert_single_prize($prizeData) {        
+        $sql="SELECT COUNT(id) AS insert_index FROM prize WHERE gacha_id=" . $prizeData['gacha_id'];
         $query = $this->db->query($sql);
         $result = $query->result_array();
-        $prizeData['sort_level'] = $result[0]['Index'];
+        $prizeData['sort_level'] = $result[0]['insert_index'];
         $this->db->insert('prize', $prizeData);
         $id = $this->db->insert_id();
         return $id;
     }
     public function insert_single_prize_cn($prizeData_cn) {
-        $sql="SELECT COUNT(id) AS Index FROM prize_cn WHERE gacha_id=" . $prizeData_cn['prize_name_cn'];
+        $sql="SELECT COUNT(id) AS insert_index FROM prize_cn WHERE gacha_id=" . $prizeData_cn['gacha_id'];
         $query = $this->db->query($sql);
         $result = $query->result_array();
-        $prizeData_cn['sort_level'] = $result[0]['Index'];
+        $prizeData_cn['sort_level'] = $result[0]['insert_index'];
         $this->db->insert('prize_cn', $prizeData_cn);
         $id = $this->db->insert_id();
         return $id;
@@ -31,12 +30,12 @@ class Prize_model extends CI_Model {
         return $this->db->update('prize_cn', $prizeData_cn);
     }
     public function get_single_prize($prize_id) {
-        $sql = "SELECT ja.*, cn.prize_name AS prize_name_cn, cn.item_list AS item_list_cn, cn.goods AS goods_cn FROM prize AS ja LEFT JOIN prize_cn AS cn ON ja.id = cn.id WHERE ja.id=".$prize_id;
+        $sql = "SELECT ja.*, cn.prize_name AS prize_name_cn, cn.item_list AS item_list_cn, cn.goods AS goods_cn FROM prize AS ja LEFT JOIN prize_cn AS cn ON ja.id = cn.id WHERE ja.id=".$prize_id." ORDER BY ja.sort_level";
         $query = $this->db->query($sql);
         return $query->result_array()[0];
     }
     public function get_prizes_of_gacha($gacha_id) {
-        $sql = "SELECT ja.*, cn.prize_name AS prize_name_cn, cn.item_list AS item_list_cn, cn.goods AS goods_cn FROM prize AS ja LEFT JOIN prize_cn AS cn ON ja.id = cn.id WHERE ja.gacha_id=".$gacha_id;
+        $sql = "SELECT ja.*, cn.prize_name AS prize_name_cn, cn.item_list AS item_list_cn, cn.goods AS goods_cn FROM prize AS ja LEFT JOIN prize_cn AS cn ON ja.id = cn.id WHERE ja.gacha_id=".$gacha_id." ORDER BY ja.sort_level";
         $query = $this->db->query($sql);
         return $query->result_array();
     }

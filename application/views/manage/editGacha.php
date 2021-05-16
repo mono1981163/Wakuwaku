@@ -394,7 +394,6 @@
                 return false;       
            }  
     }
-<<<<<<< HEAD
 
     $( function() {
     $( "#sortable" ).sortable(
@@ -422,7 +421,6 @@
     //         }
     //     })
     // });
-=======
     function allowGacha() {
         var url='<?php echo base_url()?>Gacha/Gacha_manage/allowGacha';
         $.ajax({
@@ -434,5 +432,4 @@
             }
         })
     }
->>>>>>> 889bd3ade2e2d01c0e7172213fbcf5d1df337ab7
 </script>
