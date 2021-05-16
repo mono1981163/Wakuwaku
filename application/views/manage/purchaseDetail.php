@@ -1,4 +1,12 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/manage/delivery.css');?>"/>
+<style>
+    .item-title {
+        height: 54px;
+    }
+    .item-input {
+        height: 54px;
+    }
+</style>
 <div class="content">
     <div class="main-content">
         <div class="detail_pid">
@@ -35,7 +43,7 @@
                 </div>
                 <div class="form-box">
                     <div class="item-title">
-                        <div>国:</div>
+                        <div>国</div>
                     </div>
                     <div class="item-input">
                         <p><?php echo $country;?></p>
@@ -43,7 +51,17 @@
                 </div>
                 <div class="form-box">
                     <div class="item-title">
-                        <div>メールアドレス:</div>
+                        <div>住所</div>
+                    </div>
+                    <div class="item-input">
+                        <p>〒<?php echo $zip_code?><br>
+                        <?php echo $prefecture?>&nbsp;<?php echo $city?><br>
+                        <?php echo $roomno?></p>
+                    </div>
+                </div>
+                <div class="form-box">
+                    <div class="item-title">
+                        <div>メールアドレス</div>
                     </div>
                     <div class="item-input">
                         <p><?php echo $email?></p>
@@ -51,7 +69,7 @@
                 </div>
                 <div class="form-box">
                     <div class="item-title">
-                        <div>電話番号:</div>
+                        <div>電話番号</div>
                     </div>
                     <div class="item-input">
                         <p><?php echo $phone;?></p>
@@ -59,24 +77,26 @@
                 </div>
                 <div class="form-box">
                     <div class="item-title">
-                        <div>追跡番号:</div>
+                        <div>郵便番号</div>
                     </div>
-                    <div class="item-input d-flex">
-                        <?php if($track_number != "") {?>
-                            <p><?php echo $track_number?></p>
-                        <?php } else {?>
-                            <input type="text" id="track_number" name="track_number" value="">
-                            <button class="btn btn-custom" onclick="saveTrack();">保管</button>
-                        <?php }?>
+                    <div class="item-input">
+                        <p><?php echo 20210508122311?></p>
+                    </div>
+                </div>
+                <div class="form-box">
+                    <div class="item-title">
+                        <div>追跡番号</div>
+                    </div>
+                    <div class="item-input">
+                        <p><?php echo $track_number?></p>
                     </div>
                 </div>
                 <div class="form-box last-box">
                     <div class="item-title">
-                        <div>管理メモ:</div>
+                        <div>管理メモ</div>
                     </div>
-                    <div class="item-input d-flex">
-                        <textarea id="manage_memo" name="manage_memo" rows="3"><?php echo $manage_memo?></textarea>
-                        <button class="btn btn-custom" onclick="saveMemo();">保管</button>
+                    <div class="item-input">
+                        <p><?php echo $manage_memo?></p>
                     </div>
                 </div>
             </div>
@@ -91,13 +111,17 @@
                             </div>
                             <div class="r_con">
                                 <h5><?php echo $row['prize_name']?></h5>
-                                <p>アイテム名: <?php echo $row['item_name'];?></p>
-                                <p>獲得個数: <?php echo $row['gained_count'];?></p>
+                                <p>アイテム名 <?php echo $row['item_name'];?></p>
+                                <p>獲得個数 <?php echo $row['gained_count'];?></p>
                             </div>
                         </div>
                     </li>
                 <?php }?>
             </ul>
+            <div class='button-group'>
+                <button class='btn btn-custom' onclick='saveTrack()'>追跡番号登録</button>
+                <button class='btn btn-custom prizeDelBtn' onclick='cancelDeliver()'>キャンセル</button>
+            </div>
         </div>
     </div>
 </div>
@@ -105,12 +129,11 @@
     var base_url = "<?php echo base_url();?>";
     function saveTrack() {
         var purchase_id = "<?php echo $purchase_id?>";
-        var track_number = document.getElementById("track_number").value;
-        $.post(base_url + "Purchase_detail/track_number", {purchase_id: purchase_id, track_number: track_number}, function() {location.reload();});
+        $.post(base_url + "Purchase_detail/save_track_number", {purchase_id: purchase_id}, function() {location.reload();});
     };
-    function saveMemo() {
+    function cancelDeliver() {
         var purchase_id = "<?php echo $purchase_id?>";
         var manage_memo = document.getElementById("manage_memo").value;
-        $.post(base_url + "Purchase_detail/manage_memo", {purchase_id: purchase_id, manage_memo: manage_memo}, function() {location.reload();});
+        $.post(base_url + "Purchase_detail/cancel_deliver", {purchase_id: purchase_id}, function() {location.reload();});
     };
 </script>

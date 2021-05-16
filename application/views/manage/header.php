@@ -47,6 +47,9 @@
             <a href="<?php echo base_url('Top_manage');?>"><button type="button" class="btn_menu">トップ編集</button></a>
             <a href="<?php echo base_url('Gacha/gacha_manage');?>"><button class="btn_menu">ガチャ管理</button></a>
             <a href="<?php echo base_url('Delivery');?>"><button type="button" class="btn_menu">配送管理</button></a>
+            <?php if(isset($emailSetting)) {?>
+                <a href="<?php echo base_url('MailSetting');?>"><button type="button" class="btn_menu">メール設定</button></a>
+            <?php }?>
         </div>
         
     </header>

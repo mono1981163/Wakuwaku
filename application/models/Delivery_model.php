@@ -43,7 +43,7 @@ class Delivery_model extends CI_Model {
         return $query->num_rows();
     }
     public function detail_view($purchase_id) {
-        $sql= "SELECT * FROM purchase p LEFT JOIN gachas g ON p.gacha_id = g.gacha_id LEFT JOIN users u ON p.customer_id = u.user_id LEFT JOIN gained_item item ON item.purchase_id=p.purchase_id WHERE p.purchase_id = ".$purchase_id;
+        $sql= "SELECT * FROM purchase p LEFT JOIN gachas g ON p.gacha_id = g.gacha_id LEFT JOIN users u ON p.customer_id = u.user_id LEFT JOIN gained_item item ON (item.user_id=p.customer_id AND item.gacha_id=p.gacha_id) WHERE p.purchase_id = ".$purchase_id;
         $query = $this->db->query($sql);
         return $query->result_array();
     }
