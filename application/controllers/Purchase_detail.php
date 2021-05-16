@@ -12,6 +12,15 @@ class Purchase_detail extends MY_Controller {
         $this->load->library('encryption');
         $this->load->library('email');
     }
+    public function generateRandomString($length = 32) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
     public function detailView($purchase_id) {
         if (!$this->session->has_userdata('admin_id')) {
             redirect("User/Admin");
@@ -45,6 +54,7 @@ class Purchase_detail extends MY_Controller {
         $purchase_id = $this->input->post('purchase_id');
         $user_id = $this->Purchase_model->get_user_id_from_purchase($purchase_id);
         $country = $this->encryption->decrypt($this->User_model->get_country_of_user($user_id));
+        // $track_number = 'wakuwaku'.
         $subject = lang('Gacha Deliver');
         $config = array(
             'protocol' => 'smtp',
@@ -64,9 +74,9 @@ class Purchase_detail extends MY_Controller {
         $data['verification_key'] = $verification_key;
 
         if($country == "日本") {
-            $text = $this->Mail_model->get_message_japan();
+            $text = $this->Mail_model->get_sendmessage_japan();
         } else {
-            $text = $this->Mail_model->get_message_china();
+            $text = $this->Mail_model->get_sendmessage_china();
         }
         $message="";
         $this->email->set_newline("\r\n");
@@ -76,7 +86,10 @@ class Purchase_detail extends MY_Controller {
         $this->email->message($message);
         $res = $this->email->send();
         if($res) {
-            
+            $update_data = array(
+                'delivery_state'=>'完了',
+
+            );
         } else {
 
         }
@@ -86,6 +99,7 @@ class Purchase_detail extends MY_Controller {
     public function cancel_deliver() {
 
         $purchase_id = $this->input->post('purchase_id');
+        
 
         $this->Delivery_model->save_manage_memo($purchase_id, $memo);
     }
