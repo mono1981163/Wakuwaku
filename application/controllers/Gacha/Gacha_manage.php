@@ -37,6 +37,7 @@ class Gacha_manage extends MY_Controller {
         $query = $this->db->query($sql);
         $data = [];
         foreach($query->result() as $r) {
+            $remarks = ($r->open_state) ? "公開" : "臨時";
             $data[] = array(
                  $r->gacha_id,
                  '<img src="'.base_url()."/upload/gacha/".$r->image.'">',
@@ -46,7 +47,7 @@ class Gacha_manage extends MY_Controller {
                  $r->end_date,
                  $r->shipping_fee,
                  $r->estimated_delivery_time,
-                 $r->remarks,
+                 $remarks,
             );
         }
  

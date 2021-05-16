@@ -39,7 +39,8 @@ class Purchase extends MY_Controller {
         $data[0]['purchase_times'] = $purchase_times;
         $data[0]['amount'] = $amount;
         $data['latest'] = $this->Gacha_model->get_latest_gacha();
-
+        $this->session->set_userdata('gacha_id', $gacha_id);
+        $this->session->set_userdata('purchase_times', $purchase_times);
 		$currentURL = current_url();
 		$this->session->set_userdata('cur_url',  $currentURL);
 

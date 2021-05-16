@@ -153,7 +153,9 @@
         </div>
         <div class="d-flex">
             <input type="button" style="margin-top: unset" onclick="gachaSetting();" class="btn btn-custom save_btn" value="臨時保管">
-            <input type="button" style="margin-top: unset" onclick="gachaSetting();" class="btn btn-custom save_btn" value="公開">
+            <?php if($gacha_ja['open_state'] == 0) {?>
+                <input type="button" style="margin-top: unset" onclick="allowGacha();" class="btn btn-custom save_btn" value="公開">
+            <?php }?>
             <input type="button" style="margin-top: unset" onclick="deleteGacha()" class="btn btn-danger save_btn" value="ガチャ削除">
         </div>
         <div class="prize-infor">
@@ -390,16 +392,15 @@
                 return false;       
            }  
     }
-        // $("#gacha-list").on('click','.gacha_allow',function(){
-    //     var id = table.row($(this).closest('tr')).data()[0];
-    //     var url='<?php echo base_url()?>Gacha/Gacha_manage/allowGacha';
-    //     $.ajax({
-    //         url: url,
-    //         type: 'post',
-    //         data: {gacha_id: id},
-    //         success: function(response) {
-    //             table.ajax.reload();
-    //         }
-    //     })
-    // });
+    function allowGacha() {
+        var url='<?php echo base_url()?>Gacha/Gacha_manage/allowGacha';
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {gacha_id: gacha_id},
+            success: function(response) {
+                window.location.reload();
+            }
+        })
+    }
 </script>
