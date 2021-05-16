@@ -402,8 +402,20 @@
             ui.item.startPos = ui.item.index();
         },
     	stop: function(event, ui) {
-        console.log("Start position: " + ui.item.startPos);
-        console.log("New position: " + ui.item.index());
+            var url='<?php echo base_url()?>Gacha/Prize/change_order';
+            console.log(ui.item.startPos,ui.item.index());
+            $.ajax({
+                url: url,
+                type: 'post',
+                data: {
+                        gacha_id: gacha_id,
+                        before: ui.item.startPos,
+                        after:ui.item.index()
+                },
+                success: function(response) {
+                    window.location.reload();
+                }
+            })
     	}
     });
    
@@ -422,6 +434,7 @@
     //     })
     // });
     function allowGacha() {
+       
         var url='<?php echo base_url()?>Gacha/Gacha_manage/allowGacha';
         $.ajax({
             url: url,
