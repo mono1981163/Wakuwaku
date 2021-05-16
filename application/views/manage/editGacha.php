@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/manage/gachaedit.css')?>">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <div class="content">
     <div class="main-content">
         <!-- <div class="manage-link">
@@ -160,9 +162,9 @@
             <div class="title mb-3">
                 <h3 >賞品</h3>
             </div>
-            <ul class="list-contain">
+            <ul class="list-contain" id="sortable">
                 <?php foreach ($prize as $row) { ?>
-                    <li>
+                    <li style="margin:10px 0 10px 0 !important" id="<?php echo $row['id']?>">
                         <div class="d-flex">
                             <div>
                                 <img src="<?php echo base_url()."upload/prize/".$row['prize_img'] ?>" alt="">
@@ -390,6 +392,21 @@
                 return false;       
            }  
     }
+
+    $( function() {
+    $( "#sortable" ).sortable(
+        {
+        start: function(event, ui) {
+            ui.item.startPos = ui.item.index();
+        },
+    	stop: function(event, ui) {
+        console.log("Start position: " + ui.item.startPos);
+        console.log("New position: " + ui.item.index());
+    	}
+    });
+   
+    $( "#sortable" ).disableSelection();
+    });
         // $("#gacha-list").on('click','.gacha_allow',function(){
     //     var id = table.row($(this).closest('tr')).data()[0];
     //     var url='<?php echo base_url()?>Gacha/Gacha_manage/allowGacha';

@@ -4,11 +4,20 @@ class Prize_model extends CI_Model {
 
 
     public function insert_single_prize($prizeData) {
+        
+        $sql="SELECT COUNT(id) AS Index FROM prize WHERE gacha_id=" . $prizeData_cn['prize_name'];
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $prizeData['sort_level'] = $result[0]['Index'];
         $this->db->insert('prize', $prizeData);
         $id = $this->db->insert_id();
         return $id;
     }
     public function insert_single_prize_cn($prizeData_cn) {
+        $sql="SELECT COUNT(id) AS Index FROM prize_cn WHERE gacha_id=" . $prizeData_cn['prize_name_cn'];
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $prizeData_cn['sort_level'] = $result[0]['Index'];
         $this->db->insert('prize_cn', $prizeData_cn);
         $id = $this->db->insert_id();
         return $id;
