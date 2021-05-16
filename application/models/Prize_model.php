@@ -58,6 +58,8 @@ class Prize_model extends CI_Model {
             $sql = "UPDATE prize SET sort_level = sort_level - 1 WHERE gacha_id=".$gacha_id." AND sort_level>".$befor." AND sort_level<=".$after;
             $query = $this->db->query($sql);
             $sql = "UPDATE prize SET sort_level = ".$after." WHERE gacha_id=".$gacha_id." AND id=".$beforeindex;
+            $query = $this->db->query($sql);
+            
             $sql="SELECT id FROM prize_cn WHERE gacha_id=".$gacha_id." AND sort_level=".$befor;
             $query = $this->db->query($sql);
             $result = $query->result_array();
@@ -73,19 +75,20 @@ class Prize_model extends CI_Model {
             $query = $this->db->query($sql);
             $result = $query->result_array();
             $beforeindex = $result[0]['id'];
-            $sql = "UPDATE prize SET sort_level = sort_level + 1 WHERE gacha_id=".$gacha_id." AND sort_level>".$after." AND sort_level<=".$befor ;
+            $sql = "UPDATE prize SET sort_level = sort_level + 1 WHERE gacha_id=".$gacha_id." AND sort_level>=".$after." AND sort_level<".$befor ;
             $query = $this->db->query($sql);
             $sql = "UPDATE prize SET sort_level = ".$after." WHERE gacha_id=".$gacha_id." AND id=".$beforeindex;
             $query = $this->db->query($sql);
-            return true;
 
             $sql="SELECT id FROM prize_cn WHERE gacha_id=".$gacha_id." AND sort_level=".$befor;
             $query = $this->db->query($sql);
             $result = $query->result_array();
-            $beforeindex = $result[0]['id'];
-            $sql = "UPDATE prize_cn SET sort_level = sort_level + 1 WHERE gacha_id=".$gacha_id." AND sort_level>".$after." AND sort_level<=".$befor ;
+            $beforeindex1 = $result[0]['id'];
+            $sql = "UPDATE prize_cn SET sort_level = sort_level + 1 WHERE gacha_id=".$gacha_id." AND sort_level>=".$after." AND sort_level<".$befor ;
             $query = $this->db->query($sql);
             $sql = "UPDATE prize_cn SET sort_level = ".$after." WHERE gacha_id=".$gacha_id." AND id=".$beforeindex;
+            $query = $this->db->query($sql);
+            return true;
         }
         
     }
