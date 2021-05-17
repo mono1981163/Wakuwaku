@@ -118,10 +118,12 @@
                     </li>
                 <?php }?>
             </ul>
-            <div class='button-group'>
-                <button class='btn btn-custom' onclick='saveTrack()'>追跡番号登録</button>
-                <button class='btn btn-custom prizeDelBtn' onclick='cancelDeliver()'>キャンセル</button>
-            </div>
+            <?php if($delivery_state!="完了") {?>
+                <div class='button-group'>
+                    <button class='btn btn-custom' onclick='saveTrack()'>追跡番号登録</button>
+                    <button class='btn btn-custom btn-danger prizeDelBtn' style = 'background-color: #dc3545; border-color: #dc3545;' onclick='cancelDeliver()'>キャンセル</button>
+                </div>
+            <?php }?>
         </div>
     </div>
 </div>
@@ -129,11 +131,12 @@
     var base_url = "<?php echo base_url();?>";
     function saveTrack() {
         var purchase_id = "<?php echo $purchase_id?>";
-        $.post(base_url + "Purchase_detail/save_track_number", {purchase_id: purchase_id}, function() {location.reload();});
+        $.post(base_url + "Purchase_detail/deliver_prize", {purchase_id: purchase_id}, function() {location.reload();});
     };
     function cancelDeliver() {
-        var purchase_id = "<?php echo $purchase_id?>";
-        var manage_memo = document.getElementById("manage_memo").value;
-        $.post(base_url + "Purchase_detail/cancel_deliver", {purchase_id: purchase_id}, function() {location.reload();});
+        if(confirm("本当に削除しますか？!")) {
+            var purchase_id = "<?php echo $purchase_id?>";
+            $.post(base_url + "Purchase_detail/cancel_deliver", {purchase_id: purchase_id}, function() {location.reload();});
+        };
     };
 </script>

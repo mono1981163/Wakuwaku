@@ -50,11 +50,11 @@ class Purchase_detail extends MY_Controller {
         $this->load->view('manage/purchaseDetail', $data);
         $this->load->view('manage/footer.php');
     }
-    public function save_track_number() {
+    public function deliver_prize() {
         $purchase_id = $this->input->post('purchase_id');
         $user_id = $this->Purchase_model->get_user_id_from_purchase($purchase_id);
         $country = $this->encryption->decrypt($this->User_model->get_country_of_user($user_id));
-        // $track_number = 'wakuwaku'.
+        $track_number = 'wakuwaku'.date("ymdhis");
         $subject = lang('Gacha Deliver');
         $config = array(
             'protocol' => 'smtp',
@@ -71,7 +71,6 @@ class Purchase_detail extends MY_Controller {
         );
         $this->load->library('email', $config);
         $this->email->set_mailtype("html");
-        $data['verification_key'] = $verification_key;
 
         if($country == "日本") {
             $text = $this->Mail_model->get_sendmessage_japan();
@@ -88,19 +87,56 @@ class Purchase_detail extends MY_Controller {
         if($res) {
             $update_data = array(
                 'delivery_state'=>'完了',
-
+                'track_number'=>$track_number,
+                'manage_memo'=> date('ymd').':発送完了',
             );
+            $this->Delivery_model->update_purchase($purchase_id ,$update_data);
         } else {
 
         }
-
-        $this->Delivery_model->save_track_number($purchase_id ,$track);
     }
     public function cancel_deliver() {
-
         $purchase_id = $this->input->post('purchase_id');
-        
+        $user_id = $this->Purchase_model->get_user_id_from_purchase($purchase_id);
+        $country = $this->encryption->decrypt($this->User_model->get_country_of_user($user_id));
+        $subject = lang('Cancel Deliver');
+        $config = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'smtp.lolipop.jp',
+            'smtp_port' => 465,
+            'smtp_user' => 'info@wakuwakupon.chu.jp', 
+            'smtp_pass' => '3505-_-b-R2J-_Dn', 
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'wordwrap' => TRUE,
+            'MIME-Version' => '1.0',
+            'header' => 'MIME-Version: 1.0',
+            'header' => 'Content-type:text/html;charset=UTF-8'
+        );
+        $this->load->library('email', $config);
+        $this->email->set_mailtype("html");
 
-        $this->Delivery_model->save_manage_memo($purchase_id, $memo);
+        if($country == "日本") {
+            $text = $this->Mail_model->get_cancelmessage_japan();
+        } else {
+            $text = $this->Mail_model->get_cancelmessage_china();
+        }
+        $message="";
+        $this->email->set_newline("\r\n");
+        $this->email->from('info@wakuwakupon.chu.jp');
+        $this->email->to($this->input->post('email'));
+        $this->email->subject($subject);
+        $this->email->message($message);
+        $res = $this->email->send();
+        // if($res) {
+            $update_data = array(
+                'delivery_state'=>'完了',
+                'track_number'=>$track_number,
+                'manage_memo'=> date('ymd').':キャンセル決定',
+            );
+            $this->Delivery_model->update_purchase($purchase_id ,$update_data);
+        // } else {
+
+        // }
     }
 }
