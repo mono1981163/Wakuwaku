@@ -12,13 +12,13 @@
                 <div class="box">
                     <h2 class="text-center" style="margin-bottom: 30px">メール定型文設定</h2>
                     <div class="error-message"></div>
-                    <form id="emailForm" action="<?php echo base_url().'/MailSetting/mailcheck'?>" method="post" enctype="multipart/form-data">
+                    <form id="emailForm" action="<?php echo base_url().'MailSetting/mailcheck'?>" method="post" enctype="multipart/form-data">
                         <div class="form-box">
                             <div class="item-title">
                                 <div>発送メール設定(日本)</div>
                             </div>
                             <div class="item-input">
-                                <textarea id="send_ja" name="send_ja" placeholder="" class="form-control" style="resize: none;" rows="3"></textarea>
+                                <textarea id="send_ja" name="send_ja" placeholder="" class="form-control" style="resize: none;" rows="3"><?php echo $send_email_ja?></textarea>
                             </div>
                         </div>
                         <div class="form-box">
@@ -26,7 +26,7 @@
                                 <div>発送メール設定(中国)</div>
                             </div>
                             <div class="item-input">
-                                <textarea id="send_cn" name="send_cn" placeholder="" class="form-control" style="resize: none;" rows="3"></textarea>
+                                <textarea id="send_cn" name="send_cn" placeholder="" class="form-control" style="resize: none;" rows="3"><?php echo $send_email_cn?></textarea>
                             </div>
                         </div>
                         <div class="form-box">
@@ -34,7 +34,7 @@
                                 <div>キャンセルメール設定(日本)</div>
                             </div>
                             <div class="item-input">
-                                <textarea id="cancel_ja" name="cancel_ja" placeholder="" class="form-control" style="resize: none;" rows="3"></textarea>
+                                <textarea id="cancel_ja" name="cancel_ja" placeholder="" class="form-control" style="resize: none;" rows="3"><?php echo $cancel_email_ja?></textarea>
                             </div>
                         </div>
                         <div class="form-box">
@@ -42,7 +42,7 @@
                                 <div>キャンセルメール設定(中国)</div>
                             </div>
                             <div class="item-input">
-                                <textarea id="cancel_cn" name="cancel_cn" placeholder="" class="form-control" style="resize: none;" rows="3"></textarea>
+                                <textarea id="cancel_cn" name="cancel_cn" placeholder="" class="form-control" style="resize: none;" rows="3"><?php echo $cancel_email_cn?></textarea>
                             </div>
                         </div>
                         <div class="form-box"></div>

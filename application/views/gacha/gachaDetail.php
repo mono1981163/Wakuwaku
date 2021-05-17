@@ -75,7 +75,7 @@
                     <h3 class="sp"><?php echo lang('select_times')?></h3>
                     <div class="select_contain">
                         <div class="select-with-radio">
-                            <input type="radio" name="radio" value="0" checked>
+                            <label for=""><input type="radio" name="radio" class="custom" value="0" checked></label>
                             <div class="switch">
                                 <input name="switch" id="one" type="radio" value="5" checked/>
                                 <label for="one" onclick="set_radio_amount1(5)" class="switch__label">5</label>
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="select-with-select">
-                            <input type="radio" name="radio" value="1">
+                            <label for=""><input type="radio" name="radio"  class="custom" value="1"></label>
                             <select name="quantity" id="quantity_select" class="select_box" onchange="setAmount()">
                                 <option value="1" selected>1</option>
                                 <option value="2">2</option>

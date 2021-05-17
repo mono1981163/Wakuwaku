@@ -25,7 +25,7 @@ class Purchase_detail extends MY_Controller {
         if (!$this->session->has_userdata('admin_id')) {
             redirect("User/Admin");
         }
-
+        $this->session->set_userdata('purchase_id',$purchase_id);
         $info = $this->Delivery_model->detail_view($purchase_id);
         $data['items'] = $info;
         $data["name"] = $info[0]["name"];
