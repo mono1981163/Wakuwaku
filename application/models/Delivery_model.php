@@ -54,12 +54,9 @@ class Delivery_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-    public function save_track_number($purchase_id, $track) {
-        $sql= "UPDATE purchase SET track_number = '".$track."' WHERE purchase_id = ".$purchase_id;
-        $this->db->query($sql);
+    public function update_purchase($purchase_id, $data) {
+        $this->db->where("purchase_id", $purchase_id);  
+        $this->db->update("purchase", $data);
     }
-    public function save_manage_memo($purchase_id, $memo) {
-        $sql= "UPDATE purchase SET manage_memo = '".$memo."' WHERE purchase_id = ".$purchase_id;
-        $this->db->query($sql);
-    }
+
 }

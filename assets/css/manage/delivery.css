@@ -179,3 +179,32 @@ button.focused .a-border::after {
   border-color: white;
   color: #EFFEFF;
 }
+
+.input_contain {
+  margin-top: 5vw;
+  width: 800px;
+  margin: auto;
+}
+.input_contain .link_color_green {
+  margin-left: 5px;
+}
+.input_area {
+  border: #DCEBE8 1px solid;
+  border-radius: 10px;
+}
+.input_area .box {
+  width: 90%;
+  margin: auto;
+  margin-top: 4vw;
+  margin-bottom: 4vw;
+}
+.input_area .box textarea {
+  margin: AUTO;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  width: 98%;
+  font-size: 12px;
+}
+.item-title {
+  width: 30%;
+}
