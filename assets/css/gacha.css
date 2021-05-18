@@ -333,6 +333,10 @@ video {
     .step-under .box h3 {
         font-size: 12px!important;
     }
+    .ticket_addition {
+        border-radius: unset;
+        width: 100%;
+    }
 }
 @media (max-width:400px) {
     .payconfirm .pay_info, .payconfirm .purchase_box {

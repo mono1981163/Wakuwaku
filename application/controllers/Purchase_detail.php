@@ -77,7 +77,7 @@ class Purchase_detail extends MY_Controller {
         } else {
             $text = $this->Mail_model->get_sendmessage_china();
         }
-        $message="";
+        $message=$text;
         $this->email->set_newline("\r\n");
         $this->email->from('info@wakuwakupon.chu.jp');
         $this->email->to($this->input->post('email'));
@@ -121,22 +121,22 @@ class Purchase_detail extends MY_Controller {
         } else {
             $text = $this->Mail_model->get_cancelmessage_china();
         }
-        $message="";
+        $message=$text;
         $this->email->set_newline("\r\n");
         $this->email->from('info@wakuwakupon.chu.jp');
         $this->email->to($this->input->post('email'));
         $this->email->subject($subject);
         $this->email->message($message);
         $res = $this->email->send();
-        // if($res) {
+        if($res) {
             $update_data = array(
                 'delivery_state'=>'完了',
                 'track_number'=>$track_number,
                 'manage_memo'=> date('ymd').':キャンセル決定',
             );
             $this->Delivery_model->update_purchase($purchase_id ,$update_data);
-        // } else {
+        } else {
 
-        // }
+        }
     }
 }

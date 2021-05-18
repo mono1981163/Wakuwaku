@@ -55,7 +55,7 @@
         </div>
     <?php }?>
     <div class="period_banner">
-        <h4 class="font--white"><?php echo lang('period_of_sale')?>:&nbsp;&nbsp;<?php echo $result[0]['start_date']?>&nbsp;12:00&nbsp;~&nbsp;<?php echo $result[0]['end_date']?>&nbsp;23:59</h4>
+        <h4 class="font--white"><?php echo lang('period_of_sale')?>:&nbsp;&nbsp;<?php echo substr($result[0]['start_date'],0,-3)?>&nbsp;~&nbsp;<?php echo substr($result[0]['end_date'],0,-3)?></h4>
     </div>
     <div class="ticket_setting">
         <div class="ticket_bar">
@@ -150,7 +150,7 @@
                     </div>
                     <div class="item-input">
                         <div>
-                            <h4><?php echo $result[0]['start_date']?>&nbsp;12:00 ~ <?php echo $result[0]['end_date']?>&nbsp;23:59</h4>
+                            <h4><?php echo substr($result[0]['start_date'],0,-3)?>~ <?php echo substr($result[0]['end_date'],0,-3)?></h4>
                         </div>
                     </div>
                 </div>
