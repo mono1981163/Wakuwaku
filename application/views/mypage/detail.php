@@ -33,7 +33,11 @@
                                 <div><?php echo lang('name');?></div>
                             </div>
                             <div class="item-input info_change">
-                                <div><?php echo $surname1?>&nbsp;<?php echo $name1?>(<?php echo $surname2?><?php echo $surname2?>)</div>
+                                <?php if($country=="日本") {?>
+                                    <div><?php echo $surname1?>&nbsp;<?php echo $name1?>(<?php echo $surname2?><?php echo $surname2?>)</div>
+                                <?php } else {?>
+                                    <div><?php echo $surname1?>&nbsp;<?php echo $name1?></div>
+                                <?php }?>
                                 <div ><h4 onclick="window.location.href='<?php echo base_url('Mypage/edit_profile');?>'" class="font--green link_color_green"><?php echo lang('change')?></h4></div>
                             </div>
                         </div>

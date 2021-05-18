@@ -48,6 +48,37 @@ h6 {
     margin-bottom: 0;
 }
 
+.radio_contain input[type="radio"] {
+    display: none;
+}
+.radio_contain input[type="radio"] + *::before {
+    content: "";
+    display: inline-block;
+    vertical-align: bottom;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.3rem;
+    border-radius: 50%;
+    border: solid 0.1px;
+    border-color: #03C9B0;
+}
+.radio_contain input[type="radio"]:checked + * {
+    color: #03C9B0;
+}
+.radio_contain input[type="radio"]:checked + *::before {
+    background: radial-gradient(#03C9B0 0%, #03C9B0 40%, transparent 50%, transparent);
+    border-color: #03C9B0;
+}
+.radio_contain input[type="radio"] + * {
+    display: inline-block;
+    padding: 0.5rem 0rem;
+    width: 110px;
+}
+
+
+
+
+
 
 
 .font--white {
@@ -465,12 +496,14 @@ a > img {
 }
 .need::after {
     content: "必 須";
-    margin-left: 15px;
     background-color: #FF6F6F;
     border-radius: 4px;
     padding: 4px 8px;
     line-height: 1;
     font-size: 12px;
+    text-align: center;
+    width: 50px;
+    display: block;
     color: #fff;
     box-sizing: border-box;
 }
@@ -517,7 +550,7 @@ label {
 }
 
 .error-txt {
-    margin: 15px;
+    margin: 15px!important;
     color: red;
     font-size: 12px;
 }
@@ -544,11 +577,6 @@ label {
         font-size: 28px;
     }
 }
-@media (max-width: 1100px) {
-    .need::after {
-        margin-left: 5px;
-    }
-}
 @media (max-width: 992px) {
     .sale_card h5 {
         display: block;
@@ -556,14 +584,19 @@ label {
     .sale_card {
         margin: 15px 10px;
     }
-    .need::after {
-        display: none;
-    }
     .big_text {
         font-size: 24px;
     }
     body {
         font-size: 14px;
+    }
+    .radio_contain input[type="radio"] + *::before {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+    .button, .button--second {
+        width: 220px;
+        height: 35px;
     }
 }
 @media (max-width: 769px) {
@@ -644,10 +677,9 @@ label {
         padding: 10px;
         margin: auto;
     }
-    .button--second {
-        width: auto;
+    .button, .button--second {
+        width: 220px;
         height: 30px;
-        padding: 0 20px;
         font-size: 12px;
         line-height: 12px;
         margin-top: 10px;
@@ -706,6 +738,9 @@ label {
     .gacha_image_sp {
         display: block!important;
     }
+    .error-txt {
+        margin: 10px 15px!important;
+    }
 }
 @media (max-width:500px) {
     .step_area h5 {
@@ -715,7 +750,10 @@ label {
         width: 85px;
     }   
     .input_contain {
-        width: 85%;
+        width: 95%;
+    }
+    .form-group {
+        margin-bottom: 10px;
     }
     .box h4 {
         font-size: 12px!important   ;
@@ -753,6 +791,9 @@ label {
         font-size: 12px;
         margin-top: 10px;
         margin-bottom: 5px;
+    }
+    .info-container {
+        width: 100%;
     }
 }
 @media (max-width: 350px) {
