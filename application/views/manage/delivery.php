@@ -51,7 +51,7 @@
             <button class="tablink Not_send" onclick="myFunction('Not_send', this, 'all')"><span class="a-border">未発送</span></button>
             <button class="tablink Done" onclick="myFunction('Done', this, 'all')"><span class="a-border">完了</span></button>
         </div>
-        <div class="gacha-select">
+        <div class="gacha-select" style="margin-top: 70px">
             <label for="">ガチャフィルター</label>
             <select name="select" id="gachaid" onchange="selectOption()">
                 <!-- <option value="all">すべてのガチャ
@@ -130,10 +130,10 @@
                     </tr>`;
                     if(gacha_id == `${message.gacha_id}`) {
                         messages02 += "";
-                    }
+                    } 
                     else {
                         messages02 += `<option value=${message.gacha_id}>
-                            ガチャid${message.gacha_id}
+                            ${message.name}
                         </option>`;
                     }
                     gacha_id = `${message.gacha_id}`;
