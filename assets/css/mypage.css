@@ -6,6 +6,9 @@
 .left_tab {
     width: 20%;
 }
+.data-input {
+    width: 85%;
+}
 .right_content {
     width: 75%;
 }
@@ -166,11 +169,11 @@ span.font--green {
         border-bottom: unset;
     }
     .data-input {
-        width: 80%;
+        width: 100%;
         background-color: white;
         border: 1px solid #DCEBE8;
         border-radius: 5px;
-        padding: 40px;
+        padding: 40px 15px;
     }
     .info-container > h3 {
         font-size: 14px!important;
@@ -193,6 +196,9 @@ span.font--green {
         height: 25px;
         width: 200px;
     }
+    .item-input input {
+        height: 35px;
+    }
 }
 @media (max-width: 500px) {
     .detail .button {
@@ -205,7 +211,7 @@ span.font--green {
         width: 28%;
     }
     .data-input {
-        width: 90%;
+        width: 100%;
         padding: 25px 10px;
     }
     .order .button {

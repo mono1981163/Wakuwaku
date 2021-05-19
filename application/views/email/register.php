@@ -7,8 +7,8 @@
 </head>
 <body>
     <p>ガチャポンのご利用ありがとうございます。</p>
-    <p>以下のURLをクリックして会貝沓録を完了してください。※まだ会貝脊録は完了しておりません。</p>
-    <a href='<?php base_url()."User/Registration/verify_email/".$verification_key?>'><p>Email Verify</p></a>
+    <p>以下のURLをクリックして会員登録を完了してください。※まだ会員登録は完了しておりません。</p>
+    <a href='<?php echo base_url()."User/Registration/verify_email/".$verification_key?>'><p>Email Verify</p></a>
     <p>▲本メールは送信専用のメールアドレスで送っています。 ▲決してこのメールに返信しないで下さい。</p>
     <p>株式会社ZENガチャポン運営事務局</p>
 </body>

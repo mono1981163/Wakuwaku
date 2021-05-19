@@ -44,8 +44,7 @@
                                             <input type="text" id="name1" name="name1" value="<?php echo $name1?>">
                                         </div>
                                     </div>
-                                    <?php if($country == "日本") {?>
-                                    <div class="item-box">
+                                    <div class="item-box japan_name">
                                         <div>
                                             <p>セイ</p>
                                             <input type="text" id="surname2" name="surname2" value="<?php echo $surname2?>">
@@ -55,7 +54,6 @@
                                             <input type="text" id="name2" name="name2" value="<?php echo $name2?>">
                                         </div>
                                     </div>
-                                    <?php }?>
                                 </div>
                             </div>
                             <div class="form-box">
@@ -63,8 +61,8 @@
                                     <div class="need"><?php echo lang('shipping_address')?></div>
                                 </div>
                                 <div class="item-input">
-                                    <div class="check-country">
-                                        <input type="radio" class="radio" id="cb1" name="japan" checked value="日本">
+                                    <div class="check-country radio_contain">
+                                        <input type="radio" class="radio" id="cb1" name="japan" value="日本">
                                         <label for="cb1">日本</label>
                                         <input type="radio" class="radio" id="cb2" name="china" value="中国">
                                         <label for="cb2">中国</label>
@@ -210,9 +208,24 @@
 <script>
     var base_url = "<?php echo base_url(); ?>";
     (function($) {
+        if("<?php echo $country?>" == "日本") {
+            var japanese=true;
+            $('.check-country input[name=japan]').prop('checked', true);
+        } else {
+            var japanese=false;
+            $('.check-country input[name=china]').prop('checked', true);
+        }
         $('.check-country .radio').click(function() {
             $('.check-country .radio').not(this).prop('checked', false);
         });
+        $('.check-country input[name=china]').click(function() {
+            $('.japan_name').css('display','none');
+            japanese = false;
+        })
+        $('.check-country input[name=japan]').click(function() {
+            $('.japan_name').css('display','flex');
+            japanese = true;
+        })
         var surname1, name1, surname2, name2, country, zip_code, addr3, addr4, addr6, email, phonenumber, password, ensurePwd ;
         $("#input-end").bind('click', function() {
             $(".error-txt").remove();
@@ -239,11 +252,22 @@
             var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
             var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
             var numbers = /^[0-9]+$/;
-            if (surname1 == "" || name1 == "" || surname2 == "" || name2 == "" ) {
-                flag = false;
-                $("#surname1").parent().before("<p class='error-txt'>名前は必須です。</p>");
-                $("#surname1").addClass("error");
-                $("#name1").addClass("error");
+            if (japanese) {
+                $("#ensureName").text(surname1 + " " + name1 + "(" + surname2 + " " + name2 + ")");
+                if (surname1 == "" || name1 == "" || surname2 == "" || name2 == "" ) {
+                    flag = false;
+                    $("#surname1").parent().parent().before("<p class='error-txt'>名前は必須です。</p>");
+                    $("#surname1").addClass("error");
+                    $("#name1").addClass("error");
+                }
+            } else {
+                $("#ensureName").text(surname1 + " " + name1);
+                if (surname1 == "" || name1 == "" ) {
+                    flag = false;
+                    $("#surname1").parent().parent().before("<p class='error-txt'>名前は必須です。</p>");
+                    $("#surname1").addClass("error");
+                    $("#name1").addClass("error");
+                }
             }
             if (zip_code=="" || addr3=="" || addr4=="" ) {
                 flag = false;
@@ -290,6 +314,10 @@
                 data['name1'] = $("#name1").val();
                 data['surname2'] = $("#surname2").val();
                 data['name2'] = $("#name2").val();
+                if(!japanese) {
+                    data['surname2'] = "";
+                    data['name2'] = "";
+                }
                 data['country'] = $(".check-country input[type='radio']:checked").val();;
                 data['zip_code'] = $("#zip_code").val();
                 data['prefecture'] = $("#addr3").val();

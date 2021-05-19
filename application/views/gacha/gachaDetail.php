@@ -2,6 +2,17 @@
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets/slick/slick-theme.css');?>"/> -->
 <link rel="stylesheet" href="<?php echo base_url("assets/css/gacha.css"); ?>">
 <style>
+    .select-with-radio{
+        display: flex;
+        align-items: center;
+-
+    }
+    .select-with-select{
+        display: flex;
+        align-items: center;
+
+    }
+
     .modal-dialog {
         width: 80%;
         top:15%;
@@ -44,7 +55,7 @@
         </div>
     <?php }?>
     <div class="period_banner">
-        <h4 class="font--white"><?php echo lang('period_of_sale')?>:&nbsp;&nbsp;<?php echo $result[0]['start_date']?>&nbsp;12:00&nbsp;~&nbsp;<?php echo $result[0]['end_date']?>&nbsp;23:59</h4>
+        <h4 class="font--white"><?php echo lang('period_of_sale')?>:&nbsp;&nbsp;<?php echo substr($result[0]['start_date'],0,-3)?>&nbsp;~&nbsp;<?php echo substr($result[0]['end_date'],0,-3)?></h4>
     </div>
     <div class="ticket_setting">
         <div class="ticket_bar">
@@ -63,37 +74,43 @@
                 <div class="second">
                     <h3 class="sp"><?php echo lang('select_times')?></h3>
                     <div class="select_contain">
-                        <div class="switch">
-                            <input name="switch" id="one" type="radio" value="5" checked/>
-                            <label for="one" onclick="set_radio_amount1(5)" class="switch__label">5</label>
-                            <input name="switch" id="two" type="radio" value="10"/>
-                            <label for="two" onclick="set_radio_amount1(10)" class="switch__label">10</label>
-                            <input name="switch" id="three" type="radio" value="20"/>
-                            <label for="three" onclick="set_radio_amount1(20)" class="switch__label">20</label>
-                            <div class="switch__indicator"></div>
+                        <div class="select-with-radio">
+                            <!-- <label for=""><input type="radio" name="radio" class="custom" value="0" checked></label> -->
+                            <div class="switch">
+                                <input name="switch" id="one" type="radio" value="5" checked/>
+                                <label for="one" onclick="set_radio_amount1(5)" class="switch__label">5</label>
+                                <input name="switch" id="two" type="radio" value="10"/>
+                                <label for="two" onclick="set_radio_amount1(10)" class="switch__label">10</label>
+                                <input name="switch" id="three" type="radio" value="20"/>
+                                <label for="three" onclick="set_radio_amount1(20)" class="switch__label">20</label>
+                                <div class="switch__indicator"></div>
+                            </div>
                         </div>
-                        <select name="quantity" id="quantity_select" class="select_box" onchange="setAmount()">
-                            <option value="1" selected>1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                        </select>
+                        <div class="select-with-select">
+                            <!-- <label for=""><input type="radio" name="radio"  class="custom" value="1"></label> -->
+                            <select name="quantity" id="quantity_select" class="select_box" onchange="setAmount()">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
                         <!-- <span><?php echo lang('times')?></span> -->
                     </div>
                 </div>
@@ -133,7 +150,7 @@
                     </div>
                     <div class="item-input">
                         <div>
-                            <h4><?php echo $result[0]['start_date']?>&nbsp;12:00 ~ <?php echo $result[0]['end_date']?>&nbsp;23:59</h4>
+                            <h4><?php echo substr($result[0]['start_date'],0,-3)?>~ <?php echo substr($result[0]['end_date'],0,-3)?></h4>
                         </div>
                     </div>
                 </div>

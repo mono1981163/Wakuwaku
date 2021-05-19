@@ -8,6 +8,7 @@ class Login extends MY_Controller {
         $this->load->model('User_model');
         $this->load->model('Gacha_model');
         $this->load->library('encryption');
+        $this->load->library('email');
     }
 
     public function index() {
@@ -80,20 +81,30 @@ class Login extends MY_Controller {
         $this->load->view('user/resetPwdSuccess.php');
         $this->load->view('template/footer.php', $data);
     }
+    public function generateRandomString($length = 32) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
     public function password_request() {
         $email = $this->input->post('email');
         if ($this->User_model->check_email_exist($email)) { 
             $result = $this->User_model->get_user($email);
-            $password = md5(rand(0,1000));
+            $randomString = $this->generateRandomString();
+            $password = md5($randomString);
             $this->User_model->update_password($email, $password);
             $subject = "パスワードを確認してください。";
             $message = "
             <p>よく提起される問題です。</p>
             <p>安心してください。</p>
-            <p>あなたのパスワードは".$password."です。</p>
+            <p>あなたのパスワードは".$randomString."です。</p>
             <p>パスワードをリセットしてください。</p>
             <p>パスワードを変更するには、以下のリンクをクリックしてください。</p>
-            <a href='".base_url('User/Login/change_password')."'></a>";
+            <a href='".base_url('User/Login/change_password')."'>パスワード変更</a>";
             $config = array(
                 'protocol' => 'smtp',
                 'smtp_host' => 'smtp.lolipop.jp',
@@ -116,7 +127,7 @@ class Login extends MY_Controller {
             $this->email->message($message);
             $this->session->set_userdata('email',$email);
             if($this->email->send()){
-                // $this->session->set_userdata('email',$email);
+                $this->session->set_userdata('email',$email);
                 echo "success";
             } else {
                 echo "error";

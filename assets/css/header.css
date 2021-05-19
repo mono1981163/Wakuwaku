@@ -22,7 +22,7 @@ header {
 .content {
   width: 100%;
   padding-top: 55px;
-  min-height: calc(100vh - 300px);
+  min-height: calc(100vh - 500px);
 }
 .main-content {
   max-width: 1200px;

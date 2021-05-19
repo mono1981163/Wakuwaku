@@ -37,6 +37,7 @@ class Gacha_manage extends MY_Controller {
         $query = $this->db->query($sql);
         $data = [];
         foreach($query->result() as $r) {
+            $remarks = ($r->open_state) ? "公開" : "臨時";
             $data[] = array(
                  $r->gacha_id,
                  '<img src="'.base_url()."/upload/gacha/".$r->image.'">',
@@ -46,7 +47,7 @@ class Gacha_manage extends MY_Controller {
                  $r->end_date,
                  $r->shipping_fee,
                  $r->estimated_delivery_time,
-                 $r->remarks,
+                 $remarks,
             );
         }
  
@@ -209,9 +210,13 @@ class Gacha_manage extends MY_Controller {
             redirect("User/Admin");
         }
         $single_gacha = $this->Gacha_model->get_single_gacha($gacha_id);
+        $single_gacha[0]['start_date'] = substr_replace($single_gacha[0]['start_date'],"T",10,1);
+        $single_gacha[0]['end_date'] = substr_replace($single_gacha[0]['end_date'],"T",10,1);
         $data['gacha_ja'] = $single_gacha[0];
         // $data['prize_ja'] = $this->Prize_model->get_prizes_of_gacha($gacha_id);
         $single_gacha = $this->Gacha_model->get_single_gacha_cn($gacha_id);
+        $single_gacha[0]['start_date'] = substr_replace($single_gacha[0]['start_date'],"T",10,1);
+        $single_gacha[0]['end_date'] = substr_replace($single_gacha[0]['end_date'],"T",10,1);
         $data['gacha_cn'] = $single_gacha[0];
         // $data['prize_cn'] = $this->Prize_model->get_prizes_of_gacha_cn($gacha_id);
 

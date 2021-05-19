@@ -88,7 +88,7 @@ class Delivery_model extends CI_Model {
         return $query->num_rows();
     }
     public function detail_view($purchase_id) {
-        $sql= "SELECT * FROM purchase p LEFT JOIN gachas g ON p.gacha_id = g.gacha_id LEFT JOIN users u ON p.customer_id = u.user_id LEFT JOIN gained_item item ON item.purchase_id=p.purchase_id WHERE p.purchase_id = ".$purchase_id;
+        $sql= "SELECT * FROM purchase p LEFT JOIN gachas g ON p.gacha_id = g.gacha_id LEFT JOIN users u ON p.customer_id = u.user_id LEFT JOIN gained_item item ON (item.user_id=p.customer_id AND item.gacha_id=p.gacha_id) WHERE p.purchase_id = ".$purchase_id;
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -99,12 +99,9 @@ class Delivery_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-    public function save_track_number($purchase_id, $track) {
-        $sql= "UPDATE purchase SET track_number = '".$track."' WHERE purchase_id = ".$purchase_id;
-        $this->db->query($sql);
+    public function update_purchase($purchase_id, $data) {
+        $this->db->where("purchase_id", $purchase_id);  
+        $this->db->update("purchase", $data);
     }
-    public function save_manage_memo($purchase_id, $memo) {
-        $sql= "UPDATE purchase SET manage_memo = '".$memo."' WHERE purchase_id = ".$purchase_id;
-        $this->db->query($sql);
-    }
+
 }

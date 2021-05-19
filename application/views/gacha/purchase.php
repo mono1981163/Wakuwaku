@@ -1,5 +1,10 @@
 <link rel="stylesheet" href="<?php echo base_url("assets/css/gacha.css"); ?>">
 <script type="text/javascript" src="https://js.pay.jp/"></script>
+<style>
+    .radio_contain input[type="radio"] + * {
+        width: unset;
+    }
+</style>
 <div class="content">
     <div class="step_part">
         <div class="step_area">
@@ -118,66 +123,6 @@
             <button class="button--second credit_button"><?php echo lang('go_purchase_procedure')?></button>
         </div>
     </div>
-    <!-- <div class="data-ensure">
-        <section class="">
-            <div class="payment">
-                <form id="payForm" method="post" action="" enctype="multipart/form-data">
-                    <div class="form-box">
-                        <div class="item-title">
-                            <div class="need"><?php echo lang('gacha_name')?></div>
-                        </div>
-                        <div class="item-input">
-                            <p><?php echo $name?></p>
-                        </div>
-                    </div>
-                    <div class="form-box">
-                        <div class="item-title">
-                            <div class="need"><?php echo lang('price_of_sale')?>（<?php echo lang('tax_include')?>）</div>
-                        </div>
-                        <div class="item-input">
-                            <p><?php echo $price?></p><span><?php echo lang('money_unit')?></span>
-                        </div>
-                    </div>
-                    <div class="form-box">
-                        <div class="item-title">
-                            <div class="need"><?php echo lang('times')?>数</div>
-                        </div>
-                        <div class="item-input">
-                            <p id="purchase_times"></p><span><?php echo lang('times')?></span>
-                        </div>
-                    </div>
-                    <div class="form-box">
-                        <div class="item-title">
-                            <div class="need"><?php echo lang('delivery_fee')?></div>
-                        </div>
-                        <div class="item-input">
-                            <p><?php echo $shipping_fee?></p><span><?php echo lang('money_unit')?></span>
-                        </div>
-                    </div>
-                    <div class="form-box">
-                        <div class="item-title">
-                            <div class="need"><?php echo lang('total_amount')?></div>
-                        </div>
-                        <div class="item-input">
-                            <p id="amount"></p><span><?php echo lang('money_unit')?></span>
-                        </div>
-                    </div>
-                    <div class="form-box">
-                        <div class="item-title">
-                            <div class="need"><?php echo lang('payment_method')?></div>
-                        </div>
-                        <div class="item-input">
-                            <p id="payment"></p>
-                        </div>
-                    </div>
-                    <div class="form-box"></div>
-                </div>
-                <div class="button-group">
-                    <button type="button" onclick="returnTo();" class="button"><?php echo lang('return')?></button>
-                </div>
-            </form>
-        </section>
-    </div> -->
 </div>
 <?php $this->load->view('template/language.php');?>
 <script>

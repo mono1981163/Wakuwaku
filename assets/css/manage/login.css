@@ -1,3 +1,6 @@
+.content {
+    min-height: calc(100vh - 340px);
+}
 .login-wrapper {
     width: 500px;
     margin: auto;
@@ -9,8 +12,8 @@
     width: 50%;
     display: block;
     margin: auto;
-    padding-top: 20px;
-    margin-bottom: 20px;
+    padding-top: 40px;
+    margin-bottom: 40px;
 }
 .form-label {
     margin-left: 35px;

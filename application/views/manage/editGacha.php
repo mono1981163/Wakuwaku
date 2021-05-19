@@ -1,11 +1,8 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/manage/gachaedit.css')?>">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <div class="content">
     <div class="main-content">
-        <!-- <div class="manage-link">
-            <a href="<?php echo base_url('Top_manage');?>"><button type="button" class="btn_menu">トップ編集</button></a>
-            <a href="<?php echo base_url('Gacha/gacha_manage');?>"><button class="btn_menu">ガチャ管理</button></a>
-            <a href="<?php echo base_url('Delivery');?>"><button type="button" class="btn_menu">配送管理</button></a>
-        </div> -->
         <h3 class="mb-3">ガチャ編集</h3>
         <div class="gacha-image">
             <div class="pc_image">
@@ -53,7 +50,7 @@
                         <div class="need">販売開始</div>
                     </div>
                     <div class="item-input">
-                        <input type="date" name="start_date" value="<?php echo $gacha_ja['start_date']?>">
+                        <input type="datetime-local" name="start_date" value="<?php echo $gacha_ja['start_date']?>">
                     </div>
                 </div>
                 <div class="form-box">
@@ -61,7 +58,7 @@
                         <div class="need">販売締め切り</div>
                     </div>
                     <div class="item-input">
-                        <input type="date" name="end_date" value="<?php echo $gacha_ja['end_date']?>">
+                        <input type="datetime-local" name="end_date" value="<?php echo $gacha_ja['end_date']?>">
                     </div>
                 </div>
                 <div class="form-box">
@@ -113,7 +110,7 @@
                         <div class="need">販売開始</div>
                     </div>
                     <div class="item-input">
-                        <input type="date" name="start_date_cn" value="<?php echo $gacha_cn['start_date']?>">
+                        <input type="datetime-local" name="start_date_cn" value="<?php echo $gacha_cn['start_date']?>">
                     </div>
                 </div>
                 <div class="form-box">
@@ -121,7 +118,7 @@
                         <div class="need">販売締め切り</div>
                     </div>
                     <div class="item-input">
-                        <input type="date" name="end_date_cn" value="<?php echo $gacha_cn['end_date']?>">
+                        <input type="datetime-local" name="end_date_cn" value="<?php echo $gacha_cn['end_date']?>">
                     </div>
                 </div>
                 <div class="form-box">
@@ -153,16 +150,18 @@
         </div>
         <div class="d-flex">
             <input type="button" style="margin-top: unset" onclick="gachaSetting();" class="btn btn-custom save_btn" value="臨時保管">
-            <input type="button" style="margin-top: unset" onclick="gachaSetting();" class="btn btn-custom save_btn" value="公開">
+            <?php if($gacha_ja['open_state'] == 0) {?>
+                <input type="button" style="margin-top: unset" onclick="allowGacha();" class="btn btn-custom save_btn" value="公開">
+            <?php }?>
             <input type="button" style="margin-top: unset" onclick="deleteGacha()" class="btn btn-danger save_btn" value="ガチャ削除">
         </div>
         <div class="prize-infor">
             <div class="title mb-3">
                 <h3 >賞品</h3>
             </div>
-            <ul class="list-contain">
+            <ul class="list-contain" id="sortable">
                 <?php foreach ($prize as $row) { ?>
-                    <li>
+                    <li style="margin:10px 0 10px 0 !important" id="<?php echo $row['id']?>">
                         <div class="d-flex">
                             <div>
                                 <img src="<?php echo base_url()."upload/prize/".$row['prize_img'] ?>" alt="">
@@ -333,7 +332,6 @@
             var url = base_url + "Gacha/Prize/insert_single_prize";
             var xhr = new XMLHttpRequest();
             xhr.open('POST', url);
-            // xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     console.log(xhr);
@@ -390,16 +388,43 @@
                 return false;       
            }  
     }
-        // $("#gacha-list").on('click','.gacha_allow',function(){
-    //     var id = table.row($(this).closest('tr')).data()[0];
-    //     var url='<?php echo base_url()?>Gacha/Gacha_manage/allowGacha';
-    //     $.ajax({
-    //         url: url,
-    //         type: 'post',
-    //         data: {gacha_id: id},
-    //         success: function(response) {
-    //             table.ajax.reload();
-    //         }
-    //     })
-    // });
+
+    $( function() {
+    $( "#sortable" ).sortable(
+        {
+        start: function(event, ui) {
+            ui.item.startPos = ui.item.index();
+        },
+    	stop: function(event, ui) {
+            var url='<?php echo base_url()?>Gacha/Prize/change_order';
+            console.log(ui.item.startPos,ui.item.index());
+            $.ajax({
+                url: url,
+                type: 'post',
+                data: {
+                        gacha_id: gacha_id,
+                        before: ui.item.startPos,
+                        after:ui.item.index()
+                },
+                success: function(response) {
+                    window.location.reload();
+                }
+            })
+    	}
+    });
+   
+    $( "#sortable" ).disableSelection();
+    });
+    function allowGacha() {
+       
+        var url='<?php echo base_url()?>Gacha/Gacha_manage/allowGacha';
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {gacha_id: gacha_id},
+            success: function(response) {
+                window.location.reload();
+            }
+        })
+    }
 </script>

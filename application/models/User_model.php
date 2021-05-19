@@ -34,6 +34,11 @@ class User_model extends CI_Model {
         $query = $this->db->query($sql);
         return $query->row()->user_id;
     }
+    public function get_country_of_user($user_id) {
+        $sql = "SELECT * FROM users WHERE user_id='".$user_id."'";
+        $query = $this->db->query($sql);
+        return $query->row()->country;
+    }
     public function check_login($userData) {
 
         $query = $this->db->get_where($this->User_table_name, array('email' => $userData['email']));

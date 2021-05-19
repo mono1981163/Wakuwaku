@@ -29,7 +29,7 @@ class Gacha_model extends CI_Model {
             $gacha_table = "gachas_cn";
             $prize_table = "prize_cn";
         }
-        $sql = "SELECT * FROM ".$gacha_table." g LEFT JOIN ".$prize_table." p ON p.gacha_id=g.gacha_id WHERE g.gacha_id=".$gacha_id;
+        $sql = "SELECT * FROM ".$gacha_table." g LEFT JOIN ".$prize_table." p ON p.gacha_id=g.gacha_id WHERE g.gacha_id=".$gacha_id." ORDER BY p.sort_level"; 
         $query = $this->db->query($sql);
         return $query->result_array();
     }
