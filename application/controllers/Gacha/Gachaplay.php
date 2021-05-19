@@ -54,7 +54,7 @@ class Gachaplay extends MY_Controller {
             $data['gacha_id'] = $gacha_detail[0]['gacha_id'];
             $data['price'] = $gacha_detail[0]['price'];
             $data['gacha_name'] = $gacha_detail[0]['name'];
-            if(isset($_POST['is_play']) == "ok") {
+            if($_POST['is_play'] == "ok") {
                 $purchase_id =$this->Purchase_model->get_old_purchase_id($user_id, $gacha_id); 
                 if($purchase_id == null) {
                     redirect("Gacha/Gachalist");

@@ -14,11 +14,11 @@
                     </a>
                     <h4><?php echo $gacha['name']?></h4>
                     <?php if($gacha['status'] == "近日発売") {?>
-                        <button class="button-green mr-2"><?php echo lang('before_sale')?></button><h5><?php echo $gacha['start_date']?>~<?php echo $gacha['end_date']?></h5>
+                        <button class="button-green mr-2"><?php echo lang('before_sale')?></button><h5><?php echo substr($gacha['start_date'],0,-3)?>~<?php echo substr($gacha['end_date'],0,-3)?></h5>
                     <?php } else if($gacha['status'] == "発売中") {?>
-                        <button class="button-green mr-2"><?php echo lang('on_sale')?></button><h5><?php echo $gacha['start_date']?>~<?php echo $gacha['end_date']?></h5>
+                        <button class="button-green mr-2"><?php echo lang('on_sale')?></button><h5><?php echo substr($gacha['start_date'],0,-3)?>~<?php echo substr($gacha['end_date'],0,-3)?></h5>
                     <?php } else {?>
-                        <button class="button-green mr-2"><?php echo lang('after_sale')?></button><h5><?php echo $gacha['start_date']?>~<?php echo $gacha['end_date']?></h5>
+                        <button class="button-green mr-2"><?php echo lang('after_sale')?></button><h5><?php echo substr($gacha['start_date'],0,-3)?>~<?php echo substr($gacha['end_date'],0,-3)?></h5>
                     <?php }?>
                     <h4><span class="sale_price font--green"><?php echo $gacha['price']?></span><span class="font--green"><?php echo lang('money_unit')?></span>/<?php echo lang('times')?></h4>
                 </div>

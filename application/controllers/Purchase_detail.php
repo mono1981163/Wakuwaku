@@ -52,10 +52,11 @@ class Purchase_detail extends MY_Controller {
     }
     public function deliver_prize() {
         $purchase_id = $this->input->post('purchase_id');
+        $email = $this->input->post('email');
         $user_id = $this->Purchase_model->get_user_id_from_purchase($purchase_id);
+        $text = $this->Mail_model->get_message();
         $country = $this->encryption->decrypt($this->User_model->get_country_of_user($user_id));
         $track_number = 'wakuwaku'.date("ymdhis");
-        $subject = lang('Gacha Deliver');
         $config = array(
             'protocol' => 'smtp',
             'smtp_host' => 'smtp.lolipop.jp',
@@ -73,14 +74,15 @@ class Purchase_detail extends MY_Controller {
         $this->email->set_mailtype("html");
 
         if($country == "日本") {
-            $text = $this->Mail_model->get_sendmessage_japan();
+            $subject = '商品発送メッセージ';            
+            $message = $text['send_email_ja']; 
         } else {
-            $text = $this->Mail_model->get_sendmessage_china();
+            $subject = '奖品运送讯息';
+            $message = $text['send_email_ja'];
         }
-        $message=$text;
         $this->email->set_newline("\r\n");
         $this->email->from('info@wakuwakupon.chu.jp');
-        $this->email->to($this->input->post('email'));
+        $this->email->to($email);
         $this->email->subject($subject);
         $this->email->message($message);
         $res = $this->email->send();
@@ -97,9 +99,10 @@ class Purchase_detail extends MY_Controller {
     }
     public function cancel_deliver() {
         $purchase_id = $this->input->post('purchase_id');
+        $email = $this->input->post('email');
         $user_id = $this->Purchase_model->get_user_id_from_purchase($purchase_id);
+        $text = $this->Mail_model->get_message();
         $country = $this->encryption->decrypt($this->User_model->get_country_of_user($user_id));
-        $subject = lang('Cancel Deliver');
         $config = array(
             'protocol' => 'smtp',
             'smtp_host' => 'smtp.lolipop.jp',
@@ -117,14 +120,15 @@ class Purchase_detail extends MY_Controller {
         $this->email->set_mailtype("html");
 
         if($country == "日本") {
-            $text = $this->Mail_model->get_cancelmessage_japan();
+            $subject = '賞品発送キャンセル';
+            $message = $text['cancel_email_ja'];
         } else {
-            $text = $this->Mail_model->get_cancelmessage_china();
+            $subject = '奖品航运取消';
+            $message = $text['cancel_email_cn'];
         }
-        $message=$text;
         $this->email->set_newline("\r\n");
         $this->email->from('info@wakuwakupon.chu.jp');
-        $this->email->to($this->input->post('email'));
+        $this->email->to($email);
         $this->email->subject($subject);
         $this->email->message($message);
         $res = $this->email->send();

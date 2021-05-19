@@ -155,6 +155,9 @@ video {
 .item_image {
     width: 80%;
 }
+.post_image {
+    width: 60%;
+}
 .ticket_addition {
     text-align: center;
     background-color: #FFEC4D;

@@ -12,7 +12,7 @@
                 <h4><?php echo $item_name?><?php echo lang('prize_won_text')?></h4>
             </div>
             <?php } else {?>
-                <img src="<?php echo base_url('assets/image/post.png')?>" class="item_image">
+                <img src="<?php echo base_url('assets/image/post.png')?>" class="post_image">
             <?php }?>
             <div>
                 <span class="font--green link_color_green"><?php echo lang('tweet')?></span>

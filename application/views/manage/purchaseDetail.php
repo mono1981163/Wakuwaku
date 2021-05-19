@@ -131,12 +131,14 @@
     var base_url = "<?php echo base_url();?>";
     function saveTrack() {
         var purchase_id = "<?php echo $purchase_id?>";
-        $.post(base_url + "Purchase_detail/deliver_prize", {purchase_id: purchase_id}, function() {location.reload();});
+        var email = "<?php echo $email?>";
+        $.post(base_url + "Purchase_detail/deliver_prize", {purchase_id: purchase_id, email: email }, function() {location.reload();});
     };
     function cancelDeliver() {
         if(confirm("本当に削除しますか？!")) {
             var purchase_id = "<?php echo $purchase_id?>";
-            $.post(base_url + "Purchase_detail/cancel_deliver", {purchase_id: purchase_id}, function() {location.reload();});
+            var email = "<?php echo $email?>";
+            $.post(base_url + "Purchase_detail/cancel_deliver", {purchase_id: purchase_id, email: email }, function() {location.reload();});
         };
     };
 </script>

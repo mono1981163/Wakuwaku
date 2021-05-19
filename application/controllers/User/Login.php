@@ -125,9 +125,8 @@ class Login extends MY_Controller {
             $this->email->to($email);
             $this->email->subject($subject);
             $this->email->message($message);
-            $this->session->set_userdata('email',$email);
             if($this->email->send()){
-                $this->session->set_userdata('email',$email);
+                $this->session->set_userdata('password_email',$email);
                 echo "success";
             } else {
                 echo "error";
@@ -139,7 +138,7 @@ class Login extends MY_Controller {
     public function password_reset() {
         $old = $this->input->post('old_password',TRUE);
         $new = $this->input->post('new_password',TRUE); 
-        $email = $this->session->userdata('email');
+        $email = $this->session->userdata('password_email');
         $user_data = array(
             'email' => $email,
             'password' => md5($old),

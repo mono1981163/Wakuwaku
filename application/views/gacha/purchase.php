@@ -36,7 +36,7 @@
             <div class="pay_info">
                 <div class="info-box">
                     <div class="radio_contain">
-                        <input id="credit" type="radio" class="radio" value="credit">
+                        <input id="credit" type="radio" class="radio" checked value="credit">
                         <label for="credit"><?php echo lang('credit')?></label>
                     </div>
                     <div class="pay_contain">

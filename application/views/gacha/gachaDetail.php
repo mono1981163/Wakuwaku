@@ -48,7 +48,7 @@
                 <h3><?php echo lang('unused_gacha_ticket')?><span class="font--green big_text"><?php echo $remainder_ticket?></span><span class="font--green"><?php echo lang('times')?></span><?php echo lang('there_is')?></h3>
                 <form id="playForm" action="<?php echo base_url('Gacha/Gachaplay/gacha_conduct')?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="play" value="<?php echo $result[0]['gacha_id']?>">
-                    <input type="hidden" name="is_play" value="ok">
+                    <input type="hidden" name="is_play" value="no">
                 </form>
                 <button class="button--second" onclick="document.getElementById('playForm').submit();"><?php echo lang('turn_gacha')?></button>
             </div>
@@ -117,12 +117,18 @@
                 <div>
                     <div>
                         <h3><?php echo lang('total')?><span id="times" onchange="setTimes();" class="font--green big_text">5</span><?php echo lang('times')?><span id="amount" class="font--green big_text"><?php echo $result[0]['price'] ?></span><?php echo lang('money_unit')?>(<?php echo lang('tax_include')?>)</h3>
-                        <form id="toPay" action="<?php echo base_url('Gacha/Purchase/gacha_purchase')?>" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="gacha_id" value="<?php echo $result[0]['gacha_id']?>">
-                            <input id="purchase_times" type="hidden" name="purchase_times" value="">
-                            <input id="purchase_amount" type="hidden" name="amount" value="">
-                            <button type="submit" class="button--second"><?php echo lang('to_payment')?></button>
-                        </form>
+                        <?php if($result['0']['status'] == "発売中") {?>
+                            <form id="toPay" action="<?php echo base_url('Gacha/Purchase/gacha_purchase')?>" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="gacha_id" value="<?php echo $result[0]['gacha_id']?>">
+                                <input id="purchase_times" type="hidden" name="purchase_times" value="">
+                                <input id="purchase_amount" type="hidden" name="amount" value="">
+                                <button type="submit" class="button--second"><?php echo lang('to_payment')?></button>
+                            </form>
+                        <?php } else if($result['0']['status'] == "近日発売") {?>
+                            <h3 class="mt-3">販売開始前となります。</h3>
+                        <?php } else {?>
+                            <h3 class="mt-3">販売は終了しました。</h3>
+                        <?php }?>
                     </div>
                 </div>
             </div>
@@ -250,7 +256,13 @@
                 </div>
                 <div>
                     <h3><?php echo lang('total')?><span id="times1" class="font--green big_text">5</span><?php echo lang('times')?><span id="amount1" class="font--green big_text"><?php echo $result[0]['price'] ?></span><?php echo lang('money_unit')?>(<?php echo lang('tax_include')?>)</h3>
-                    <button class="button--second" onclick="paySelection();"><?php echo lang('to_payment')?></button>
+                    <?php if($result['0']['status'] == "発売中") {?>
+                        <button class="button--second" onclick="paySelection();"><?php echo lang('to_payment')?></button>
+                    <?php } else if($result['0']['status'] == "近日発売") {?>
+                        <h3 class="mt-3">販売開始前となります。</h3>
+                    <?php } else {?>
+                        <h3 class="mt-3">販売は終了しました。</h3>
+                    <?php }?>
                 </div>
             </div>
         </div>
