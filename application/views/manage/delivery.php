@@ -47,194 +47,129 @@
 <div class="content">
     <div class="main-content">
         <div class="tab pt-5">
-            <button class="tablink All_purchase" onclick="moveTab('All_purchase', this)"><span class="a-border">全ての注文</span></button>
-            <button class="tablink Not_send" onclick="moveTab('Not_send', this)"><span class="a-border">未発送</span></button>
-            <button class="tablink Complete" onclick="moveTab('Done', this)"><span class="a-border">完了</span></button>
+            <button class="tablink All_purchase" onclick="myFunction('All_purchase', this, 'all')"><span class="a-border">全ての注文</span></button>
+            <button class="tablink Not_send" onclick="myFunction('Not_send', this, 'all')"><span class="a-border">未発送</span></button>
+            <button class="tablink Done" onclick="myFunction('Done', this, 'all')"><span class="a-border">完了</span></button>
         </div>
-
+        <div class="gacha-select">
+            <label for="">ガチャフィルター</label>
+            <select name="select" id="gachaid" onchange="selectOption()">
+                <!-- <option value="all">すべてのガチャ
+                </option> -->
+            </select>
+        </div>
         <div id="All_purchase" class="tabcontent box1">
-            <table id="table1" class="table">
-                <tbody>
-                    <?php $n=1;
-                        foreach($InboxMessage as $purchase){?>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <div class="purchase_state">
-                                            <?php echo $purchase->delivery_state;?>
-                                        </div>
-                                        <div class="purchase_line" style="display: flex">
-                                            <p class="font-weight-bold">注文番号 : &nbsp;</p>
-                                            <span class="purchase_id"><?php  echo $purchase->purchase_id;?></span>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">¥<?php echo $purchase->price;?> -&nbsp;</p>
-                                            <?php echo $purchase->method;?>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">ユーザー識別コード : &nbsp;</p>
-                                            <?php echo $purchase->customer_id;?>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <div style="display: flex;">
-                                            <p style="font-weight: bold;">ガチャID : &nbsp;</p>
-                                            <?php echo $purchase->gacha_id;?>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">ガチャ名:&nbsp;</p>
-                                            <?php echo $purchase->name;?>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">最終ガチャ日:&nbsp;</p>
-                                            <?php echo $purchase->end_date;?>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">発送日:&nbsp;</p>
-                                            <?php echo $purchase->shipment_date;?>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger btn_detail">注文詳細を見る</button> 
-                                </td>
-                            </tr>
-                    <?php $n++;}?>
-                </tbody>
-            </table>
-            <?php echo $links; ?>
         </div>
 
         <div id="Not_send" class="tabcontent box2">
-            <table id="table2" class="table">
-                <tbody>
-                    <?php
-                        foreach($InboxMessage as $purchase){
-                            ?>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <div class="purchase_state">
-                                            <?php echo $purchase->delivery_state;?>
-                                        </div>
-                                        <div class="purchase_line" style="display: flex">
-                                            <p class="font-weight-bold">注文番号 : &nbsp;</p>
-                                            <span><?php  echo $purchase->purchase_id;?></span>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">¥<?php echo $purchase->price;?> -&nbsp;</p>
-                                            <?php echo $purchase->method;?>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">ユーザー識別コード : &nbsp;</p>
-                                            <?php echo $purchase->customer_id;?>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <div style="display: flex;">
-                                            <p style="font-weight: bold;">ガチャID : &nbsp;</p>
-                                            <?php echo $purchase->gacha_id;?>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">ガチャ名:&nbsp;</p>
-                                            <?php echo $purchase->name;?>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">最終ガチャ日:&nbsp;</p>
-                                            <?php echo $purchase->end_date;?>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">発送日:&nbsp;</p>
-                                            <?php echo $purchase->shipment_date;?>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger btn_detail">注文詳細を見る</button> 
-                                </td>
-                            </tr>
-                    <?php }?>
-                </tbody>
-            </table>
-            <?php echo $links; ?>
         </div>
 
         <div id="Done" class="tabcontent box3">
-            <table id="table3" class="table">
-                <tbody>
-                    <?php
-                        foreach($InboxMessage as $purchase){
-                            ?>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <div class="purchase_state">
-                                            <?php echo $purchase->delivery_state;?>
-                                        </div>
-                                        <div class="purchase_line" style="display: flex">
-                                            <p class="font-weight-bold">注文番号 : &nbsp;</p>
-                                            <span><?php  echo $purchase->purchase_id;?></span>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">¥<?php echo $purchase->price;?> -&nbsp;</p>
-                                            <?php echo $purchase->method;?>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">ユーザー識別コード : &nbsp;</p>
-                                            <?php echo $purchase->customer_id;?>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <div style="display: flex;">
-                                            <p style="font-weight: bold;">ガチャID : &nbsp;</p>
-                                            <?php echo $purchase->gacha_id;?>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">ガチャ名:&nbsp;</p>
-                                            <?php echo $purchase->name;?>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">最終ガチャ日:&nbsp;</p>
-                                            <?php echo $purchase->end_date;?>
-                                        </div>
-                                        <div style="display: flex">
-                                            <p class="font-weight-bold">発送日:&nbsp;</p>
-                                            <?php echo $purchase->shipment_date;?>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger">注文詳細を見る</button> 
-                                </td>
-                            </tr>
-                    <?php }?>
-                </tbody>
-            </table>
-            <?php echo $links; ?>
         </div>
     </div>
 </div>
-
 <script>
     var base_url = "<?php echo base_url(); ?>";
+    var selectTab = "All_purchase";
     $(document).ready(function() {
-        var tabnumber = "<?php echo $tabnumber?>";
-        if (tabnumber == "1") {
-            $(".All_purchase").addClass("focused");
-        } else if (tabnumber == "2") {
-            $(".Not_send").addClass("focused");
-        } else {
-            $(".Complete").addClass("focused");
-        }
-    })
-    function moveTab(tabName,elmnt) {
+        getData("All_purchase", "all");
+    });
+
+    function getData(tagName, selectedItems)
+    {
+        $.ajax({
+            url: base_url + "Delivery/selectOption/",
+            type: "post",
+            data: {selectTabs: tagName, selectOptions: selectedItems},
+            success: function(response) {
+                response = JSON.parse(response);
+                var gacha_id = "";
+                var n = 1;
+                var messages01 = `<table id="table${response.delivery_state}" class="table"><tbody>`;
+                var messages02 = `<option value="all">すべてのガチャ</option>`;
+                response.InboxMessage.forEach(message=>{
+                    console.log(message);
+                    messages01 += `<tr><td><div><div class="purchase_state">${message.delivery_state}</div>
+                                <div class="purchase_line" style="display: flex">
+                                    <p class="font-weight-bold">注文番号 : &nbsp;</p>
+                                    <span>${message.purchase_id}</span>
+                                </div>
+                                <div style="display: flex">
+                                    <p class="font-weight-bold">¥${message.price} -&nbsp;</p>
+                                        ${message.method}
+                                </div>
+                                <div style="display: flex">
+                                    <p class="font-weight-bold">ユーザー識別コード : &nbsp;</p>
+                                        ${message.customer_id}
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <div style="display: flex;">
+                                    <p style="font-weight: bold;">ガチャID : &nbsp;</p>
+                                        ${message.gacha_id}
+                                </div>
+                                <div style="display: flex">
+                                    <p class="font-weight-bold">ガチャ名:&nbsp;</p>
+                                        ${message.name}
+                                </div>
+                                <div style="display: flex">
+                                    <p class="font-weight-bold">最終ガチャ日:&nbsp;</p>
+                                        ${message.end_date}
+                                </div>
+                                <div style="display: flex">
+                                    <p class="font-weight-bold">発送日:&nbsp;</p>
+                                        ${message.shipment_date}
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn_detail" onclick="gachaDetail(${message.purchase_id})">注文詳細を見る</button> 
+                        </td>
+                    </tr>`;
+                    if(gacha_id == `${message.gacha_id}`) {
+                        messages02 += "";
+                    }
+                    else {
+                        messages02 += `<option value=${message.gacha_id}>
+                            ガチャid${message.gacha_id}
+                        </option>`;
+                    }
+                    gacha_id = `${message.gacha_id}`;
+                    n++;
+                });
+                messages01 += `</tbody></table>${response.links}`;
+                if(`${response.tabnumber}` == "1"){
+                    $('#All_purchase').html(messages01);
+                }
+                else if(`${response.tabnumber}` == "2"){
+                    $('#Not_send').html(messages01);
+                }
+                else {
+                    $('#Done').html(messages01);
+                }
+                if(selectedItems == "all") {
+                    $('#gachaid').html(messages02);
+                }
+                var tabnumber = `${response.tabnumber}`;
+                if (tabnumber == "1") {
+                    $(".All_purchase").addClass("focused");
+                } else if (tabnumber == "2") {
+                    $(".Not_send").addClass("focused");
+                } else {
+                    $(".Done").addClass("focused");
+                }
+            },
+            error: function() {
+                alert("server error");
+            }
+        });
+    }
+
+    function myFunction(tabName,elmnt,optionValue) {
         var i, tabcontent, tablinks;
+        selectTab = tabName;
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
@@ -250,19 +185,23 @@
             }
         }
         elmnt.classList.add("focused");
+        getData(tabName, optionValue);
     }
 
-    $(".All_purchase").on("click", function(){
-        window.location.href='<?php echo base_url()?>Delivery/index/';
-    });
-    $(".Not_send").on("click", function(){
-        window.location.href='<?php echo base_url()?>Delivery/not_send/';
-    });
-    $(".Complete").on("click", function(){
-        window.location.href='<?php echo base_url()?>Delivery/complete/';
-    });
-    $(".btn_detail").on("click", function(){
-        var id = $(this).closest("tr").find("span.purchase_id").text();
-        window.location.href='<?php echo base_url()?>Purchase_detail/detailView/'+id;
-    });
+    // $(".btn_detail").on("click", function(){
+    //     alert("ok");
+    //     var id = $(this).closest("tr").find("span.purchase_id").text();
+    //     window.location.href='<?php echo base_url()?>Purchase_detail/detailView/'+id;
+    // });
+    function gachaDetail(arg) {
+        console.log(arg);
+        window.location.href='<?php echo base_url()?>Purchase_detail/detailView/' + arg;
+    }
+
+    function selectOption() {
+        var e = document.getElementById("gachaid");
+        var opt = e.options[e.selectedIndex];
+        var param = opt.value;
+        getData(selectTab, param);
+    }   
 </script>
