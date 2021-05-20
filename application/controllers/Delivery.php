@@ -11,72 +11,47 @@ class Delivery extends MY_Controller {
         if (!$this->session->has_userdata('admin_id')) {
             redirect("User/Admin");
         }
-        $config = array();
-		$config["base_url"] = base_url() . "delivery";
-        $config["total_rows"] = $this->Delivery_model->get_count();
-        $config["per_page"] = 5;
-        $config["uri_segment"] = 2;
-        // $config['full_tag_open'] = '<div class="operation-block page-nav">';
-        // $config['full_tag_close'] = '</div>';
-        $config["full_tag_open"] = '<div class="pagination">';
-		$config["full_tag_close"] = '</div>';
-		$config["first_link"] = '≪';
-		$config["last_link"] = '≫';
-        $this->pagination->initialize($config);
-        $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
-        $data["links"] = $this->pagination->create_links();
-        $data['InboxMessage'] = $this->Delivery_model->getAllPurchase($config["per_page"], $page);
-        $data['tabnumber'] = 1;
         $this->load->view('manage/header.php');
-		$this->load->view('manage/delivery', $data);
+		$this->load->view('manage/delivery');
         $this->load->view('manage/footer.php');
     }
-    public function not_Send() {
+    public function selectOption() {
         if (!$this->session->has_userdata('admin_id')) {
             redirect("User/Admin");
         }
         $config = array();
-		$config["base_url"] = base_url() . "delivery/not_Send";
-        $config["total_rows"] = $this->Delivery_model->get_not_sent_count();
-        $config["per_page"] = 5;
+        $config["base_url"] = base_url() . "delivery/selectOption";
+        $config["per_page"] = 10;
         $config["uri_segment"] = 3;
-        // $config['full_tag_open'] = '<div class="operation-block page-nav">';
-        // $config['full_tag_close'] = '</div>';
         $config["full_tag_open"] = '<div class="pagination">';
 		$config["full_tag_close"] = '</div>';
 		$config["first_link"] = '≪';
 		$config["last_link"] = '≫';
-        $this->pagination->initialize($config);
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $data["links"] = $this->pagination->create_links();
-        $data['InboxMessage'] = $this->Delivery_model->getNotSendPurchase($config["per_page"], $page);
-        $data['tabnumber'] = 2;
-        $this->load->view('manage/header.php');
-		$this->load->view('manage/delivery', $data);
-        $this->load->view('manage/footer.php');
-    }
-    public function complete() {
-        if (!$this->session->has_userdata('admin_id')) {
-            redirect("User/Admin");
+        $tab = $this->input->post('selectTabs');
+        $option = $this->input->post('selectOptions');
+        if($tab == "All_purchase") {
+            $config["total_rows"] = $this->Delivery_model->get_count($option);
+            $this->pagination->initialize($config);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data['InboxMessage'] = $this->Delivery_model->getAllPurchase($config["per_page"], $page, $option);
+            $data['tabnumber'] = 1;
         }
-        $config = array();
-		$config["base_url"] = base_url() . "delivery/complete";
-        $config["total_rows"] = $this->Delivery_model->get_complete_count();
-        $config["per_page"] = 5;
-        $config["uri_segment"] = 3;
-        // $config['full_tag_open'] = '<div class="operation-block page-nav">';
-        // $config['full_tag_close'] = '</div>';
-        $config["full_tag_open"] = '<div class="pagination">';
-		$config["full_tag_close"] = '</div>';
-		$config["first_link"] = '≪';
-		$config["last_link"] = '≫';
-        $this->pagination->initialize($config);
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        else if($tab == "Not_send") {
+            $config["total_rows"] = $this->Delivery_model->get_not_sent_count($option);
+            $this->pagination->initialize($config);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data['InboxMessage'] = $this->Delivery_model->getNotSendPurchase($config["per_page"], $page, $option);
+            $data['tabnumber'] = 2;
+            
+        }
+        else if ($tab == "Done") {
+            $config["total_rows"] = $this->Delivery_model->get_complete_count($option);
+            $this->pagination->initialize($config);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data["InboxMessage"] = $this->Delivery_model->getCompletePurchase($config["per_page"], $page, $option);
+            $data['tabnumber'] = 3;
+        }
         $data["links"] = $this->pagination->create_links();
-        $data['tabnumber'] = 3;
-        $data['InboxMessage'] = $this->Delivery_model->getCompletePurchase($config["per_page"], $page);
-        $this->load->view('manage/header.php');
-		$this->load->view('manage/delivery', $data);
-        $this->load->view('manage/footer.php');
+        echo json_encode($data);
     }
 }

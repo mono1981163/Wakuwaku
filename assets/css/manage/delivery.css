@@ -179,3 +179,21 @@ button.focused .a-border::after {
   border-color: white;
   color: #EFFEFF;
 }
+
+.gacha-select {
+  margin: auto;
+  margin-top: 100px;
+  width: fit-content;
+}
+
+.gacha-select label {
+  margin-right: 20px;
+  font-weight: bold;
+}
+#gachaid {
+  background-color: #1a202e;
+  color: white;
+  width: 200px;
+  height: 38px;
+  border-radius: 3px;
+}
