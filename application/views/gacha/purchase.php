@@ -50,7 +50,7 @@
                             </div>
                             <div class="inner-box">
                                 <h4 class="need" for="payjp_cardNumber"><?php echo lang('card_number')?></h4>
-                                <input id="payjp_cardNumber" name="cardnumber" value="4242424242424242" class="payjp_input_text" type="tel" autocomplete="off" placeholder="例：4444 5555 6666 7777" maxlength="19" pattern="([0-9]| )*">
+                                <input id="payjp_cardNumber" name="cardnumber" value="" class="payjp_input_text" type="tel" autocomplete="off" placeholder="例：4444 5555 6666 7777" maxlength="19" pattern="([0-9]| )*">
                                 <input name="card_token" type="hidden">
                                 <input name="purchase_times" type="hidden" value="<?php echo $purchase_times?>">
                                 <input name="amount" type="hidden" value="<?php echo $amount?>">
@@ -58,16 +58,16 @@
                             </div>
                             <div class="inner-box">
                                 <h4 class="need" for="payjp_cardName"><?php echo lang('card_user')?></h4>
-                                <input id="payjp_cardName" name="card_name" type="text" inputtype="email" value="Yoshino" placeholder="例：TARO YAMADA">
+                                <input id="payjp_cardName" name="card_name" type="text" inputtype="email" value="" placeholder="例：TARO YAMADA">
                             </div>
                             <div class="inner-box">
                                 <h4 class="need" for=""><?php echo lang('expiration_date')?></h4>
-                                <input class="small-input" name="card_exp_month" inputtype="number" value="12" placeholder="例：12" type="tel" maxlength="2"><span class="slash">/</span>
-                                <input class="small-input" name="card_exp_year" inputtype="number" value="24" placeholder="例：28" type="tel" maxlength="2">
+                                <input class="small-input" name="card_exp_month" inputtype="number" value="" placeholder="例：12" type="tel" maxlength="2"><span class="slash">/</span>
+                                <input class="small-input" name="card_exp_year" inputtype="number" value="" placeholder="例：28" type="tel" maxlength="2">
                             </div>
                             <div class="inner-box">
                                 <h4 class="need" class="cvc_label" for="payjp_cardCvc"><?php echo lang('secret_code')?></h4>
-                                <input id="payjp_cardCvc" class="small-input" type="tel" name="cvc" placeholder="例：123"  value="1245" maxlength="4">
+                                <input id="payjp_cardCvc" class="small-input" type="tel" name="cvc" placeholder="例：123"  value="" maxlength="4">
                             </div>
                         </form>
                     </div>
@@ -84,11 +84,11 @@
                             <input type="hidden" name="ptype" value="3">
                             <input type="hidden" name="lang" value="cn">
                             <input type="hidden" name="job" value="REQUEST">
-                            <input type="hidden" name="sod" value="test_shop_order_number">
+                            <!-- <input type="hidden" name="sod" value="test_shop_order_number"> -->
                             <input type="hidden" name="siam1" value="<?php echo $amount?>">
                             <input type="hidden" name="sisf1" value="<?php echo $shipping_fee?>">
                             <input type="hidden" name="em" value="<?php echo $this->session->userdata('email')?>">
-                            <input type="hidden" name="tn" value="08012344321">
+                            <!-- <input type="hidden" name="tn" value="08012344321"> -->
                             <input type="hidden" name="sucd" value="123">
                         </form>
                         <h4><?php echo lang('purchase_text')?></h4>
@@ -155,16 +155,16 @@
             });
         })
     });
-    $('#payjp_cardNumber').on('keyup', function(e){
-        var val = $(this).val();
-        var newval = '';
-        val = val.replace(/\s/g, '');
-        for(var i = 0; i < val.length; i++) {
-            if(i%4 == 0 && i > 0) newval = newval.concat(' ');
-            newval = newval.concat(val[i]);
-        }
-        $(this).val(newval);
-    });
+    // $('#payjp_cardNumber').on('keyup', function(e){
+    //     var val = $(this).val();
+    //     var newval = '';
+    //     val = val.replace(/\s/g, '');
+    //     for(var i = 0; i < val.length; i++) {
+    //         if(i%4 == 0 && i > 0) newval = newval.concat(' ');
+    //         newval = newval.concat(val[i]);
+    //     }
+    //     $(this).val(newval);
+    // });
     document.getElementById("alipay").addEventListener('click', function() {
         $('#univapayForm').submit();
     });

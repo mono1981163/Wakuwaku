@@ -20,6 +20,7 @@ $lang['log_out'] = 'ログアウト';
 $lang['help'] = 'ヘルプ';
 $lang['user_guide'] = 'ご利用ガイド';
 $lang['copyright'] = 'Copyright©2021ガチャポンand ZEN Co.、LTD。すべての権利予約';
+$lang['ensure'] = '確認';
 
 // ========================       top page      ========================== //
 

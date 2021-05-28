@@ -82,7 +82,6 @@ class Registration extends MY_Controller {
                 $result = $this->User_model->insert_user($insert_data);
 
                 if ($result == TRUE) {
-                    $subject = lang('login_email_check');
                     $config = array(
                         'protocol' => 'smtp',
                         'smtp_host' => 'smtp.lolipop.jp',
@@ -99,7 +98,14 @@ class Registration extends MY_Controller {
                     $this->load->library('email', $config);
                     $this->email->set_mailtype("html");
                     $data['verification_key'] = $verification_key;
-                    $message = $this->load->view("email/register.php",$data,TRUE);
+                    $data['email'] = 'info@wakuwakupon.chu.jp';
+                    if($country == "日本") {
+                        $subject = "タイトル：【ワクワクポン】新規会員登録ありがとうございます";
+                        $message = $this->load->view("email/register_ja.php",$data,TRUE);
+                    }else {
+                        $subject = "标题：[Waku Waku Pon]感谢您注册为新会员。";
+                        $message = $this->load->view("email/register_cn.php",$data,TRUE);
+                    }
                     $this->email->set_newline("\r\n");
                     $this->email->from('info@wakuwakupon.chu.jp');
                     $this->email->to($this->input->post('email'));

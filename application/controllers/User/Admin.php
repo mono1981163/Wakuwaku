@@ -18,7 +18,7 @@ class Admin extends MY_Controller {
         $id = $this->input->post('id', TRUE);
         $login_data = array(
             'id' => $id,
-            'password' => md5($this->input->post('password', TRUE)),
+            'password' => md5($this->input->post('password')),
         );
 
         /**

@@ -38,6 +38,7 @@
                     <h1 class="text-center"><?php echo lang('check_email_text1')?></h1>
                     <h4><?php echo lang('check_email_text2')?><br><?php echo lang('check_email_text3')?></h4>
                     <h6><?php echo lang('check_email_text4')?></h6>
+                    <button class="button" onclick="window.location.href='<?php echo base_url('/User/Login')?>';"><?php echo lang('ensure')?></button>
                 </div>
             </div>
         </div>

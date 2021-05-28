@@ -94,17 +94,19 @@ class Login extends MY_Controller {
         $email = $this->input->post('email');
         if ($this->User_model->check_email_exist($email)) { 
             $result = $this->User_model->get_user($email);
+            $country = $this->encryption->decrypt($result['country']);
             $randomString = $this->generateRandomString();
             $password = md5($randomString);
+            $data['password'] = $randomString;
+            $data['email'] = 'info@wakuwakupon.chu.jp';
             $this->User_model->update_password($email, $password);
-            $subject = "パスワードを確認してください。";
-            $message = "
-            <p>よく提起される問題です。</p>
-            <p>安心してください。</p>
-            <p>あなたのパスワードは".$randomString."です。</p>
-            <p>パスワードをリセットしてください。</p>
-            <p>パスワードを変更するには、以下のリンクをクリックしてください。</p>
-            <a href='".base_url('User/Login/change_password')."'>パスワード変更</a>";
+            if($country == "日本") {
+                $subject = "タイトル：【ワクワクポン】パスワードが変更されました";
+                $message = $this->load->view("email/pwdChange_ja.php",$data,TRUE);
+            }else {
+                $subject = "标题：[Waku Waku Pon]密码已更改";
+                $message = $this->load->view("email/pwdChange_cn.php",$data,TRUE);
+            }
             $config = array(
                 'protocol' => 'smtp',
                 'smtp_host' => 'smtp.lolipop.jp',

@@ -21,6 +21,7 @@ $lang['log_out'] = '登出';
 $lang['help'] = '帮助';
 $lang['user_guide'] = '用户指南';
 $lang['copyright'] = 'Copyright©2021 转蛋 and ZEN Co.，LTD。 保留所有权利';
+$lang['ensure'] = '确认';
 
 // ========================       top page      ========================== //
 
