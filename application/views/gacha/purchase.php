@@ -135,8 +135,10 @@
         });
         $('.credit_button').click(function() {
             var exp_year = "20" + document.querySelector('input[name="card_exp_year"]').value;
+            var rawNumber = document.querySelector('input[name="cardnumber"]').value;
+            var cardNumber = rawNumber.replace(/ /g,'');
             var card = {
-                number: document.querySelector('input[name="cardnumber"]').value,
+                number: cardNumber,
                 cvc: document.querySelector('input[name="cvc"]').value,
                 exp_month: document.querySelector('input[name="card_exp_month"]').value,
                 exp_year: exp_year,
@@ -155,16 +157,16 @@
             });
         })
     });
-    // $('#payjp_cardNumber').on('keyup', function(e){
-    //     var val = $(this).val();
-    //     var newval = '';
-    //     val = val.replace(/\s/g, '');
-    //     for(var i = 0; i < val.length; i++) {
-    //         if(i%4 == 0 && i > 0) newval = newval.concat(' ');
-    //         newval = newval.concat(val[i]);
-    //     }
-    //     $(this).val(newval);
-    // });
+    $('#payjp_cardNumber').on('keyup', function(e){
+        var val = $(this).val();
+        var newval = '';
+        val = val.replace(/\s/g, '');
+        for(var i = 0; i < val.length; i++) {
+            if(i%4 == 0 && i > 0) newval = newval.concat(' ');
+            newval = newval.concat(val[i]);
+        }
+        $(this).val(newval);
+    });
     document.getElementById("alipay").addEventListener('click', function() {
         $('#univapayForm').submit();
     });

@@ -7,13 +7,15 @@ class Univapay extends MY_Controller {
         $this->load->library(array('session'));
         $this->load->model("Purchase_model");
         $this->load->model("User_model");
+        $this->load->model("Gacha_model");
         $this->load->helper('url');
     }
     public function index() {
         $payment_id = $_GET['pid'];
         $order_id = $_GET['sod'];
-        $total_amount = $_GET['ta'];
+        $amount = $_GET['ta'];
         $rst = $_GET['result'];
+        $purchase_times = $this->session->userdata('purchase_times');
         $email = $this->session->userdata('email');
         $user = $this->User_model->get_user($email);
         $gacha_id = $this->session->userdata('gacha_id');
@@ -26,7 +28,7 @@ class Univapay extends MY_Controller {
             $data = array (
                 'gacha_id' => $gacha_id,
                 'customer_id' => $user['user_id'],
-                'amount' => $total_amount,
+                'amount' => $amount,
                 'purchase_times' => $purchase_times,
                 'purchase_date' => date('Y-m-d'),
                 'method' => "Alipay",
@@ -67,7 +69,7 @@ class Univapay extends MY_Controller {
 
             $this->email->set_newline("\r\n");
             $this->email->from('info@wakuwakupon.chu.jp');
-            $this->email->to($this->input->post('email'));
+            $this->email->to($email);
             $this->email->subject($subject);
             $this->email->message($message);
             $res = $this->email->send();

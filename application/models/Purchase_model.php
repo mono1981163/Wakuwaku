@@ -69,4 +69,9 @@ class Purchase_model extends CI_Model {
         $query = $this->db->query($sql);
         return $query->row()->purchase_id;
     }
+    public function get_purchase_deliver_info($purchase_id) {
+        $sql = "SELECT p.purchase_times, p.order_number, p.amount, p.purchase_date, ja.name AS ja_name, ja.price AS ja_price, ja.shipping_fee AS ja_fee, cn.shipping_fee AS cn_fee,  cn.name AS cn_name, cn.price AS cn_price FROM purchase AS p, gachas AS ja, gachas_cn AS cn WHERE p.gacha_id=ja.gacha_id AND p.gacha_id=cn.gacha_id AND p.purchase_id = '".$purchase_id."'";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
 }

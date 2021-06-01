@@ -1,4 +1,4 @@
-d<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Prize extends MY_Controller {
 
@@ -7,6 +7,7 @@ class Prize extends MY_Controller {
         $this->load->library(array('session'));
         $this->load->model('Gacha_model');
         $this->load->model('Prize_model');
+        $this->load->helper('url');
     }
 
     public function edit($prize_id) {
@@ -49,18 +50,18 @@ class Prize extends MY_Controller {
             $fileinfo = @getimagesize($_FILES["upload_image"]["tmp_name"]);
             $width = $fileinfo[0];
             $height = $fileinfo[1];
-            // if(($_FILES['upload_image']['size'] >= $maxsize) || ($_FILES['upload_image']['size'] == 0) || $width != "1920" || $height != "1080" ) {
-            //     $new_name = 'file_error';
-            // } else {
+            if(($_FILES['upload_image']['size'] >= $maxsize) || ($_FILES['upload_image']['size'] == 0)) {
+                $new_name = 'file_error';
+            } else {
                 // $extension = end((explode(".", $_FILES["upload_image"]["name"])));
-                $extension = (explode(".", $_FILES["upload_image"]["name"]));
-                $new_name = $this->generateRandomString() . '.' . $extension[1];  
+                $extension = explode(".", $_FILES["upload_image"]["name"]);
+                $new_name = $this->generateRandomString().'.'. $extension[1];  
                 $destination = $path.'/'. $new_name;  
                 if (!file_exists($path)) {
                     mkdir($path, 0777, true);
                 }
                 move_uploaded_file($_FILES['upload_image']['tmp_name'], $destination); 
-            // } 
+            } 
             return $new_name;  
          }  
     } 
@@ -113,7 +114,7 @@ class Prize extends MY_Controller {
             $this->Prize_model->update_single_prize_cn($prize_id, $update_data_cn);
             echo 'success';
         } else {
-            echo 'erroasdfsafasdfr';
+            echo 'error';
         }
     }
     public function insert_single_item() {
@@ -176,11 +177,11 @@ class Prize extends MY_Controller {
         }
         echo "success";
     }
-    public function change_order() {
+    public function change_order_prize() {
         $gacha_id  = $_POST['gacha_id'];
         $before = $_POST['before'];
         $after = $_POST['after'];
-        $result = $this->Prize_model->change_order($gacha_id,$before, $after);
+        $result = $this->Prize_model->change_order_prize($gacha_id,$before, $after);
         if($result){
             echo "success";
         }
@@ -188,6 +189,9 @@ class Prize extends MY_Controller {
             echo "false";
         }
        
+    }
+    public function change_order_item() {
+
     }
     public function update_single_item() {
         $prize_id = $this->input->post('prize_id');

@@ -30,11 +30,11 @@ class Top_manage extends MY_Controller {
         }
         return $randomString;
     }
-    public function upload_image($path) {  
-          
+    public function upload_image() {  
           
         if(isset($_FILES["upload_image"]))  
         {  
+            $path = "upload/topimage";
             $maxsize = "2097152";
             $fileinfo = @getimagesize($_FILES["upload_image"]["tmp_name"]);
             $width = $fileinfo[0];
@@ -42,8 +42,8 @@ class Top_manage extends MY_Controller {
             if(($_FILES['upload_image']['size'] >= $maxsize) || ($_FILES['upload_image']['size'] == 0) || $width != "1920" || $height != "1080" ) {
                 $new_name = 'file_error';
             } else {
-                $extension = end((explode(".", $_FILES["upload_image"]["name"])));
-                $new_name = generateRandomString() . '.' . $extension;  
+                $extension = explode(".", $_FILES["upload_image"]["name"]);
+                $new_name = $this->generateRandomString().'.'.$extension[1];  
                 $destination = $path.'/'. $new_name;  
                 if (!file_exists($path)) {
                     mkdir($path, 0777, true);
@@ -53,18 +53,19 @@ class Top_manage extends MY_Controller {
             return $new_name;  
         }  
     } 
-    public function upload_image_square($path) {  
+    public function upload_image_square() {  
         if(isset($_FILES["upload_image"]))  
         {  
+            $path = "upload/topimage";
             $maxsize = "2097152";
             $fileinfo = @getimagesize($_FILES["upload_image"]["tmp_name"]);
             $width = $fileinfo[0];
             $height = $fileinfo[1];
-            if(($_FILES['upload_image']['size'] >= $maxsize) || ($_FILES['upload_image']['size'] == 0) || $width != "1920" || $height != "1080" ) {
+            if(($_FILES['upload_image']['size'] >= $maxsize) || ($_FILES['upload_image']['size'] == 0) || $width != $height) {
                 $new_name = 'file_error';
             } else {
-                $extension = end((explode(".", $_FILES["upload_image"]["name"])));
-                $new_name = generateRandomString() . '.' . $extension;  
+                $extension = explode(".", $_FILES["upload_image"]["name"]);
+                $new_name = $this->generateRandomString().'.'.$extension[1];  
                 $destination = $path.'/'. $new_name;  
                 if (!file_exists($path)) {
                     mkdir($path, 0777, true);
@@ -76,26 +77,24 @@ class Top_manage extends MY_Controller {
     }
     public function slide_image_setting_pc() {
         $image_id = $this->input->post('id');
-        $path = "upload/topimage";
-        $topimage = $this->upload_image($path);
+        $topimage = $this->upload_image();
         if($topimage != "file_error" && $topimage != "" ) {
             $this->Top_model->update_top_image_pc($image_id, $topimage);
-            $result = "success";
+            $data['state'] = "success";
         } else {
-            $result = "error";
+            $data['state'] = "error";
         }
-        echo json_encode($result);
+        echo json_encode($data);
     }
     public function slide_image_setting_sp() {
         $image_id = $this->input->post('id');
-        $path = "upload/topimage";
-        $topimage = $this->upload_image_square($path);
+        $topimage = $this->upload_image_square();
         if($topimage != "file_error" && $topimage != "" ) {
             $this->Top_model->update_top_image_sp($image_id, $topimage);
-            $result = "success";
+            $data['state'] = "success";
         } else {
-            $result = "error";
+            $data['state'] = "error";
         }
-        echo json_encode($result);
+        echo json_encode($data);
     }
 }

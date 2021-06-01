@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/manage/gachaedit.css')?>">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <div class="content">
     <div class="main-content">
         <h3 class="pt-3 mb-3">賞品編集</h3>
@@ -38,7 +40,7 @@
             <div class="title mt-5">
                 <h3 class="mt-3 mb-3">アイテム</h3>
             </div>
-            <ul class="list-contain">
+            <ul class="list-contain" id="sortable">
                 <?php $i=0; foreach ($item_list as $row) { if($row != "") {$item = explode(",",$row); $i++; ?>
                     <li>
                         <div>
@@ -70,6 +72,7 @@
 <?php $this->load->view('manage/modal.php');?>
 <script>
     var base_url = "<?php echo base_url(); ?>";
+    var prize_id = "<?php echo $id?>";
     function prizeImageSet() {
         $("#prizeImage").click();
     }
@@ -106,7 +109,7 @@
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     console.log(xhr);
-                    if(xhr.responseText == "dsuccess") {
+                    if(xhr.responseText == "success") {
                         var message = '<p>操作が成功しました。<p>'+
                             '<div class="modal-footer">'+
                                 '<button id="ensure" data-dismiss="modal" onclick="location.reload();"aria-label="Close" type="button" class="btn btn-custom">確&nbsp;&nbsp;認</button>'+
@@ -174,7 +177,7 @@
                 contentType: false,
                 processData: false,
                 success: function (response) {
-                    if(response == "dsuccess") {
+                    if(response == "success") {
                         document.getElementById("modal-trigger").click();
                         location.reload();
                     } else {
@@ -274,7 +277,7 @@
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     console.log(xhr);
-                    if(xhr.responseText == "dsuccess") {
+                    if(xhr.responseText == "success") {
                         var message = '<p>操作が成功しました。<p>'+
                             '<div class="modal-footer">'+
                                 '<button id="ensure" data-dismiss="modal" onclick="location.reload();"aria-label="Close" type="button" class="btn btn-custom">確&nbsp;&nbsp;認</button>'+

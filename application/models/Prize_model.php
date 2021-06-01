@@ -47,7 +47,7 @@ class Prize_model extends CI_Model {
         return $query;
     }
 
-    public function change_order($gacha_id=0, $befor=0, $after=0)
+    public function change_order_prize($gacha_id=0, $befor=0, $after=0)
     {
         if($befor<$after)
         {

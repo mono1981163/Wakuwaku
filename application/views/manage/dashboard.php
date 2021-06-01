@@ -32,7 +32,11 @@
             <h2  class="mt-5">ガチャ</h2>
             <ul class="gacha-container">
                 <?php foreach($list as $row) {?>
-                    <?php if($row['status'] == '発売中') {?>
+                    <?php 
+                        $start =strtotime($row['start_date']);
+                        $end = strtotime($row['end_date']);
+                        $current = strtotime(date('Y-m-d h:i:s'));
+                        if($start < $current && $current < $end) {?>
                     <li>
                         <h4><?php echo $row['name']?></h4>
                         <div class="box">

@@ -45,12 +45,18 @@
                 <div class="sale_card">
                     <a href="<?php echo base_url("Gacha/Purchase/gacha_detail/").$row['gacha_id'];?>"><img src="<?= base_url('upload/gacha/').$row['image'];?>" alt=""></a>
                     <h4><?php echo $row['name']?></h4>
-                    <?php if($row['status'] == "近日発売") {?>
-                        <button class="button-green mr-2"><?php echo lang('before_sale')?></button><h5><?php echo substr($row['start_date'], 0, -3)?>~<?php echo substr($row['end_date'],0,-3)?></h5>
-                    <?php } else if($row['status'] == "発売中") {?>
-                        <button class="button-green mr-2"><?php echo lang('on_sale')?></button><h5><?php echo substr($row['start_date'], 0, -3)?>~<?php echo substr($row['end_date'],0,-3)?></h5>
+                    <?php 
+
+                    $start =strtotime($row['start_date']);
+                    $end = strtotime($row['end_date']);
+                    $current = strtotime(date('Y-m-d h:i:s'));
+
+                    if($current < $start) {?>
+                        <button class="button-green mr-2"><?php echo lang('before_sale')?></button><h5><?php echo substr($row['start_date'],0,-3)?>~<?php echo substr($row['end_date'],0,-3)?></h5>
+                    <?php } else if($current > $start && $current < $end) {?>
+                        <button class="button-green mr-2"><?php echo lang('on_sale')?></button><h5><?php echo substr($row['start_date'],0,-3)?>~<?php echo substr($row['end_date'],0,-3)?></h5>
                     <?php } else {?>
-                        <button class="button-green mr-2"><?php echo lang('after_sale')?></button><h5><?php echo substr($row['start_date'], 0, -3)?>~<?php echo substr($row['end_date'],0,-3)?></h5>
+                        <button class="button-green mr-2"><?php echo lang('after_sale')?></button><h5><?php echo substr($row['start_date'],0,-3)?>~<?php echo substr($row['end_date'],0,-3)?></h5>
                     <?php }?>
                     <h4><span class="sale_price font--green"><?php echo $row['price']?></span><span class="font--green"><?php echo lang('money_unit')?></span>/<?php echo lang('times')?></h4>
                 </div>
@@ -68,12 +74,18 @@
                                     <img src="<?= base_url('upload/gacha/').$row['image_sp'];?>" class="gacha_image_sp" alt="">
                                 </a>
                                 <h4><?php echo $row['name']?></h4>
-                                <?php if($row['status'] == "近日発売") {?>
-                                    <button class="button-green mr-2"><?php echo lang('before_sale')?></button><h5><?php echo substr($row['start_date'], 0, -3)?>~<?php echo substr($row['end_date'], 0, -3)?></h5>
-                                <?php } else if($row['status'] == "発売中") {?>
-                                    <button class="button-green mr-2"><?php echo lang('on_sale')?></button><h5><?php echo substr($row['start_date'], 0, -3)?>~<?php echo substr($row['end_date'], 0, -3)?></h5>
+                                <?php 
+                                
+                                $start =strtotime($row['start_date']);
+                                $end = strtotime($row['end_date']);
+                                $current = strtotime(date('Y-m-d h:i:s'));
+
+                                if($current < $start) {?>
+                                    <button class="button-green mr-2"><?php echo lang('before_sale')?></button><h5><?php echo substr($row['start_date'],0,-3)?>~<?php echo substr($row['end_date'],0,-3)?></h5>
+                                <?php } else if($current > $start && $current < $end) {?>
+                                    <button class="button-green mr-2"><?php echo lang('on_sale')?></button><h5><?php echo substr($row['start_date'],0,-3)?>~<?php echo substr($row['end_date'],0,-3)?></h5>
                                 <?php } else {?>
-                                    <button class="button-green mr-2"><?php echo lang('after_sale')?></button><h5><?php echo substr($row['start_date'], 0, -3)?>~<?php echo substr($row['end_date'], 0, -3)?></h5>
+                                    <button class="button-green mr-2"><?php echo lang('after_sale')?></button><h5><?php echo substr($row['start_date'],0,-3)?>~<?php echo substr($row['end_date'],0,-3)?></h5>
                                 <?php }?>
                                 <h4><span class="sale_price font--green"><?php echo $row['price']?></span><span class="font--green"><?php echo lang('money_unit')?></span>/<?php echo lang('times')?></h4>
                             </div>

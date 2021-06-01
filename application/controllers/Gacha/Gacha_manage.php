@@ -69,17 +69,17 @@ class Gacha_manage extends MY_Controller {
             $fileinfo = @getimagesize($_FILES["upload_image"]["tmp_name"]);
             $width = $fileinfo[0];
             $height = $fileinfo[1];
-            // if(($_FILES['upload_image']['size'] >= $maxsize) || ($_FILES['upload_image']['size'] == 0) || $width != "1920" || $height != "1080" ) {
-            //     $new_name = 'file_error';
-            // } else {
-                $extension = (explode(".", $_FILES["upload_image"]["name"]));
-                $new_name = $this->generateRandomString() . '.' . $extension[1];  
+            if(($_FILES['upload_image']['size'] >= $maxsize) || ($_FILES['upload_image']['size'] == 0) || $width != "1920" || $height != "1080" ) {
+                $new_name = 'file_error';
+            } else {
+                $extension = explode(".", $_FILES["upload_image"]["name"]);
+                $new_name = $this->generateRandomString().'.'.$extension[1];  
                 $destination = $path.'/'. $new_name;  
                 if (!file_exists($path)) {
                     mkdir($path, 0777, true);
                 }
                 move_uploaded_file($_FILES['upload_image']['tmp_name'], $destination);  
-            // }
+            }
             return $new_name;  
          }  
     } 
@@ -91,17 +91,17 @@ class Gacha_manage extends MY_Controller {
             $fileinfo = @getimagesize($_FILES["upload_image_sp"]["tmp_name"]);
             $width = $fileinfo[0];
             $height = $fileinfo[1];
-            // if(($_FILES['upload_image_sp']['size'] >= $maxsize) || ($_FILES['upload_image_sp']['size'] == 0) || $width != $height) {
-            //     $new_name = 'file_error';
-            // } else {
-                $extension = (explode(".", $_FILES["upload_image_sp"]["name"]));
-                $new_name = $this->generateRandomString() . '.' . $extension[1];  
+            if(($_FILES['upload_image_sp']['size'] >= $maxsize) || ($_FILES['upload_image_sp']['size'] == 0) || $width != $height) {
+                $new_name = 'file_error';
+            } else {
+                $extension = explode(".", $_FILES["upload_image_sp"]["name"]);
+                $new_name = $this->generateRandomString().'.'.$extension[1];  
                 $destination = $path.'/'. $new_name;  
                 if (!file_exists($path)) {
                     mkdir($path, 0777, true);
                 }
                 move_uploaded_file($_FILES['upload_image_sp']['tmp_name'], $destination);  
-            // }
+            }
             return $new_name;  
          }  
     } 
@@ -158,11 +158,13 @@ class Gacha_manage extends MY_Controller {
             $gacha_image_sp = $this->upload_image_sp($path); 
         } 
         if(($gacha_image != "file_error" && $gacha_image != "") || ($gacha_image_sp != "file_error" && $gacha_image_sp != "") ) { 
+            $start_date = $this->input->post('start_date');
+            $end_date = $this->input->post('end_date');
             $update_data = array(
                 'name'=>$this->input->post('name'),
                 'price'=>$this->input->post('price'),
-                'start_date'=>$this->input->post('start_date'),
-                'end_date'=>$this->input->post('end_date'),
+                'start_date'=>$start_date,
+                'end_date'=>$end_date,
                 'shipping_fee'=>$this->input->post('fee'),
                 'estimated_delivery_time'=>$this->input->post('delivery_time'),
                 'remarks'=>$this->input->post('remarks'),

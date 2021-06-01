@@ -70,7 +70,7 @@ class Payjp extends MY_Controller {
 
             $this->email->set_newline("\r\n");
             $this->email->from('info@wakuwakupon.chu.jp');
-            $this->email->to($this->input->post('email'));
+            $this->email->to($email);
             $this->email->subject($subject);
             $this->email->message($message);
             $res = $this->email->send();

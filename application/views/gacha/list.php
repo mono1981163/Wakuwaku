@@ -13,9 +13,15 @@
                         <img src="<?= base_url('upload/gacha/').$gacha['image_sp'];?>" class="gacha_image_sp" alt="">
                     </a>
                     <h4><?php echo $gacha['name']?></h4>
-                    <?php if($gacha['status'] == "近日発売") {?>
+                    <?php 
+                    
+                    $start =strtotime($gacha['start_date']);
+                    $end = strtotime($gacha['end_date']);
+                    $current = strtotime(date('Y-m-d h:i:s'));
+                    
+                    if($current < $start) {?>
                         <button class="button-green mr-2"><?php echo lang('before_sale')?></button><h5><?php echo substr($gacha['start_date'],0,-3)?>~<?php echo substr($gacha['end_date'],0,-3)?></h5>
-                    <?php } else if($gacha['status'] == "発売中") {?>
+                    <?php } else if($current > $start && $current < $end) {?>
                         <button class="button-green mr-2"><?php echo lang('on_sale')?></button><h5><?php echo substr($gacha['start_date'],0,-3)?>~<?php echo substr($gacha['end_date'],0,-3)?></h5>
                     <?php } else {?>
                         <button class="button-green mr-2"><?php echo lang('after_sale')?></button><h5><?php echo substr($gacha['start_date'],0,-3)?>~<?php echo substr($gacha['end_date'],0,-3)?></h5>

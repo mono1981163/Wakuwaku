@@ -9,14 +9,14 @@
                 <div class="image-region">
                     <img id="output" onclick="gachaImageSet()" src="<?php echo base_url()."upload/gacha/".$gacha_ja['image']?>">
                 </div>
-                <p class="image_limit">縦横比16:9、xxMB以内、解像度1920*1080</p>
+                <p class="image_limit">縦横比16:9、2MB以内、解像度1920*1080</p>
                 <input type="file" id="fileupload" onchange="loadGachaImage(event);" name="upload_image">
             </div>
             <div class="sp_image">
                 <div class="image-region_sp">
                     <img id="output_sp" onclick="gachaImageSet_sp()" src="<?php echo base_url()."upload/gacha/".$gacha_ja['image_sp']?>">
                 </div>
-                <p class="image_limit">縦横比1:1、xxMB以内、解像度1920*1080</p>
+                <p class="image_limit">縦横比1:1、2MB以内</p>
                 <input type="file" id="fileupload_sp" onchange="loadGachaImage_sp(event);" name="upload_image_sp">
             </div>
         </div>
@@ -267,7 +267,7 @@
                             '</div>';
                         launchModal("通知",message,"");
                     } else {
-                        alert("画像の解像度は1920 * 1080で、サイズは3MB未満である必要があります。");
+                        alert("画像の容量とサイズを確認してください。");
                     }
                 } else {
                     
@@ -335,7 +335,7 @@
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     console.log(xhr);
-                    if(xhr.responseText == "dsuccess") {
+                    if(xhr.responseText == "success") {
                         var message = '<p>操作が成功しました。<p>'+
                             '<div class="modal-footer">'+
                                 '<button id="ensure" data-dismiss="modal" onclick="location.reload();"aria-label="Close" type="button" class="btn btn-custom">確&nbsp;&nbsp;認</button>'+
@@ -390,30 +390,29 @@
     }
 
     $( function() {
-    $( "#sortable" ).sortable(
-        {
-        start: function(event, ui) {
-            ui.item.startPos = ui.item.index();
-        },
-    	stop: function(event, ui) {
-            var url='<?php echo base_url()?>Gacha/Prize/change_order';
-            console.log(ui.item.startPos,ui.item.index());
-            $.ajax({
-                url: url,
-                type: 'post',
-                data: {
-                        gacha_id: gacha_id,
-                        before: ui.item.startPos,
-                        after:ui.item.index()
-                },
-                success: function(response) {
-                    window.location.reload();
-                }
-            })
-    	}
-    });
-   
-    $( "#sortable" ).disableSelection();
+        $( "#sortable" ).sortable(
+            {
+            start: function(event, ui) {
+                ui.item.startPos = ui.item.index();
+            },
+            stop: function(event, ui) {
+                var url='<?php echo base_url()?>Gacha/Prize/change_order_prize';
+                console.log(ui.item.startPos,ui.item.index());
+                $.ajax({
+                    url: url,
+                    type: 'post',
+                    data: {
+                            gacha_id: gacha_id,
+                            before: ui.item.startPos,
+                            after:ui.item.index()
+                    },
+                    success: function(response) {
+                        window.location.reload();
+                    }
+                })
+            }
+        });
+        $("#sortable").disableSelection();
     });
     function allowGacha() {
        

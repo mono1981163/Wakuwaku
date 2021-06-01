@@ -1,11 +1,6 @@
 <link rel="stylesheet" href="<?= base_url("assets/css/manage/topimage.css");?>">
 <div class="content">
     <div class="main-content">
-        <!-- <div class="manage-link">
-            <a href="<?php echo base_url('Top_manage');?>"><button type="button" class="btn_menu">トップ編集</button></a>
-            <a href="<?php echo base_url('Gacha/gacha_manage');?>"><button class="btn_menu">ガチャ管理</button></a>
-            <a href="<?php echo base_url('Delivery');?>"><button type="button" class="btn_menu">配送管理</button></a>
-        </div> -->
         <div class="slide-setting">
             <h3 class="mb-3">PCスライドショーの画像の設定</h3>
             <div class="slide_show">
@@ -18,7 +13,7 @@
                             <input id="imageId" type="hidden" max="3" name="id">
                             <input id="fileupload" type="file" name="upload_image" class="image-input pc_image">
                         </div>
-                        <p class="image_limit">縦横比16:9、xxMB以内、解像度1920*1080</p>
+                        <p class="image_limit">縦横比16:9、2MB以内、解像度1920*1080</p>
                         <button type="button" class="btn btn-custom d-block" onclick="uploadFile()">変更</button>
                     <!-- </form> -->
                 </div>
@@ -48,7 +43,7 @@
                             <input id="imageId_sp" type="hidden" max="3" name="id">
                             <input id="fileupload_sp" type="file" name="upload_image" class="image-input sp_image">
                         </div>
-                        <p>写真は1920*1080、2MB以下に制限します。</p>
+                        <p>画像は正4角形、2MB以下に制限します。</p>
                         <button type="button" class="btn btn-custom d-block" onclick="uploadFile_sp()">変更</button>
                     <!-- </form> -->
                 </div>
@@ -92,7 +87,7 @@
         </div>
     </div>
 </div>
-<?php $this->load->view('template/modal.php');?>
+<?php $this->load->view('manage/modal.php');?>
 <script>
     var base_url = "<?php echo base_url();?>";
     $(".output.pc_image").on("click", function () {
@@ -116,38 +111,78 @@
 	    image.src = URL.createObjectURL(event.target.files[0]);
     });
 
-    async function uploadFile() {
+    function uploadFile() {
         try {
             var id = document.getElementById("imageId").value;
             var url = base_url + "Top_manage/slide_image_setting_pc";
             let formData = new FormData(); 
             formData.append("id", id)
             formData.append("upload_image", fileupload.files[0]);
-            let message = await fetch(url, {
-                method: "POST", 
-                body: formData
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    response = JSON.parse(response);
+                    if(response.state=="success") {
+                        var message = '<p>操作が成功しました。<p>'+
+                        '<div class="modal-footer">'+
+                            '<button id="ensure" data-dismiss="modal" aria-label="Close" type="button" class="btn btn-custom">確&nbsp;&nbsp;認</button>'+
+                        '</div>';
+                        launchModal("通知",message,"");
+                        document.getElementById("ensure").addEventListener('click', function() {
+                            
+                        });
+                    } else {
+                        alert("画像の解像度は1920 * 1080で、サイズは2MB未満である必要があります。");
+                    }
+                    
+                },
+                error: function(err) {
+
+                }
             });
-            if(message == "error") {
-                alert("画像の解像度は1920 * 1080で、サイズは2MB未満である必要があります。");
-            }
         } catch(error) {
             console.log(error.message);
         }
     }
-    async function uploadFile_sp() {
+    function uploadFile_sp() {
         try {
             var id = document.getElementById("imageId_sp").value;
             var url = base_url + "Top_manage/slide_image_setting_sp";
             let formData = new FormData(); 
             formData.append("id", id)
             formData.append("upload_image", fileupload_sp.files[0]);
-            let message = await fetch(url, {
-                method: "POST", 
-                body: formData
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    response = JSON.parse(response);
+                    if(response.state=="success") {
+                        var message = '<p>操作が成功しました。<p>'+
+                        '<div class="modal-footer">'+
+                            '<button id="ensure" data-dismiss="modal" aria-label="Close" type="button" class="btn btn-custom">確&nbsp;&nbsp;認</button>'+
+                        '</div>';
+                        launchModal("通知",message,"");
+                        document.getElementById("ensure").addEventListener('click', function() {
+                            
+                        });
+                    } else {
+                        alert("画像は正方形、サイズは2MB未満である必要があります。");
+                    }
+                    
+                },
+                error: function(err) {
+
+                }
             });
-            if(message == "error") {
-                alert("画像の解像度は600 * 600で、サイズは3MB未満である必要があります。");
-            }
         } catch(error) {
             console.log(error.message);
         }

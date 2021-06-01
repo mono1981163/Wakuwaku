@@ -39,6 +39,9 @@ class Gacha_model extends CI_Model {
         $sql = "SELECT * FROM gachas WHERE gacha_id=".$gacha_id;
         $query = $this->db->query($sql);
         $this->db->delete("gachas");  
+        $sql = "SELECT * FROM gachas_cn WHERE gacha_id=".$gacha_id;
+        $query = $this->db->query($sql);
+        $this->db->delete("gachas_cn");  
         return $query->row()->image;
     } 
 

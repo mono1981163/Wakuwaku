@@ -18,7 +18,7 @@
                     <div class="image-region_sp">
                         <img id="output_sp" onclick="imageSet_sp()" src="">
                     </div>
-                    <p class="image_limit">縦横比1:1、3MB以内、解像度1920*1920</p>
+                    <p class="image_limit">縦横比1:1、2MB以内</p>
                     <input type="file" id="image_sp" onchange="loadImage_sp(event);" name="upload_image_sp">
                     <div class="d-flex">
                         <div class="btn btn-custom" onclick="imageSet_sp();" id="image-set_sp">SP画像設定</div>
@@ -52,7 +52,7 @@
                             <div class="need">販売開始</div>
                         </div>
                         <div class="item-input">
-                            <input type="date" name="start_date"  value="2021-05-01">
+                            <input type="datetime-local" name="start_date"  value="">
                         </div>
                     </div>
                     <div class="form-box">
@@ -60,7 +60,7 @@
                             <div class="need">販売締め切り</div>
                         </div>
                         <div class="item-input">
-                            <input type="date" name="end_date" value="2021-05-25">
+                            <input type="datetime-local" name="end_date" value="">
                         </div>
                     </div>
                     <div class="form-box">
@@ -112,7 +112,7 @@
                             <div class="need">販売開始</div>
                         </div>
                         <div class="item-input">
-                            <input type="date" name="start_date_cn"  value="2021-05-01">
+                            <input type="datetime-local" name="start_date_cn"  value="2021-05-01">
                         </div>
                     </div>
                     <div class="form-box">
@@ -120,7 +120,7 @@
                             <div class="need">販売締め切り</div>
                         </div>
                         <div class="item-input">
-                            <input type="date" name="end_date_cn" value="2021-05-25">
+                            <input type="datetime-local" name="end_date_cn" value="2021-05-25">
                         </div>
                     </div>
                     <div class="form-box">
@@ -213,7 +213,7 @@
                             window.location.href='<?php echo base_url()?>/Gacha/Gacha_manage/edit_gacha/'+response.result;
                         });
                     } else {
-                        alert("画像の解像度は1920 * 1080で、サイズは2MB未満である必要があります。");
+                        alert("画像の容量とサイズを確認してください。");
                     }
                     
                 },

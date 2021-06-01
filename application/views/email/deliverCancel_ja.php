@@ -13,19 +13,19 @@
     </p>
     <p>
         ご購入情報】<br>
-        [注文番号] xxxx<br>
-        [注文日] 2021/06/01 23:59<br>
+        [注文番号]:&nbsp; <?php echo $order_number?><br>
+        [注文日]:&nbsp;<?php echo $date?><br>
         [お支払い方法] クレジットカード<br>
-        [ご注文内容] （ガチャ名）x回数分 xxx円<br>
-        [配送料]xxx円<br>
-        [合計金額] xxx円（税込）
+        [ご注文内容]:&nbsp; （<?php echo $name?>）<?php echo $purchase_times?>回数分 <?php echo $price*$purchase_times?>円<br>
+        [配送料]:&nbsp;<?php echo $fee?>円<br>
+        [合計金額]:&nbsp; <?php echo $amount?>円（税込）
     </p>
     <p>※本メールは送信専用となっている為、決して返信しないで下さい。</p>
     <p>==============================</p>
     <p>株式会社WACTOR<br>
     ワクワクポン運営事務局<br>
     埼玉県北本市東間5-90<br>
-    メールアドレス</p>
+    メールアドレス:&nbsp;<?php echo $email?></p>
     <p>==============================</p><br>
 </body>
 </html>
