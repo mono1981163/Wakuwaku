@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="<?= base_url("assets/css/manage/header.css");?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/manage/common.css');?>">
     <script src="<?= base_url("assets/js/jquery-3.3.1.min.js"); ?>"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.min.js");?>"></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76285976-1"></script>

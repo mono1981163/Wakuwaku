@@ -16,12 +16,11 @@
     <title>ワクワクポン(WakuWakuPon)</title>
     <link rel="icon" href="<?php echo base_url("assets/image/logo_icon.png"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>">
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/swiper-bundle.min.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/header.css");?>">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/main.css");?>">
     <script src="<?php echo base_url("assets/js/jquery-3.3.1.min.js"); ?>"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="<?php echo base_url("assets/js/swiper-bundle.min.js");?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.min.js");?>"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76285976-1"></script>

@@ -103,3 +103,8 @@ label {
 .sp_image {
     width: 45%;
 }
+textarea {
+    display: block;
+    margin: 10px auto;
+    resize: none;
+}

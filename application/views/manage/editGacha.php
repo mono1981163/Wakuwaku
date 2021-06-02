@@ -82,7 +82,8 @@
                         <div class="need">備考</div>
                     </div>
                     <div class="item-input">
-                        <input type="text" name="remarks" value="<?php echo $gacha_ja['remarks']?>">
+                        <!-- <input type="text" name="remarks" value="<?php echo $gacha_ja['remarks']?>"> -->
+                        <textarea name="remarks" id="" cols="40" rows="5"><?php echo $gacha_ja['remarks']?></textarea>
                     </div>
                 </div>
                 <div class="form-box"></div>
@@ -142,18 +143,21 @@
                         <div class="need">備考</div>
                     </div>
                     <div class="item-input">
-                        <input type="text" name="remarks_cn" value="<?php echo $gacha_cn['remarks']?>">
+                        <!-- <input type="text" name="remarks_cn" value="<?php echo $gacha_cn['remarks']?>"> -->
+                        <textarea name="remarks_cn" id="" cols="40" rows="5"><?php echo $gacha_cn['remarks']?></textarea>
                     </div>
                 </div>
                 <div class="form-box"></div>
             </div>
         </div>
         <div class="d-flex">
-            <input type="button" style="margin-top: unset" onclick="gachaSetting();" class="btn btn-custom save_btn" value="臨時保管">
             <?php if($gacha_ja['open_state'] == 0) {?>
+                <input type="button" style="margin-top: unset" onclick="gachaSetting();" class="btn btn-custom save_btn" value="臨時保管">
                 <input type="button" style="margin-top: unset" onclick="allowGacha();" class="btn btn-custom save_btn" value="公開">
+                <input type="button" style="margin-top: unset" onclick="deleteGacha()" class="btn btn-danger save_btn" value="ガチャ削除">
+            <?php } else {?>
+                <input type="button" style="margin-top: unset" onclick="gachaSetting();" class="btn btn-custom save_btn" value="ガチャ変更">
             <?php }?>
-            <input type="button" style="margin-top: unset" onclick="deleteGacha()" class="btn btn-danger save_btn" value="ガチャ削除">
         </div>
         <div class="prize-infor">
             <div class="title mb-3">
@@ -225,7 +229,7 @@
             var end_date = $("input[name=end_date]").val();
             var fee = $("input[name=fee]").val();
             var delivery_time = $("input[name=delivery_time]").val();
-            var remarks = $("input[name=remarks]").val();
+            var remarks = $("textarea[name=remarks]").val();
             var price_cn = $("input[name=price_cn]").val();
             var name_cn = $("input[name=name_cn]").val();
             var image_sp = $("input[name=image_sp]").val();
@@ -233,7 +237,7 @@
             var end_date_cn = $("input[name=end_date_cn]").val();
             var fee_cn = $("input[name=fee_cn]").val();
             var delivery_time_cn = $("input[name=delivery_time_cn]").val();
-            var remarks_cn = $("input[name=remarks_cn]").val();
+            var remarks_cn = $("textarea[name=remarks_cn]").val();
             let formData = new FormData(); 
             formData.append("gacha_id", gacha_id);
             formData.append("price", price);

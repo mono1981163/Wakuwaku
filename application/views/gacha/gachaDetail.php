@@ -1,5 +1,3 @@
-<!-- <link rel="stylesheet" type="text/css" href="<?= base_url('assets/slick/slick.css');?>"/>
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets/slick/slick-theme.css');?>"/> -->
 <link rel="stylesheet" href="<?php echo base_url("assets/css/gacha.css"); ?>">
 <style>
     .select-with-radio{
@@ -12,30 +10,46 @@
         align-items: center;
 
     }
-
+    .item-slide img {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+        display: none;
+    }
+    .modal-header {
+        border-bottom: unset;
+    }
+    .modal {
+        padding-right: 0;
+    }
+    .modal-footer {
+        border-top: unset;
+    }
     .modal-dialog {
         width: 80%;
         top:15%;
     }
-    .slick-slide {
-        max-height: 500px;
-        padding: 0px 20vw;
-        /* width: auto!important; */
-    }
-    .slick-next {
-        right: 10px;
-        z-index: 10;
-    }
-    .slick-prev {
-        left: 10px;
-        z-index: 10;
-    }
-    .slick-prev:before, .slick-next:before {
-        color: #1a202e;
+    .btn-custom {
+        margin: auto;
+        width: auto;
+        min-width: 80px;
+        background-color: #03c9b0;
+        border-color: white;
+        color: #EFFEFF;
     }
     @media (min-width: 576px) {
         .modal-dialog {
-            max-width: unset;
+            max-width: 1000px;
+        }
+    }
+    @media (max-width: 576px) {
+        .modal-dialog {
+            width: 95%;
+            top: 15%;
+            margin: auto;
         }
     }
 </style>
@@ -202,7 +216,7 @@
                     </div>
                     <div class="item-input">
                         <div>
-                            <h4><?php echo $result[0]['remarks']?>かってください</h4>
+                            <h4><?php echo $result[0]['remarks']?></h4>
                         </div>
                     </div>
                 </div>
@@ -287,7 +301,17 @@
         <div class="modal-title font-weight-bold"></div>
       </div>
       <div class="modal-body">
-        
+        <div class="swiper-container swiper3">
+            <div class="swiper-wrapper item-slide">
+
+            </div>
+            <div class="swiper-button-next">
+                <img src="<?php echo base_url('assets/image/top/next.png')?>" alt="">
+            </div>
+            <div class="swiper-button-prev">
+                <img src="<?php echo base_url('assets/image/top/prev.png')?>" alt="">
+            </div>
+        </div>     
       </div>
       <div class="modal-footer">
         <button data-dismiss="modal" aria-label="Close" style="margin: auto" type="button" class="btn btn-custom"><?php echo lang('close');?></button>
@@ -304,24 +328,19 @@
             data: {prize_id: prize_id},
             dataType: 'json',
             success: function(response) {
-                var message = '<div class="autoplay slide-container">';
+                var message = '';
                 response.map(function(item) {
                     var newItem = item.replace(")","");
                     var item_prop = newItem.split(","); 
-                    message += '<img src="<?php echo base_url('upload/item/')?>'+ item_prop[3] +'">'
+                    message += '<div class="swiper-slide"><img src="<?php echo base_url('upload/item/')?>'+ item_prop[4] +'"></div>'
                 });
                 message += '</div>';
-                $('.modal-body').html(message);
+                $('.item-slide').html(message);
                 $("#Modal").modal({
                     backdrop: 'static',
                     keyboard: false
                 });
-                $('.autoplay').slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    autoplay: false,
-                });
-                document.querySelector(".slick-next").click();
+
             }, 
             error: function(err) {
 
@@ -373,4 +392,31 @@
         document.getElementById("amount1").innerHTML = <?php echo $result[0]['price'] ?> * times;
         document.getElementById("times1").innerHTML = times;
     }
+</script>
+<script>
+    var swiper3 = new Swiper(".swiper3", {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        centeredSlides: true,
+        freeMode: false,
+        grabCursor: true,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true
+        },
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        },
+        breakpoints: {
+            200: {
+            slidesPerView: 1
+            }
+        }
+    });
 </script>

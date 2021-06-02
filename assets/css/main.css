@@ -131,6 +131,7 @@ input {
 img {
     outline: none;
     width: 100%;
+    opacity: 0.1;
 }
 .gacha_image_pc {
     display: block!important;

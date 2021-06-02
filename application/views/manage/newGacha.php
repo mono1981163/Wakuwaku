@@ -84,7 +84,8 @@
                             <div>備考</div>
                         </div>
                         <div class="item-input">
-                            <input type="text" name="remarks">
+                            <!-- <input type="text" name="remarks"> -->
+                            <textarea name="remarks" id="" cols="40" rows="5"></textarea>
                         </div>
                     </div>
                     <div class="form-box"></div>
@@ -144,7 +145,8 @@
                             <div>備考</div>
                         </div>
                         <div class="item-input">
-                            <input type="text" name="remarks_cn">
+                            <!-- <input type="text" name="remarks_cn"> -->
+                            <textarea name="remarks_cn" id="" cols="40" rows="5"></textarea>
                         </div>
                     </div>
                     <div class="form-box"></div>
@@ -185,7 +187,12 @@
         var flag = true;
         if($('input[name=name]').val() == '' || $('input[name=start_date]').val() == '' || $('input[name=end_date]').val() == '' || $('input[name=fee]').val() == '' || $('input[name=delivery_time]').val() == '' || 
         $('input[name=price]').val() == '' ) {
-            $("input[name=remarks]").after('<p class="error-txt">必須項目は必ず入力しなければします。<p>');
+            $("textarea[name=remarks]").after('<p class="error-txt">必須項目は必ず入力しなければします。<p>');
+            flag = false;
+        }
+        if($('input[name=name_cn]').val() == '' || $('input[name=start_date_cn]').val() == '' || $('input[name=end_date_cn]').val() == '' || $('input[name=fee_cn]').val() == '' || $('input[name=delivery_time_cn]').val() == '' || 
+        $('input[name=price_cn]').val() == '' ) {
+            $("textarea[name=remarks_cn]").after('<p class="error-txt">必須項目は必ず入力しなければします。<p>');
             flag = false;
         }
         if ($('#image').val() == '' || $('#image_sp').val() == '' ) {
