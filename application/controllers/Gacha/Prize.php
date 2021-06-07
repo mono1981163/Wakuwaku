@@ -128,8 +128,10 @@ class Prize extends MY_Controller {
                 'prize_name_cn'=>$this->input->post('prize_name_cn'),
                 'item_name'=>$this->input->post('item_name'),
                 'item_name_cn'=>$this->input->post('item_name_cn'),
-                // 'stock'=>$this->input->post('stock'),
                 'item_image'=>$item_image,
+                // 
+                'stock'=>$this->input->post('stock'),
+                // 
             );
             $item_data_str = "(".implode(",",$item_data_arr).")";
             $this->Prize_model->insert_single_item($prize_id, $item_data_str);
@@ -208,8 +210,10 @@ class Prize extends MY_Controller {
                 'prize_name_cn'=>$this->input->post('prize_name_cn'),
                 'item_name'=>$this->input->post('item_name'),
                 'item_name_cn'=>$this->input->post('item_name_cn'),
-                // 'stock'=>$this->input->post('stock'),
                 'item_image'=>$item_image,
+                // 
+                'stock'=>$this->input->post('stock'),
+                // 
             );
             $item_data_str = "(".implode(",",$item_data_arr).")";
             $existed_items = $this->Prize_model->get_all_item($prize_id);

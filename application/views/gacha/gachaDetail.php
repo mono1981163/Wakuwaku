@@ -340,7 +340,33 @@
                     backdrop: 'static',
                     keyboard: false
                 });
-
+                setTimeout(() => {
+                    var swiper3 = new Swiper(".swiper3", {
+                        slidesPerView: 1,
+                        spaceBetween: 0,
+                        centeredSlides: true,
+                        freeMode: false,
+                        grabCursor: true,
+                        loop: true,
+                        pagination: {
+                            el: ".swiper-pagination",
+                            clickable: true
+                        },
+                        autoplay: {
+                            delay: 4000,
+                            disableOnInteraction: false
+                        },
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev"
+                        },
+                        breakpoints: {
+                            200: {
+                            slidesPerView: 1
+                            }
+                        }
+                    }); 
+                }, 500);
             }, 
             error: function(err) {
 
@@ -393,30 +419,4 @@
         document.getElementById("times1").innerHTML = times;
     }
 </script>
-<script>
-    var swiper3 = new Swiper(".swiper3", {
-        slidesPerView: 1,
-        spaceBetween: 0,
-        centeredSlides: true,
-        freeMode: false,
-        grabCursor: true,
-        loop: true,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true
-        },
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction: false
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev"
-        },
-        breakpoints: {
-            200: {
-            slidesPerView: 1
-            }
-        }
-    });
-</script>
+

@@ -21,8 +21,6 @@
         <?php if($this->session->userdata('rest_times') == 0){ ?>
             x.style.display="block";
             y.style.display="none";
-            // var msg="<h4>終わりました。</h4>";
-            // launchModal("通知",msg,"<?= base_url('Gacha/Gachaplay/win_prize_list/'.$purchase_id)?>");
         <?php }?>
     });
     function generatePrize() {
@@ -36,7 +34,6 @@
         $.post(base_url+"Gacha/Gachaplay/gacha_replay",
         {
             gacha_id: "<?php echo $gacha_id?>",
-            // purchase_times: "<?php echo $purchase_times?>",
             prize_name: "<?php echo trim($item[$result][0],'(')?>",
             item_name: "<?php echo $item[$result][1]?>",
             img_name: "<?php echo $item[$result][3]?>",

@@ -65,33 +65,38 @@ class Gachaplay extends MY_Controller {
                 $item_count = count($item_list_arr);
                 $result = rand(0,$item_count-1);
                 $item_info_arr = explode(",", $item_list_arr[$result]);
+                // $data['prize_name'] =trim($item_info_arr[0],"()");
+                // $data['prize_name_cn'] =trim($item_info_arr[1],"()");
+                // $data['item_name'] =$item_info_arr[2];
+                // $data['item_name_cn'] =$item_info_arr[3];
+                // $data['item_image'] =trim($item_info_arr[4],"()");
+                // $data['item_image'] =trim($item_info_arr[4],")(");
+                if($this->session->has_userdata('item_list_str'.$gacha_id)) {
+                    $item_list_str = $this->session->userdata('item_list_str'.$gacha_id);
+                } else {
+                    $item_list_str = $pdata[0]['item_list'];
+                }
+                $item_list_arr = explode(")(", $item_list_str);
+                $item_count = count($item_list_arr);
+                $result = rand(0,$item_count-1);
+                $item_info_arr = explode(",", $item_list_arr[$result]);
+                $item_info_arr[5] = $item_info_arr[5]-1;
+                if(($item_info_arr[5]) == "0") {
+                    // unset($item_list_arr[$result]);
+                    array_splice($item_list_arr, $result, 1);
+                } else {
+                    $item_list_arr[$result] = implode(",", $item_info_arr);
+                }
+
                 $data['prize_name'] =trim($item_info_arr[0],"()");
                 $data['prize_name_cn'] =trim($item_info_arr[1],"()");
                 $data['item_name'] =$item_info_arr[2];
                 $data['item_name_cn'] =$item_info_arr[3];
                 $data['item_image'] =trim($item_info_arr[4],"()");
                 $data['item_image'] =trim($item_info_arr[4],")(");
-                // if($this->session->has_userdata('item_list_str'.$gacha_id)) {
-                //     $item_list_str = $this->session->userdata('item_list_str'.$gacha_id);
-                // } else {
-                //     $item_list_str = $pdata[0]['item_list'];
-                // }
-                // $item_list_arr = explode(")(", $item_list_str);
-                // $item_count = count($item_list_arr);
-                // $result = rand(0,$item_count-1);
-                // $item_info_arr = explode(",", $item_list_arr[$result]);
-                // $item_info_arr[2] = $item_info_arr[2]-1;
-                // if(($item_info_arr[2]) == "0") {
-                //     unset($item_list_arr[$result]);
-                // } else {
-                //     $item_list_arr[$result] = implode(",", $item_info_arr);
-                // }
-                // $data['prize_name'] =$item_info_arr[0];
-                // $data['item_name'] =$item_info_arr[1];
-                // $data['item_image'] =trim($item_info_arr[3],"()");
-                // $data['item_image'] =trim($item_info_arr[3],")(");
-                // $item_list_str = implode(")(", $item_list_arr);
-                // $this->session->set_userdata('item_list_str'.$gacha_id, $item_list_str);
+
+                $item_list_str = implode(")(", $item_list_arr);
+                $this->session->set_userdata('item_list_str'.$gacha_id, $item_list_str);
                 $this->Purchase_model->decrease_remainder($purchase_id);
                 $gained_data = array(
                     'user_id' => $user_id,
@@ -114,7 +119,7 @@ class Gachaplay extends MY_Controller {
             // $purchase_id = $this->session->userdata('purchase_id');
             // $gacha_id = $this->Purchase_model->get_gacha_id($purchase_id);
             // $user_id = $this->Purchase_model->get_user_id_from_purchase($purchase_id);
-            // $pdata = $this->Gacha_model->get_gacha_of_purchase($this->session->userdata('purchase_id'));
+            // $pdata = $this->Gacha_model->get_gacha_of_purchase($purchase_id);
             // if($this->session->has_userdata('item_list_str'.$gacha_id)) {
             //     $item_list_str = $this->session->userdata('item_list_str'.$gacha_id);
             // } else {
@@ -124,8 +129,8 @@ class Gachaplay extends MY_Controller {
             // $item_count = count($item_list_arr);
             // $result = rand(0,$item_count-1);
             // $item_info_arr = explode(",", $item_list_arr[$result]);
-            // $item_info_arr[2] = $item_info_arr[2]-1;
-            // if(($item_info_arr[2]) == "0") {
+            // $item_info_arr[5] = $item_info_arr[5]-1;
+            // if(($item_info_arr[5]) == "0") {
             //     unset($item_list_arr[$result]);
             // } else {
             //     $item_list_arr[$result] = implode(",", $item_info_arr);

@@ -140,10 +140,14 @@
                     '<input type="hidden" name="prize_name_cn" value="<?php echo $prize_name_cn?>">'+
                     '<input type="text" name="item_name_cn" value="ITEM A">'+
                 '</div>'+
-                // '<div class="form-group">'+
-                //     '<label for="">在庫数</label>'+
-                //     '<input type="number" name="stock" value="20">'+
-                // '</div>'+
+
+                // 
+                '<div class="form-group">'+
+                    '<label for="">在庫</label>'+
+                    '<input type="number" name="stock" value="20">'+
+                '</div>'+
+                // 
+
                 '<div class="form-group">'+
                     '<label for="">アイテム画像</label>'+
                     '<input type="file" id="itemImage" name="upload_image" value="" onchange="loadItemImage(event);">'+
@@ -151,7 +155,7 @@
                 '<div class="item-photo">'+
                     '<img alt="" id="item-output" onclick="itemImageSet();">'+
                 '</div>'+
-                '<p class="image_limit">縦横比16:9、xxMB以内、解像度1920*1080</p>'+
+                '<p class="image_limit">2MB以内、解像度1920*1080</p>'+
                 '<div class="button-group">'+
                     '<input type="button" data-dismiss="modal" class="btn btn-custom" value="キャンセル">'+
                     '<input type="submit" name="action" class="btn btn-custom" value="追加">'+
@@ -181,7 +185,7 @@
                         document.getElementById("modal-trigger").click();
                         location.reload();
                     } else {
-                        alert("画像の解像度は600 * 600で、サイズは3MB未満である必要があります。");
+                        alert("画像の解像度は1920 * 1080で、サイズは2MB未満である必要があります。");
                     }
                 },
                 error: function(err) {
@@ -199,7 +203,6 @@
             data: {prize_id: prize_id, index: index},
            
             success: function (response) {
-                response = response.slice(1);
                 response = JSON.parse(response);
                 var message = 
                     '<form id="prizeForm" action="" method = "post" onsubmit="event.preventDefault(); itemEdit(this);" enctype="multipart/form-data">'+
@@ -216,10 +219,12 @@
                             '<input type="hidden" name="item_index" value="'+ index +'">'+
                             '<input type="text" name="item_name_cn" value="'+response[3]+'">'+
                         '</div>'+
-                        // '<div class="form-group">'+
-                        //     '<label for="">在庫数</label>'+
-                        //     '<input type="number" name="stock" value="'+response[1]+'">'+
-                        // '</div>'+
+                        // 
+                        '<div class="form-group">'+
+                            '<label for="">在庫数</label>'+
+                            '<input type="number" name="stock" value="'+response[5]+'">'+
+                        '</div>'+
+                        // 
                         '<div class="form-group">'+
                             '<label for="">アイテム画像</label>'+
                             '<input type="file" id="itemImage" name="upload_image" onchange="loadItemImage(event);">'+
@@ -227,7 +232,7 @@
                         '<div class="prize-photo">'+
                             '<img src="<?php echo base_url()?>upload/item/'+ response[4] + '" alt="" id="item-output" onclick="itemImageSet();">'+
                         '</div>'+
-                        '<p class="image_limit">縦横比16:9、xxMB以内、解像度1920*1080</p>'+
+                        '<p class="image_limit"2MB以内、解像度1920*1080</p>'+
                         '<div class="button-group">'+
                             '<input type="button" data-dismiss="modal" class="btn btn-custom" value="キャンセル">'+
                             '<input type="submit" name="action" class="btn btn-custom" value="変更">'+
