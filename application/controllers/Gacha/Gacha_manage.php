@@ -121,7 +121,7 @@ class Gacha_manage extends MY_Controller {
                 'end_date'=>$this->input->post('end_date'),
                 'shipping_fee'=>$this->input->post('fee'),
                 'estimated_delivery_time'=>$this->input->post('delivery_time'),
-                'remarks'=>$this->input->post('remarks'),
+                'remarks'=>str_replace("/","<br>",$this->input->post('remarks')),
                 'image'=>$gacha_image,
                 'image_sp'=>$gacha_image_sp,
             );
@@ -133,7 +133,7 @@ class Gacha_manage extends MY_Controller {
                 'end_date'=>$this->input->post('end_date_cn'),
                 'shipping_fee'=>$this->input->post('fee_cn'),
                 'estimated_delivery_time'=>$this->input->post('delivery_time_cn'),
-                'remarks'=>$this->input->post('remarks_cn'),
+                'remarks'=>str_replace("/","<br>",$this->input->post('remarks_cn')),
                 'image'=>$gacha_image,
                 'image_sp'=>$gacha_image_sp,
             );
@@ -167,7 +167,7 @@ class Gacha_manage extends MY_Controller {
                 'end_date'=>$end_date,
                 'shipping_fee'=>$this->input->post('fee'),
                 'estimated_delivery_time'=>$this->input->post('delivery_time'),
-                'remarks'=>$this->input->post('remarks'),
+                'remarks'=>str_replace("/","<br>",$this->input->post('remarks')),
                 'image'=>$gacha_image,
                 'image_sp'=>$gacha_image_sp,
             );
@@ -179,7 +179,7 @@ class Gacha_manage extends MY_Controller {
                 'end_date'=>$this->input->post('end_date_cn'),
                 'shipping_fee'=>$this->input->post('fee_cn'),
                 'estimated_delivery_time'=>$this->input->post('delivery_time_cn'),
-                'remarks'=>$this->input->post('remarks_cn'),
+                'remarks'=>str_replace("/","<br>",$this->input->post('remarks_cn')),
                 'image'=>$gacha_image,
                 'image_sp'=>$gacha_image_sp,
             );
@@ -232,8 +232,14 @@ class Gacha_manage extends MY_Controller {
     public function change_vogue_gacha() {
         $gacha_id = $this->input->post('id');
         $change_image = $this->input->post('image');
-        if($change_image) {
-            $result = $this->Gacha_model->change_vogue_gacha($gacha_id, $change_image);
+        if(substr($gacha_id,0,1) == '0' ) {
+            if($change_image) {
+                $result = $this->Gacha_model->set_vogue_gacha($change_image);
+            }
+        } else {
+            if($change_image) {
+                $result = $this->Gacha_model->change_vogue_gacha($gacha_id, $change_image);
+            }
         }
     }
     public function allowGacha() {

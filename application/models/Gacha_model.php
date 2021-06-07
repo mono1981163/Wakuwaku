@@ -88,6 +88,12 @@ class Gacha_model extends CI_Model {
         $sql = "UPDATE gachas_cn SET vogue_status = 0 WHERE gacha_id='".$gacha_id."'";
         $this->db->query($sql);
     }
+    public function set_vogue_gacha($change_image) {
+        $sql = "UPDATE gachas SET vogue_status = 1 WHERE image = '".$change_image."'";
+        $this->db->query($sql); 
+        $sql = "UPDATE gachas_cn SET vogue_status = 1 WHERE image = '".$change_image."'";
+        $this->db->query($sql); 
+    }
     public function allowGacha($gacha_id) {
         $sql = "UPDATE gachas SET open_state = 1 WHERE gacha_id='".$gacha_id."'";
         $this->db->query($sql);

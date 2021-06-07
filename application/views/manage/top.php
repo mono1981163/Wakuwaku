@@ -83,6 +83,26 @@
                         </div>
                     </li>
                 <?php }?>
+                <?php if(count($latest) < 3) {
+                    for($i = 0; $i < (3-count($latest)); $i++) {?>
+                        <li class="gacha-item">
+                            <div class="content-container">
+                                <h5>人気ガチャーを設定します。</h5>
+                                <img id="vogue-image0<?php echo $i+1?>" src="<?php echo base_url("assets/image/top/default.png")?>" style="opacity: 0.3" alt="">
+                                <div class="gachalist">
+                                    <label for="">ガチャリスト</label>
+                                    <select name="vogue-gacha" id="vogue0<?php echo $i+1?>" class="vogue-select">
+                                        <?php foreach($gachalist as $gacha) { if (!$gacha['vogue_status'] && $gacha['status']!='発売終了') { ?>
+                                            <option id="<?php echo $gacha['image']?>" value="<?php echo $gacha['name']?>"><?php echo $gacha['name']?></option>
+                                        <?php }}?>
+                                    </select>
+                                    <!-- <input type="date" name="end_date" value="<?php echo $row['end_date']?>"> -->
+                                    <input type="hidden" name="gacha_id" value="0<?php echo $i+1?>">
+                                </div>
+                                <input type="button" class="mt-3 btn btn-custom d-block changeVogue" value="変更">
+                            </div>
+                        </li>
+                <?php }}?>
             </ul>
         </div>
     </div>

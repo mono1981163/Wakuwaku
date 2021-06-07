@@ -14,6 +14,7 @@
     <meta property="og:description" content="">
     <meta property="og:site_name" content="限定グッズのカプセルプライズ　ウェブポン">
     <title></title>
+    <link rel="icon" href="<?php echo base_url("assets/image/logo_icon.png"); ?>">
     <link rel="stylesheet" href="<?= base_url("assets/css/bootstrap.min.css"); ?>">
     <link rel="stylesheet" href="<?= base_url("assets/css/manage/header.css");?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/manage/common.css');?>">

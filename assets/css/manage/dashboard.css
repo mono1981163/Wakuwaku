@@ -6,7 +6,7 @@
 }
 .record > p {
     margin: 5px 30px;
-    background-color: #1a202e;
+    background-color: #03C9B0;
     color: white;
 }
 .record > div {
@@ -28,7 +28,6 @@ ul.gacha-container {
 ul.gacha-container li {
     flex-basis: 32%;
     -ms-flex-preferred-size: 32%;
-    /* margin: auto; */
     margin-top: 10px;
     margin-bottom: 10px;
 }

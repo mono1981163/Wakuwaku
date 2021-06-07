@@ -12,7 +12,7 @@ p {
 }
 
 .tablink {
-    background-color: #1a202e;
+    background-color: #03c9b0;
     float: left;
     border: none;
     outline: none;
@@ -25,8 +25,8 @@ p {
 }
 .focused.tablink{
     color: #1a202e;
-    border-right: #1a202e outset 4px;
-    border-bottom: #1a202e outset 4px;
+    border-right: #03c9b0 outset 4px;
+    border-bottom: #03c9b0 outset 4px;
     border-top: #EFFEFF outset 1px;
     border-left: #EFFEFF outset 1px;
     outline: none;
@@ -190,8 +190,8 @@ button.focused .a-border::after {
   font-weight: bold;
 }
 #gachaid {
-  background-color: #1a202e;
-  color: white;
+  background-color: #03c9b0;
+  color: black;
   width: 200px;
   height: 38px;
   border-radius: 3px;
@@ -203,6 +203,10 @@ button.focused .a-border::after {
 }
 .input_contain .link_color_green {
   margin-left: 5px;
+}
+.btn-danger {
+  background-color: #03c9b0;
+  border-color: #03c9b0;
 }
 .input_area {
   border: #DCEBE8 1px solid;
