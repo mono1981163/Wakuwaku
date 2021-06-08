@@ -192,8 +192,88 @@ class Prize extends MY_Controller {
         }
        
     }
+    function updateString($S, $A, $B)
+    {
+    
+        $l = strlen($A);
+    
+        // Iterate through all positions i
+        for ($i = 0; $i + $l <= strlen($S); $i++) 
+        {
+    
+            // Current sub-string of length = len(A) = len(B)
+            $curr = substr($S, $i, $i + $l);
+            // If current sub-string gets equal to A or B
+            if (strcmp($curr, $A) == 0)
+            {
+                // Update S after replacing A
+                $new_string = substr($S, 0, $i).$B.substr($S, $i + $l, strlen($S));
+                $S = $new_string;
+                $i += $l - 1;
+            }
+            // else 
+            // {
+            //     // Update S after replacing B
+            //     $new_string = substr($S, 0, $i).$A.substr($S, $i + $l, strlen($S));
+            //     $S = $new_string;
+            //     $i += $l - 1;
+            // }
+        }
+    
+        // Return the updated string
+        return $S;
+    }
     public function change_order_item() {
-
+        $prize_id  = $_POST['prize_id'];
+        $before = $_POST['before'];
+        $after = $_POST['after'];
+        $existed_items = $this->Prize_model->get_all_item($prize_id);
+        $occur = 0;
+        for ($i = 0; $i < strlen($existed_items); $i++) { 
+            if ($existed_items[$i] == "(") { 
+                $occur += 1; 
+            } 
+            if ($occur == $before+1) {
+                $start = $i;
+                break;
+            };
+        } 
+        $occur = 0;
+        for ($i = 0; $i < strlen($existed_items); $i++) { 
+            if ($existed_items[$i] == ")") { 
+                $occur += 1; 
+            } 
+            if ($occur == $before+1) {
+                $end = $i;
+                break;
+            };
+        }
+        $before_item = substr($existed_items,$start,$end-$start+1);
+        $occur = 0;
+        for ($i = 0; $i < strlen($existed_items); $i++) { 
+            if ($existed_items[$i] == "(") { 
+                $occur += 1; 
+            } 
+            if ($occur == $after+1) {
+                $first = $i;
+                break;
+            };
+        } 
+        $occur = 0;
+        for ($i = 0; $i < strlen($existed_items); $i++) { 
+            if ($existed_items[$i] == ")") { 
+                $occur += 1; 
+            } 
+            if ($occur == $after+1) {
+                $last = $i;
+                break;
+            };
+        }
+        $after_item = substr($existed_items,$first,$last-$first+1);
+        // $edited_items = $this->updateString($existed_items, $before_item, $after_item);
+        $new_string = substr($existed_items, 0, $start).$after_item.substr($existed_items, $end+1, strlen($existed_items));
+        $edited_items = substr($new_string, 0, $first).$before_item.substr($new_string, $last+1, strlen($new_string));
+        $this->Prize_model->update_single_item($prize_id, $edited_items);
     }
     public function update_single_item() {
         $prize_id = $this->input->post('prize_id');

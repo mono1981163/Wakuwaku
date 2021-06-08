@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="mt-3">
                                     <h4>アイテム名: <?php echo trim($item[2],"(");?></h4>
-                                    <!-- <h5 class="mt-3">在庫: <?php echo $item[2];?></h5> -->
+                                    <!-- <h5 class="mt-3">当選率(%): <?php echo $item[2];?></h5> -->
                                 </div>
                             </div>
                             <div class='button-group mb-4'>
@@ -143,7 +143,7 @@
 
                 // 
                 '<div class="form-group">'+
-                    '<label for="">在庫</label>'+
+                    '<label for="">当選率(%)</label>'+
                     '<input type="number" name="stock" value="20">'+
                 '</div>'+
                 // 
@@ -221,7 +221,7 @@
                         '</div>'+
                         // 
                         '<div class="form-group">'+
-                            '<label for="">在庫数</label>'+
+                            '<label for="">当選率(%)</label>'+
                             '<input type="number" name="stock" value="'+response[5]+'">'+
                         '</div>'+
                         // 
@@ -305,4 +305,29 @@
         var image = document.getElementById('item-output');
 	    image.src = URL.createObjectURL(event.target.files[0]);
     }
+    $( function() {
+        $( "#sortable" ).sortable(
+            {
+            start: function(event, ui) {
+                ui.item.startPos = ui.item.index();
+            },
+            stop: function(event, ui) {
+                var url='<?php echo base_url()?>Gacha/Prize/change_order_item';
+                console.log(ui.item.startPos,ui.item.index());
+                $.ajax({
+                    url: url,
+                    type: 'post',
+                    data: {
+                            prize_id: prize_id,
+                            before: ui.item.startPos,
+                            after:ui.item.index()
+                    },
+                    success: function(response) {
+                        window.location.reload();
+                    }
+                })
+            }
+        });
+        $("#sortable").disableSelection();
+    });
 </script>
