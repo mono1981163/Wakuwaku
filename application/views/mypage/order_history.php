@@ -43,7 +43,7 @@
                                     <h5><?php echo lang('number_of_purchase')?>：<?php echo $purchase['purchase_times']?>/<span class="font--red"><?php echo lang('remain')?>:<?php echo $purchase['remainder']?><?php echo lang('times')?></span>&nbsp;&nbsp;
                                         <?php if($purchase['remainder'] != 0) {?>
                                             <span class="font--green link_color_green" onclick="document.getElementById('playForm').submit();"><?php echo lang('turn_gacha')?></span>
-                                            <form id="playForm" action="<?php echo base_url('Gacha/Gachaplay/play')?>" method="post" enctype="multipart/form-data">
+                                            <form id="playForm" action="<?php echo base_url('Gacha/Gachaplay/play')?>" method="get" enctype="multipart/form-data">
                                                 <input type="hidden" name="play" value="<?php echo $purchase['gacha_id']?>">
                                                 <input type="hidden" name="is_play" value="no">
                                             </form>

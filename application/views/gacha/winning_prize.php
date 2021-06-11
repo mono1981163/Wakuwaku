@@ -27,7 +27,7 @@
                     <div>
                         <p><?php echo lang('remain')?><span class="font--green"><?php echo $remainder_ticket?></span><?php echo lang('times')?></p>
                     </div>
-                    <form id="playForm" action="<?php echo base_url('Gacha/Gachaplay/gacha_conduct')?>" method="post" enctype="multipart/form-data">
+                    <form id="playForm" action="<?php echo base_url('Gacha/Gachaplay/gacha_conduct')?>" method="get" enctype="multipart/form-data">
                         <input type="hidden" name="play" value="<?php echo $gacha_id?>">
                         <input type="hidden" name="is_play" value="ok">
                     </form>

@@ -12,7 +12,7 @@
         <div>
             <h6></h6>
         </div>
-        <form id="playForm" action="<?php echo base_url('Gacha/Gachaplay/play')?>" method="post" enctype="multipart/form-data">
+        <form id="playForm" action="<?php echo base_url('Gacha/Gachaplay/play')?>" method="get" enctype="multipart/form-data">
                 <input type="hidden" name="play" value="<?php echo $gacha_id?>">
                 <input type="hidden" name="is_play" value="ok">
             </form>

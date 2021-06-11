@@ -32,9 +32,9 @@ class Purchase extends MY_Controller {
             $this->session->set_userdata('pre_url',current_url());
             redirect("User/Login");
         }
-        $gacha_id = $_POST['gacha_id'];
-        $purchase_times = $_POST['purchase_times'];
-        $amount = $_POST['amount'];
+        $gacha_id = $_GET['gacha_id'];
+        $purchase_times = $_GET['purchase_times'];
+        $amount = $_GET['amount'];
         $data = $this->Gacha_model->get_single_gacha_with_prizes($gacha_id);
         $data[0]['purchase_times'] = $purchase_times;
         $data[0]['amount'] = $amount;

@@ -37,7 +37,7 @@
                     <h3 class="text-center"><?php echo lang('purchase_complete_text2');?></h3>
                 </div>
             </div>
-            <form id="playForm" action="<?php echo base_url('Gacha/Gachaplay/gacha_conduct')?>" method="post" enctype="multipart/form-data">
+            <form id="playForm" action="<?php echo base_url('Gacha/Gachaplay/gacha_conduct')?>" method="get" enctype="multipart/form-data">
                 <input type="hidden" name="play" value="<?php echo $gacha_id?>">
                 <input type="hidden" name="is_play" value="ok">
             </form>

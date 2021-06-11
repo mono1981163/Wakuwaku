@@ -60,7 +60,7 @@
         <div class="ticket_banner">
             <div>
                 <h3><?php echo lang('unused_gacha_ticket')?><span class="font--green big_text"><?php echo $remainder_ticket?></span><span class="font--green"><?php echo lang('times')?></span><?php echo lang('there_is')?></h3>
-                <form id="playForm" action="<?php echo base_url('Gacha/Gachaplay/gacha_conduct')?>" method="post" enctype="multipart/form-data">
+                <form id="playForm" action="<?php echo base_url('Gacha/Gachaplay/gacha_conduct')?>" method="get" enctype="multipart/form-data">
                     <input type="hidden" name="play" value="<?php echo $result[0]['gacha_id']?>">
                     <input type="hidden" name="is_play" value="no">
                 </form>
@@ -138,7 +138,7 @@
                         $current = strtotime(date('Y-m-d h:i:s'));
                         
                         if($start < $current && $current < $end) {?>
-                            <form id="toPay" action="<?php echo base_url('Gacha/Purchase/gacha_purchase')?>" method="post" enctype="multipart/form-data">
+                            <form id="toPay" action="<?php echo base_url('Gacha/Purchase/gacha_purchase')?>" method="get" enctype="multipart/form-data">
                                 <input type="hidden" name="gacha_id" value="<?php echo $result[0]['gacha_id']?>">
                                 <input id="purchase_times" type="hidden" name="purchase_times" value="">
                                 <input id="purchase_amount" type="hidden" name="amount" value="">

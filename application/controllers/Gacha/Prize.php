@@ -192,37 +192,6 @@ class Prize extends MY_Controller {
         }
        
     }
-    function updateString($S, $A, $B)
-    {
-    
-        $l = strlen($A);
-    
-        // Iterate through all positions i
-        for ($i = 0; $i + $l <= strlen($S); $i++) 
-        {
-    
-            // Current sub-string of length = len(A) = len(B)
-            $curr = substr($S, $i, $i + $l);
-            // If current sub-string gets equal to A or B
-            if (strcmp($curr, $A) == 0)
-            {
-                // Update S after replacing A
-                $new_string = substr($S, 0, $i).$B.substr($S, $i + $l, strlen($S));
-                $S = $new_string;
-                $i += $l - 1;
-            }
-            // else 
-            // {
-            //     // Update S after replacing B
-            //     $new_string = substr($S, 0, $i).$A.substr($S, $i + $l, strlen($S));
-            //     $S = $new_string;
-            //     $i += $l - 1;
-            // }
-        }
-    
-        // Return the updated string
-        return $S;
-    }
     public function change_order_item() {
         $prize_id  = $_POST['prize_id'];
         $before = $_POST['before'];

@@ -60,13 +60,13 @@ class Gachaplay extends MY_Controller {
         if(!isset($_POST['play'])) {
             redirect("Gacha/Gachalist");
         } else {
-            $gacha_id = $_POST['play'];
+            $gacha_id = $_GET['play'];
             $user_id = $this->User_model->get_user_id_from_email($this->session->userdata('email'));
             $gacha_detail = $this->Gacha_model->get_single_gacha($gacha_id);
             $data['gacha_id'] = $gacha_detail[0]['gacha_id'];
             $data['price'] = $gacha_detail[0]['price'];
             $data['gacha_name'] = $gacha_detail[0]['name'];
-            if($_POST['is_play'] == "ok") {
+            if($_GET['is_play'] == "ok") {
                 $purchase_id =$this->Purchase_model->get_old_purchase_id($user_id, $gacha_id); 
                 if($purchase_id == null) {
                     redirect("Gacha/Gachalist");

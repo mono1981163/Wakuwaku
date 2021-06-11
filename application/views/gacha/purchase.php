@@ -38,6 +38,7 @@
                     <div class="radio_contain">
                         <input id="credit" type="radio" class="radio" checked value="credit">
                         <label for="credit"><?php echo lang('credit')?></label>
+                        <p id="credit_error" class="error-txt" style="margin-top:0!important; margin-bottom: 0!important;"></p>
                     </div>
                     <div class="pay_contain">
                         <form id="creditForm" action="<?php echo base_url('Gacha/Purchase/pay_confirm')?>" method="post" enctype="multipart/form-data">
@@ -152,7 +153,7 @@
                     $('#creditForm').submit();
                 } else {
                     console.log(response);
-                    $('#credit').text('<p class="error-txt"><?php echo lang('card_information_error')?></p>');
+                    $('#credit_error').text('<?php echo lang('card_information_error')?>');
                 };
             });
         })
