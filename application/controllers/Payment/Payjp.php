@@ -65,7 +65,7 @@ class Payjp extends MY_Controller {
             $data['amount'] = $amount;
             $data['price'] = $price;
             $data['email'] = 'info@wakuwakupon.chu.jp';
-            $subject = "タイトル：【ワクワクポン】ご購入ありがとうございます";
+            $subject = "【ワクワクポン】ご購入ありがとうございます";
             $message = $this->load->view("email/purchaseEnd_ja.php",$data,TRUE);
 
             $this->email->set_newline("\r\n");

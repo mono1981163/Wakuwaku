@@ -64,7 +64,7 @@ class Univapay extends MY_Controller {
             $data['amount'] = $amount;
             $data['price'] = $price;
             $data['email'] = 'info@wakuwakupon.chu.jp';
-            $subject = "标题：[Waku Waku Pon]谢谢您的购买。";
+            $subject = "[Waku Waku Pon]谢谢您的购买。";
             $message = $this->load->view("email/purchaseEnd_cn.php",$data,TRUE);
 
             $this->email->set_newline("\r\n");

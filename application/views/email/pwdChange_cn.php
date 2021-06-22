@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <p>【本文】</p>
     <p>感谢您使用Waku Waku Pon。</p>
     <p>密码更改完成。</p>
     <p>※お心当たりがない場合は以下へお問い合わせくださいませ。<br>

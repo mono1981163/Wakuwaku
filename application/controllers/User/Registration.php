@@ -100,10 +100,10 @@ class Registration extends MY_Controller {
                     $data['verification_key'] = $verification_key;
                     $data['email'] = 'info@wakuwakupon.chu.jp';
                     if($country == "日本") {
-                        $subject = "タイトル：【ワクワクポン】新規会員登録ありがとうございます";
+                        $subject = "【ワクワクポン】新規会員登録ありがとうございます";
                         $message = $this->load->view("email/register_ja.php",$data,TRUE);
                     }else {
-                        $subject = "标题：[Waku Waku Pon]感谢您注册为新会员。";
+                        $subject = "[Waku Waku Pon]感谢您注册为新会员。";
                         $message = $this->load->view("email/register_cn.php",$data,TRUE);
                     }
                     $this->email->set_newline("\r\n");
@@ -129,6 +129,9 @@ class Registration extends MY_Controller {
         $verification_key = $veri_key;
         if ($this->User_model->verify_email($verification_key)) {
             $data['message'] = '<p align="center">メールアドレスが正常に確認され、ログインできるようになりました</p>';
+            if($this->session->userdata('site_lang') == "chinese") {
+                $data['message'] = '<p align="center">メールアドレスが正常に確認され、ログインできるようになりました</p>';
+            }
         } else {
             $data['message'] = '<p align="center">無効なリンク</p>';
         }

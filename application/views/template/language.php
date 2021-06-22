@@ -22,8 +22,8 @@
     err_pass_empty['japanese'] = "パスワードが必要。";
     err_pass_empty['chinese'] = "要求输入密码。";
     var err_pass_wrong = [];
-    err_pass_wrong['japanese'] = "パスワードは少なくとも8座はする必要があります。";
-    err_pass_wrong['chinese'] = "密码必须至少8位数字。";
+    err_pass_wrong['japanese'] = "パスワードは半角英数8文字以上で入力する必要があります。";
+    err_pass_wrong['chinese'] = "密码必须至少为8个字母数字字符。";
     var m_email_exist = [];
     m_email_exist['japanese'] = "既に存在するメールアドレスです。";
     m_email_exist['chinese'] = "已经存在的电子邮件地址。";

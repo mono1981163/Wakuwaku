@@ -11,13 +11,12 @@ class Purchase extends MY_Controller {
         $this->load->library('encryption');
     }
     public function gacha_detail($gacha_id) {
-        if (!$this->session->has_userdata('email')) {
-            $this->session->set_userdata('pre_url',current_url());
-            redirect("User/Login");
+        $data['remainder_ticket'] = null;
+        if ($this->session->has_userdata('email')) {
+            $user_id = $this->User_model->get_user_id_from_email($this->session->userdata('email'));
+            $data['remainder_ticket'] = $this->Purchase_model->get_remainder_ticket_sum($user_id, $gacha_id);
         }
         $data['result']= $this->Gacha_model->get_single_gacha_with_prizes($gacha_id);
-        $user_id = $this->User_model->get_user_id_from_email($this->session->userdata('email'));
-        $data['remainder_ticket'] = $this->Purchase_model->get_remainder_ticket_sum($user_id, $gacha_id);
         $data['latest'] = $this->Gacha_model->get_latest_gacha();
 
 		$currentURL = current_url();

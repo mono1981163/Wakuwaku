@@ -245,19 +245,24 @@
             country = $(".check-country input[type='radio']:checked").val();
             $("#ensureName").text(surname1 + " " + name1 + "(" + surname2 + " " + name2 + ")");
             $("#ensurePhone").text(phonenumber);
-            $("#ensureAddress").append("<p>〒"+zip_code+"</p><p>"+addr3+" "+addr4+"</p><p>"+addr6+"</p>")
+            document.getElementById("ensureAddress").innerHTML = "<p>〒"+zip_code+"</p><p>"+addr3+" "+addr4+"</p><p>"+addr6+"</p>";
             $("#ensureEmail").text(email);
 
-            var hiddenPass = password;
-            var passlen = hiddenPass.length;
-            var hiddenLen = Math.floor(passlen*0.65);
-            for(var i=0; i<hiddenLen; i++) {
-                var random = Math.floor(Math.random() * passlen);
-                if(hiddenPass.substring(random, random+1) == "*") {
-                    hiddenLen++;
-                } else {
-                    hiddenPass = hiddenPass.replace(hiddenPass.substring(random, random+1),"*");
-                }
+            // var hiddenPass = password;
+            // var passlen = hiddenPass.length;
+            // var hiddenLen = Math.floor(passlen*0.65);
+            // for(var i=0; i<hiddenLen; i++) {
+            //     var random = Math.floor(Math.random() * passlen);
+            //     if(hiddenPass.substring(random, random+1) == "*") {
+            //         hiddenLen++;
+            //     } else {
+            //         hiddenPass = hiddenPass.replace(hiddenPass.substring(random, random+1),"*");
+            //     }
+            // }
+            var passLen = password.length;
+            var hiddenPass = "";
+            for (var i=0; i<passLen; i++) {
+                hiddenPass = hiddenPass + "*";
             }
 
             $("#ensurePwd").text(hiddenPass);

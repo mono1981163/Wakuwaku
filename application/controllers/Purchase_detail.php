@@ -79,11 +79,11 @@ class Purchase_detail extends MY_Controller {
         $this->email->set_mailtype("html");
 
         if($country == "日本") {
-            $subject = 'タイトル：【ワクワクポン】商品を発送いたしました';
+            $subject = '【ワクワクポン】商品を発送いたしました';
             $data['name'] = $purchase_info[0]['ja_name'];
             $message = $this->load->view("email/deliverNotice_ja.php",$data,TRUE); 
         } else {
-            $subject = '标题：[WakuWakuPon]该产品已经发货。';
+            $subject = '[WakuWakuPon]该产品已经发货。';
             $data['name'] = $purchase_info[0]['cn_name'];
             $message = $this->load->view("email/deliverNotice_cn.php",$data,TRUE);
         }
@@ -133,7 +133,7 @@ class Purchase_detail extends MY_Controller {
         $this->email->set_mailtype("html");
 
         if($country == "日本") {
-            $subject = 'タイトル：【ワクワクポン】キャンセル通知';
+            $subject = '【ワクワクポン】キャンセル通知';
             $data['price']=$purchase_info[0]['ja_price'];
             $data['fee']=$purchase_info[0]['ja_fee'];
             $data['name']=$purchase_info[0]['ja_name'];

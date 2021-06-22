@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <p>【本文】</p>
     <p>购买者</p>
     <p>感谢您使用Waku Waku Pon。<br>
     将通知您的购买已经从下面的内容完成。</p>

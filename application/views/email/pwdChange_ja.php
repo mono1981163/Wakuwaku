@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <p>【本文】</p>
     <p>ワクワクポンのご利用ありがとうございます。</p>
     <p>パスワードの変更が完了しました。</p>
     <p>※お心当たりがない場合は以下へお問い合わせくださいませ。<br>

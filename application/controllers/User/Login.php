@@ -101,10 +101,10 @@ class Login extends MY_Controller {
             $data['email'] = 'info@wakuwakupon.chu.jp';
             $this->User_model->update_password($email, $password);
             if($country == "日本") {
-                $subject = "タイトル：【ワクワクポン】パスワードが変更されました";
+                $subject = "【ワクワクポン】パスワードが変更されました";
                 $message = $this->load->view("email/pwdChange_ja.php",$data,TRUE);
             }else {
-                $subject = "标题：[Waku Waku Pon]密码已更改";
+                $subject = "[Waku Waku Pon]密码已更改";
                 $message = $this->load->view("email/pwdChange_cn.php",$data,TRUE);
             }
             $config = array(

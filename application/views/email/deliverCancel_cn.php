@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <p>【本文】</p>
     <p>感谢您使用Waku Waku Pon。</p>
     <p>由于难以提供产品，我们决定取消以下订单信息。<br>
         不便之处，敬请见谅。

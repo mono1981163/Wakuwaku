@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <p>【本文】</p>
     <p>ワクワクポンのご利用ありがとうございます。<br>
     ※会員登録はまだ完了しておりません。</p>
     <p>以下のURLをクリックして会員登録の完了をお願いいたします。</p>

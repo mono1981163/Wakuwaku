@@ -64,14 +64,14 @@
                     </a>
                 </div>
                 <div>
-                    <a href="<?php echo base_url("Guide");?>">
+                    <a href="#">
                         <h5><?php echo lang('user_guide');?></h5>
                     </a>
                 </div>
             </div>
-            <div class="language_switch">
+            <div class="language_switch" onclick="window.location.href='<?php echo base_url('Welcome/switchLang');?>'">
                 <img src="<?php echo base_url('assets/image/language.svg')?>" class="world" alt="">
-                <a href="<?php echo base_url("Welcome/switchLang");?>"><h6><?php echo lang('language')?></h6></a>
+                <h6><?php echo lang('language')?></h6>
             </div>
             <div class="menu-trigger sp" id="trigger" onclick="event.stopPropagation();">
                 <div class="bar1"></div>
@@ -82,7 +82,7 @@
     </header>
     <div id="myNav" class="menu_sp">    
         <a href="<?php echo base_url("Gacha/Gachalist");?>"><h5><?php echo lang('gacha_list');?></h5></a>
-        <a href="<?php echo base_url("Guide");?>"><h5><?php echo lang('user_guide');?></h5></a>
+        <a href="#"><h5><?php echo lang('user_guide');?></h5></a>
         <?php if ($this->session->userdata('email')) {?> 
             <a href="<?php echo base_url("Mypage/Detail");?>"><h5><?php echo lang('account_info');?></h5></a>
             <a href="<?php echo base_url("Mypage/Detail/order_history");?>"><h5><?php echo lang('order_history');?></h5></a>

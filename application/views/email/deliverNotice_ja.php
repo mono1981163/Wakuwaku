@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <p>【本文】</p>
     <p>ご購入者様</p>
     <p>この度はワクワクポンのご利用いただきまして、誠にありがとうございます。</p>
     <p>お買い上げいただきました商品の発送が完了いたしました。</p>
