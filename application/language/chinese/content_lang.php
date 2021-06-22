@@ -162,6 +162,7 @@ $lang['dispatch'] = '发货完成';
 
 // ========================       gacha list and gacha detail     ========================== //
 
+$lang['purchase_process'] = '购买程序';
 $lang['select_times'] = '选择的次数';
 $lang['before_sale'] = '即将推出';
 $lang['on_sale'] = '现在发售';

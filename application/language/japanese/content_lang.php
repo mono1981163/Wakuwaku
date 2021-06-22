@@ -158,7 +158,7 @@ $lang['dispatch'] = '発送完了';
 // ========================       gacha list and gacha detail   ========================== //
 
 $lang['select_times'] = '回数を選ぶ';
-$lang['purchase_process'] = '购买程序';
+$lang['purchase_process'] = '購入手続きを進める';
 $lang['before_sale'] = '近日発売';
 $lang['on_sale'] = '発売中';
 $lang['after_sale'] = '販売終了';

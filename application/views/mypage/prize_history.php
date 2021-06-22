@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="right_content">
-                <h1 class="text-left"><?php echo $gachaData[0]['name']?></h1>
+                <h1><?php echo $gachaData[0]['name']?></h1>
                 <h4><?php echo lang('win_prize')?></h4>
                 <div class="purchase-detail">
                     <?php foreach($items as $purchase) {?>
@@ -68,7 +68,7 @@
                         </h5>
                         <h5><?php echo lang('price')?>:<?php echo $gachaData[0]['price']?>/<?php echo lang('delivery_fee')?>:<?php echo $gachaData[0]['shipping_fee']?></h5>
                         <h5><?php echo lang('purchase_amount')?>：<?php echo $purchaseData[0]['amount']?></h5>
-                        <h5><?php echo lang('order_number')?>：<?php echo "**************"?></h5>
+                        <h5><?php echo lang('order_number')?>：<?php echo $purchaseData[0]['order_number']?></h5>
                         <h5 class="font--green link_color_green" onclick="window.location.href='<?php echo base_url('Gacha/Purchase/gacha_detail/').$gachaData[0]['gacha_id']?>'"><?php echo lang('gacha_sale_view')?></h5>
                     </div>
                 </div>

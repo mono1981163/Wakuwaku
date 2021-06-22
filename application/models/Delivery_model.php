@@ -3,14 +3,14 @@
 class Delivery_model extends CI_Model {
     public function getAllPurchase($limit, $start, $select) {
         if($select == "all"){
-            $this->db->select('p.gacha_id, p.purchase_id, p.customer_id, p.purchase_date, p.delivery_state, g.name, g.price, p.method, g.end_date, p.shipment_date');
+            $this->db->select('p.gacha_id, p.purchase_id, p.customer_id, p.order_number, p.purchase_date, p.delivery_state, g.name, g.price, p.method, g.end_date, p.shipment_date');
             $this->db->from('purchase p'); 
             $this->db->join('gachas g', 'p.gacha_id=g.gacha_id', 'left');
             $this->db->limit($limit, $start);
             $this->db->order_by('purchase_id','asc');
         }
         else {
-            $this->db->select('p.gacha_id, p.purchase_id, p.customer_id, p.purchase_date, p.delivery_state, g.name, g.price, p.method, g.end_date, p.shipment_date');
+            $this->db->select('p.gacha_id, p.purchase_id, p.customer_id, p.order_number, p.purchase_date, p.delivery_state, g.name, g.price, p.method, g.end_date, p.shipment_date');
             $this->db->from('purchase p'); 
             $this->db->join('gachas g', 'p.gacha_id=g.gacha_id', 'left');
             $this->db->where('g.gacha_id=' .$select);
@@ -22,7 +22,7 @@ class Delivery_model extends CI_Model {
     }
     public function getNotSendPurchase($limit, $start, $select) {
         if($select == "all"){
-            $this->db->select('p.gacha_id, p.purchase_id, p.customer_id, p.purchase_date, p.delivery_state, g.name, g.price, p.method, g.end_date, p.shipment_date');
+            $this->db->select('p.gacha_id, p.purchase_id, p.customer_id, p.order_number, p.purchase_date, p.delivery_state, g.name, g.price, p.method, g.end_date, p.shipment_date');
             $this->db->from('purchase p'); 
             $this->db->join('gachas g', 'p.gacha_id=g.gacha_id', 'left');
             $this->db->where("delivery_state='未発送'");
@@ -30,7 +30,7 @@ class Delivery_model extends CI_Model {
             $this->db->order_by('purchase_id','asc');
         }
         else {
-            $this->db->select('p.gacha_id, p.purchase_id, p.customer_id, p.purchase_date, p.delivery_state, g.name, g.price, p.method, g.end_date, p.shipment_date');
+            $this->db->select('p.gacha_id, p.purchase_id, p.customer_id, p.order_number, p.purchase_date, p.delivery_state, g.name, g.price, p.method, g.end_date, p.shipment_date');
             $this->db->from('purchase p'); 
             $this->db->join('gachas g', 'p.gacha_id=g.gacha_id', 'left');
             $this->db->where("delivery_state='未発送' and g.gacha_id=" .$select);
@@ -42,7 +42,7 @@ class Delivery_model extends CI_Model {
     }
     public function getCompletePurchase($limit, $start, $select) {
         if($select == "all") {
-            $this->db->select('p.gacha_id, p.purchase_id, p.customer_id, p.purchase_date, p.delivery_state, g.name, g.price, p.method, g.end_date, p.shipment_date');
+            $this->db->select('p.gacha_id, p.purchase_id, p.customer_id, p.order_number, p.purchase_date, p.delivery_state, g.name, g.price, p.method, g.end_date, p.shipment_date');
             $this->db->from('purchase p'); 
             $this->db->join('gachas g', 'p.gacha_id=g.gacha_id', 'left');
             $this->db->where("delivery_state='発送完了'");
@@ -50,7 +50,7 @@ class Delivery_model extends CI_Model {
             $this->db->order_by('purchase_id','asc');
         }
         else {            
-            $this->db->select('p.gacha_id, p.purchase_id, p.customer_id, p.purchase_date, p.delivery_state, g.name, g.price, p.method, g.end_date, p.shipment_date');
+            $this->db->select('p.gacha_id, p.purchase_id, p.customer_id, p.order_number, p.purchase_date, p.delivery_state, g.name, g.price, p.method, g.end_date, p.shipment_date');
             $this->db->from('purchase p'); 
             $this->db->join('gachas g', 'p.gacha_id=g.gacha_id', 'left');
             $this->db->where("delivery_state='発送完了' and g.gacha_id=" .$select);

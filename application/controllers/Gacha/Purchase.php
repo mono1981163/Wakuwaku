@@ -32,6 +32,9 @@ class Purchase extends MY_Controller {
             $this->session->set_userdata('pre_url',current_url());
             redirect("User/Login");
         }
+        if (!isset($_GET['gacha_id'])) {
+            redirect("Gacha/Gachalist");
+        }
         $gacha_id = $_GET['gacha_id'];
         $purchase_times = $_GET['purchase_times'];
         $amount = $_GET['amount'];
@@ -52,6 +55,9 @@ class Purchase extends MY_Controller {
         if (!$this->session->has_userdata('email')) {
             $this->session->set_userdata('pre_url',current_url());
             redirect("User/Login");
+        }
+        if (!isset($_POST['gacha_id'])) {
+            redirect("Gacha/Gachalist");
         }
         $gacha_id = $_POST['gacha_id'];
         $data = $this->Gacha_model->get_single_gacha_with_prizes($gacha_id);

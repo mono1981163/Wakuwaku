@@ -51,7 +51,7 @@
                             </div>
                             <div class="inner-box">
                                 <h4 class="need" for="payjp_cardNumber"><?php echo lang('card_number')?></h4>
-                                <input id="payjp_cardNumber" name="cardnumber" value="" class="payjp_input_text" type="tel" autocomplete="off" placeholder="例：4444 5555 6666 7777" maxlength="19" pattern="([0-9]| )*">
+                                <input id="payjp_cardNumber" name="cardnumber" value="" class="payjp_input_text" type="tel" autocomplete="off" placeholder="例：4444 5555 6666 7777" pattern="([0-9]| )*">
                                 <input name="card_token" type="hidden">
                                 <input name="purchase_times" type="hidden" value="<?php echo $purchase_times?>">
                                 <input name="amount" type="hidden" value="<?php echo $amount?>">

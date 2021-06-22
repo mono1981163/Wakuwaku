@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="main-content">
-        <h1 class="text-left"><?php echo lang('purchase_detail_confirmation')?></h1>
+        <h1><?php echo lang('purchase_detail_confirmation')?></h1>
         <div class="basic-content payconfirm">
             <div class="pay_info">
                 <div class="part">
@@ -47,9 +47,9 @@
                 <div class="part">
                     <div class="payment">
                         <h3><?php echo lang('payment_info')?></h3>
-                        <img src="<?php echo base_url('assets/image/purchase/visa.png')?>" alt="">
+                        <img id="cardImage" src="" alt="">
                         <h4><?php echo lang('credit')?></h4>
-                        <h4><?php echo $cardnumber?></h4>
+                        <h4 class="card-number"></h4>
                     </div>
                     <div class="address">
                         <h3><?php echo lang('shipping_address')?></h3>
@@ -116,4 +116,78 @@
             }
         });
     }
+    function GetCardType(number) {
+        // visa
+        var re = new RegExp("^4");
+        if (number.match(re) != null)
+            return "Visa";
+
+        // Mastercard
+        re = new RegExp("^5[1-5]");
+        if (number.match(re) != null)
+            return "Mastercard";
+
+        // AMEX
+        re = new RegExp("^3[47]");
+        if (number.match(re) != null)
+            return "AMEX";
+
+        // Discover
+        re = new RegExp("^(6011|622(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[0-1][0-9]|92[0-5]|64[4-9])|65)");
+        if (number.match(re) != null)
+            return "Discover";
+
+        // Diners
+        re = new RegExp("^38");
+        if (number.match(re) != null)
+            return "Diners";
+
+        // Diners - Carte Blanche
+        re = new RegExp("^30[0-5]");
+        if (number.match(re) != null)
+            // return "Diners-Carte";
+            return "Diners";
+
+        // JCB
+        re = new RegExp("^35(2[89]|[3-8][0-9])");
+        if (number.match(re) != null)
+            return "JCB";
+
+        // Visa Electron
+        re = new RegExp("^(4026|417500|4508|4844|491(3|7))");
+        if (number.match(re) != null)
+            return "Visa Electron";
+        return "unknown";
+    }
+    $(document).ready(function() {
+        var cardnumber = "<?php echo $cardnumber?>";
+        var hiddenCard = cardnumber;
+        var passlen = hiddenCard.length;
+        var hiddenLen = Math.floor(passlen*0.7);
+        for(var i=0; i<hiddenLen; i++) {
+            var random = Math.floor(Math.random() * passlen);
+            if(hiddenCard.substring(random, random+1) == "*") {
+                hiddenLen++;
+            } else if(hiddenCard.substring(random, random+1) != "") {
+                hiddenCard = hiddenCard.replace(hiddenCard.substring(random, random+1),"*");
+            }
+        }
+        $('.card-number').text(hiddenCard);
+        var creditNumber = cardnumber.replace(/\s/g, "");
+        var cardType = GetCardType(creditNumber);
+        console.log(cardType);
+        if(cardType == "Visa") {
+            document.getElementById("cardImage").src = "<?php echo base_url('assets/image/purchase/visa.png')?>";
+        } else if(cardType == "Mastercard") {
+            document.getElementById("cardImage").src = "<?php echo base_url('assets/image/purchase/mastercard.png')?>";
+        } else if(cardType == "AMEX") {
+            document.getElementById("cardImage").src = "<?php echo base_url('assets/image/purchase/americanExpress.png')?>";
+        } else if(cardType == "Diners") {
+            document.getElementById("cardImage").src = "<?php echo base_url('assets/image/purchase/dinersClub.png')?>";
+        } else if(cardType == "JCB") {
+            document.getElementById("cardImage").src = "<?php echo base_url('assets/image/purchase/jcb.png')?>";
+        } else {
+            console.log("cardType unknown");
+        }
+    });
 </script>

@@ -67,6 +67,9 @@ class Purchase_model extends CI_Model {
     public function get_old_purchase_id($user_id, $gacha_id) {
         $sql = "SELECT purchase_id, purchase_times FROM purchase WHERE customer_id='".$user_id."' AND gacha_id='".$gacha_id."' AND remainder > 0 LIMIT 1";
         $query = $this->db->query($sql);
+        if ($query->num_rows()<1) {
+            return null;
+        };
         return $query->row()->purchase_id;
     }
     public function get_purchase_deliver_info($purchase_id) {

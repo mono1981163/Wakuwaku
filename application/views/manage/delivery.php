@@ -88,11 +88,10 @@
                 var messages01 = `<table id="table${response.delivery_state}" class="table"><tbody>`;
                 var messages02 = `<option value="all">すべてのガチャ</option>`;
                 response.InboxMessage.forEach(message=>{
-                    console.log(message);
                     messages01 += `<tr><td><div><div class="purchase_state">${message.delivery_state}</div>
                                 <div class="purchase_line" style="display: flex">
                                     <p class="font-weight-bold">注文番号 : &nbsp;</p>
-                                    <span>${message.purchase_id}</span>
+                                    <span>${message.order_number}</span>
                                 </div>
                                 <div style="display: flex">
                                     <p class="font-weight-bold">¥${message.price} -&nbsp;</p>
@@ -118,16 +117,20 @@
                                     <p class="font-weight-bold">最終ガチャ日:&nbsp;</p>
                                         ${message.end_date}
                                 </div>
-                                <div style="display: flex">
-                                    <p class="font-weight-bold">発送日:&nbsp;</p>
-                                        ${message.shipment_date}
-                                </div>
+                                
+
+
+
                             </div>
                         </td>
                         <td>
                             <button class="btn btn-danger btn_detail" onclick="gachaDetail(${message.purchase_id})">注文詳細を見る</button> 
                         </td>
                     </tr>`;
+                    // <div style="display: flex">
+                    //     <p class="font-weight-bold">発送日:&nbsp;</p>
+                    //         ${message.shipment_date}
+                    // </div>
                     if(gacha_id == `${message.gacha_id}`) {
                         messages02 += "";
                     } 

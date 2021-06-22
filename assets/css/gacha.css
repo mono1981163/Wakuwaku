@@ -175,7 +175,9 @@ video {
 .prize-item {
     margin: 30px 10px;
 }
-
+.main-content > h1 {
+    text-align: left;
+}
 @media (max-width: 1367px) {
     .basic-content {
         display: flex;
@@ -191,6 +193,10 @@ video {
     }
     .inner-box {
         margin-top: 25px;
+    }
+    .main-content > h1 {
+        width: 95%;
+        margin: auto;
     }
 }
 @media (max-width: 1200px) {
@@ -296,7 +302,9 @@ video {
     video {
         width: 80%;
     }
-    
+    .main-content > h1 {
+        text-align: center;
+    }
 }
 @media (max-width: 650px) {
     .payconfirm .pay_info, .payconfirm .purchase_box {

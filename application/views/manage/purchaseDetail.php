@@ -10,8 +10,8 @@
 <div class="content">
     <div class="main-content">
         <div class="detail_pid">
-            <p>注文ID:&nbsp;</p>
-            <?php echo $purchase_id;?>
+            <p>注文番号:&nbsp;&nbsp;</p>
+            <?php echo $order_number;?>
         </div>
         <div class="b-t"></div>
         <div class="detail_status">
@@ -19,8 +19,8 @@
         </div>
         <div class="p-status-div">
             <div class="p-status-con">
-                <p>注文ID:&nbsp;</p>
-                <?php echo $purchase_id;?>
+                <p>注文番号:&nbsp;&nbsp;</p>
+                <?php echo $order_number;?>
             </div>
             <div class="p-status-con">
                 <p>最終ガチャ日:&nbsp;</p>

@@ -247,7 +247,20 @@
             $("#ensurePhone").text(phonenumber);
             $("#ensureAddress").append("<p>〒"+zip_code+"</p><p>"+addr3+" "+addr4+"</p><p>"+addr6+"</p>")
             $("#ensureEmail").text(email);
-            $("#ensurePwd").text("***********");
+
+            var hiddenPass = password;
+            var passlen = hiddenPass.length;
+            var hiddenLen = Math.floor(passlen*0.65);
+            for(var i=0; i<hiddenLen; i++) {
+                var random = Math.floor(Math.random() * passlen);
+                if(hiddenPass.substring(random, random+1) == "*") {
+                    hiddenLen++;
+                } else {
+                    hiddenPass = hiddenPass.replace(hiddenPass.substring(random, random+1),"*");
+                }
+            }
+
+            $("#ensurePwd").text(hiddenPass);
             var address = zip_code + "-" +  addr3 +"-" +  addr4 + "-" +"-" +  addr6;
             var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
             var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;

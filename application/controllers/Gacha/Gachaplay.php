@@ -21,10 +21,10 @@ class Gachaplay extends MY_Controller {
         // }
         // $purchase_id = $this->session->userdata('purchase_id');
         // $gacha_id = $this->Purchase_model->get_gacha_id($purchase_id);
-        if(!isset($_POST['play'])) {
+        if(!isset($_GET['play'])) {
             redirect("Gacha/Gachalist");
         } else {
-            $gacha_id = $_POST['play'];
+            $gacha_id = $_GET['play'];
             $user_id = $this->User_model->get_user_id_from_email($this->session->userdata('email'));
             $gacha_detail = $this->Gacha_model->get_single_gacha($gacha_id);
             $data['gacha_id'] = $gacha_detail[0]['gacha_id'];
@@ -57,7 +57,7 @@ class Gachaplay extends MY_Controller {
         // if (!$this->session->has_userdata('purchase_id')) {
         //     redirect("Gacha/Gachalist");
         // }
-        if(!isset($_POST['play'])) {
+        if(!isset($_GET['play'])) {
             redirect("Gacha/Gachalist");
         } else {
             $gacha_id = $_GET['play'];

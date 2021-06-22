@@ -36,6 +36,7 @@ class Purchase_detail extends MY_Controller {
         $data["customer_id"] = $info[0]["customer_id"];
         $data["track_number"] = $info[0]["track_number"];
         $data["manage_memo"] = $info[0]["manage_memo"];
+        $data["order_number"] = $info[0]["order_number"];
 
         $data['country'] = $this->encryption->decrypt($info[0]['country']);
         $data['zip_code'] = $this->encryption->decrypt($info[0]['zip_code']);
