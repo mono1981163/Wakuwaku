@@ -376,10 +376,24 @@
     $(document).ready(function() {
         var times = $('input[type=radio]:checked').val();
         document.getElementById("amount").innerHTML = <?php echo $result[0]['price'] ?> * times;
-        document.getElementById("purchase_times").value = times;
-        document.getElementById("purchase_amount").value = <?php echo $result[0]['price'] ?> * times;
+        <?php
+        $start =strtotime($result['0']['start_date']);
+        $end = strtotime($result['0']['end_date']);
+        $current = strtotime(date('Y-m-d h:i:s'));
+        
+        if($start < $current && $current < $end) {?> 
+            document.getElementById("purchase_times").value = times;
+            document.getElementById("purchase_amount").value = <?php echo $result[0]['price'] ?> * times;
+        <?php }?>
         $('#times').on('DOMSubtreeModified',function(){
-            document.getElementById('purchase_times').value = document.getElementById('times').innerHTML;
+            <?php
+            $start =strtotime($result['0']['start_date']);
+            $end = strtotime($result['0']['end_date']);
+            $current = strtotime(date('Y-m-d h:i:s'));
+            
+            if($start < $current && $current < $end) {?> 
+                document.getElementById('purchase_times').value = document.getElementById('times').innerHTML;
+            <?php }?>
             document.getElementById('purchase_amount').value = document.getElementById('times').innerHTML * <?php echo $result[0]['price']?>;
         })
     });

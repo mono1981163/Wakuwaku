@@ -72,6 +72,9 @@ section {
   position: relative;
   margin: 3rem 0 3rem 0;
 }
+#userGuide {
+  scroll-margin-top: 100px;
+}
 .maxwide {
   max-width: 1200px;
   margin: auto;

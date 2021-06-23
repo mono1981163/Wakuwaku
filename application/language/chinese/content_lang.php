@@ -30,14 +30,14 @@ $lang['gacha_list_view'] = '查看转蛋清单';
 $lang['intro_text1'] = '获得只能在这里获得的限量商品！';
 $lang['intro_text2'] = '';
 $lang['intro_text3'] = 'waku waku pon是';
-$lang['intro_text4_1'] = '由VTuber Production';
+$lang['intro_text4_1'] = '由Vtuber Production';
 $lang['intro_text4_2'] = '操作';
 $lang['intro_text5'] = '这是一个在线gacha服务。';
 $lang['how_to_use'] = "用户指南";
 $lang['howtouse_title1'] = "免费注册";
 $lang['howtouse_text1'] = "首先，注册您的E-mail地址和收货地址！";
 $lang['howtouse_title2'] = "免费会员注册";
-$lang['howtouse_text2_1'] = "选择VTuber嘎查和你喜欢玩买尽可能多的！";
+$lang['howtouse_text2_1'] = "选择Vtuber嘎查和你喜欢玩买尽可能多的！";
 $lang['howtouse_text2_2'] = "※您可以选择信用卡或支付宝作为付款方式。";
 
 $lang['howtouse_title3'] = '玩转蛋';

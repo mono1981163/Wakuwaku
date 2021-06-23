@@ -79,7 +79,7 @@
       <ul>
         <li class="pc"><a href="<?php echo base_url("Mypage/Detail")?>"><h6 class="font--white"><?php echo lang('my_page');?></h6></a></li>
         <li class="pc"><a href="<?php echo base_url("Gacha/Gachalist")?>"><h6 class="font--white"><?php echo lang('gacha_list');?></h6></a></li>
-        <li class="pc"><a href="#"><h6 class="font--white"><?php echo lang('user_guide');?></h6></a></li>
+        <li class="pc"><a href="<?php echo base_url().'#userGuide'?>"><h6 class="font--white"><?php echo lang('user_guide');?></h6></a></li>
         <li><a href="<?php echo base_url("Terms")?>"><h6 class="font--white"><?php echo lang('terms_of_service');?></h6></a></li>
         <li><a href="<?php echo base_url("Privacy")?>"><h6 class="font--white"><?php echo lang('privacy_policy');?></h6></a></li>
         <li><a href="<?php echo base_url("Information")?>"><h6 class="font--white"><?php echo lang('symbol');?></h6></a></li>

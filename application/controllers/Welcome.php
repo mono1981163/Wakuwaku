@@ -6,6 +6,7 @@ class Welcome extends MY_Controller {
         $this->load->library(array('session'));
         $this->load->model('Top_model');
         $this->load->model('Gacha_model');
+		$this->load->helper('url');
     }
 
 	public function index()
@@ -19,11 +20,19 @@ class Welcome extends MY_Controller {
 		$this->load->view('template/footer.php',$data);
 	}
 	public function switchLang() {
-		if($this->session->userdata('site_lang') == "chinese") {
-			$this->session->set_userdata('site_lang', 'japanese');
+		if($this->session->has_userdata('site_lang')) {
+			if($this->session->userdata('site_lang') == "chinese") {
+				$this->session->set_userdata('site_lang', 'japanese');
+			} else {
+				$this->session->set_userdata('site_lang', 'chinese');
+			}
 		} else {
-			$this->session->set_userdata('site_lang', 'chinese');
+			$this->session->set_userdata('site_lang', 'japanese');
 		}
-		redirect($this->session->userdata('cur_url'));
+		if($this->session->has_userdata('cur_url')) {
+			redirect($this->session->userdata('cur_url'));
+		} else {
+			redirect('Welcome');
+		}
 	}
 }

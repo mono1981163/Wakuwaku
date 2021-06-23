@@ -64,7 +64,7 @@
                     </a>
                 </div>
                 <div>
-                    <a href="#">
+                    <a href="<?php echo base_url().'#userGuide'?>">
                         <h5><?php echo lang('user_guide');?></h5>
                     </a>
                 </div>
@@ -82,7 +82,7 @@
     </header>
     <div id="myNav" class="menu_sp">    
         <a href="<?php echo base_url("Gacha/Gachalist");?>"><h5><?php echo lang('gacha_list');?></h5></a>
-        <a href="#"><h5><?php echo lang('user_guide');?></h5></a>
+        <a href="<?php echo base_url().'#userGuide'?>"><h5><?php echo lang('user_guide');?></h5></a>
         <?php if ($this->session->userdata('email')) {?> 
             <a href="<?php echo base_url("Mypage/Detail");?>"><h5><?php echo lang('account_info');?></h5></a>
             <a href="<?php echo base_url("Mypage/Detail/order_history");?>"><h5><?php echo lang('order_history');?></h5></a>

@@ -118,7 +118,7 @@
             <h4><?php echo lang('intro_text5')?></h4>
         </div>
     </section>
-    <section class="howtouse">
+    <section id="userGuide" class="howtouse">
         <div class="maxwide">
             <h4 class="subtitle"><?php echo lang('how_to_use');?></h4>
             <div class="flow_contents">
